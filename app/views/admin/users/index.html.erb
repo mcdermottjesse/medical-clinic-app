@@ -1,1 +1,13 @@
-USER INDEX
+<h1>Users</h1>
+
+<% @users.each do |user| %>
+    <div>
+        <b>Email</b>
+        <%= user.email %>
+        <b>Name</b>
+        <%= user.first_name %> <% user.last_name %>
+    </div>
+<% end %>
+
+<%= link_to 'New User', new_user_invitation_path %> 
+
