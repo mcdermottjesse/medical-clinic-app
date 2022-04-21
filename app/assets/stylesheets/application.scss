@@ -19,3 +19,16 @@ html,
 body {
     height: 100%;
 }
+
+.alert {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    font-size: small;
+}
+
+@include md-up {
+    .alert {
+        font-size: medium;
+    }
+}
