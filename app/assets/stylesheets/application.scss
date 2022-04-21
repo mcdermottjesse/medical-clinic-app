@@ -13,3 +13,9 @@
  *= require_tree .
  *= require_self
  */
+@import "variables";
+
+html,
+body {
+    height: 100%;
+}
