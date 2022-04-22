@@ -2,24 +2,18 @@
 .login-page {
   height: 100%;
   background-color: $dark-grey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   .login-dark {
-    max-width: 400px;
-    width: 100%;
-    background-color: $dark-grey;
-    padding: 40px;
-    border-radius: 4px;
-    transform: translate(-50%, -50%);
-    position: absolute;
-    top: 50%;
-    left: 50%;
+    width: 290px;
     color: $white;
   }
 
   .illustration {
     text-align: center;
-    padding: 15px 0 20px;
-    font-size: 100px;
+    font-size: 90px;
     color: $light-blue;
   }
 
@@ -30,7 +24,7 @@
     border-radius: 0;
     box-shadow: none;
     outline: none;
-    margin-bottom: 1.5em;
+    margin-bottom: 2em;
     color: $white;
   }
 
