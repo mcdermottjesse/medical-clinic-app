@@ -1,7 +1,16 @@
-<% if user_signed_in?  %>
-    <%= button_to 'Log Out', destroy_user_session_path, method: :delete %>
-    <%= link_to 'Home', authenticated_root_path %>
-    Loggd in As <%= current_user.email%>
+<% if user_signed_in? %>
+    <nav class="navbar">
+    <div class="dropdown">
+        <button data-bs-toggle="dropdown">
+            <i class="bi bi-person-lines-fill  ms-4"></i>
+        </button>
+        <div class="dropdown-menu">
+            <%= link_to 'Home', authenticated_root_path, class: 'nav-link dropdown-item' %>
+            <%= link_to 'Administration', admin_users_path, class: 'nav-link dropdown-item' %>
+            <div class='nav-link dropdown-item'> User: <%= current_user.email %></div>
+            <%= button_to 'Log Out', destroy_user_session_path, method: :delete, class: 'nav-link dropdown-item' %>
+        </div>
+    </nav>
 <% end %>
 <% if notice %>
     <p class="alert alert-success"><%= notice %></p>

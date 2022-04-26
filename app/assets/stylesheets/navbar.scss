@@ -1,0 +1,30 @@
+@import "variables";
+
+.navbar {
+    background-color: $dark-grey;
+    .nav-link {
+        text-decoration: none;
+        color: $dark-grey;
+        opacity: 1;
+        font-family: "work sans", sans serif;
+        font-size: 1.5em;
+        font-weight: 400;
+        transition: 200ms;
+        font-size: small;
+    }
+    .nav-link:hover {
+        opacity: 0.5;
+    }
+    button {
+        padding: 0;
+        border: none;
+        background: none;
+    }
+    .bi {
+        color: $white;
+        font-size: 50px;
+        padding: 0;
+        border: none;
+        background: none;
+    }
+}
