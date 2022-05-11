@@ -1,28 +1,42 @@
 @import "variables";
 
 .navbar {
-    background-color: $dark-grey;
-    .nav-link {
-        text-decoration: none;
-        color: $dark-grey;
-        opacity: 1;
-        font-family: "work sans", sans serif;
-        font-size: 1.5em;
-        font-weight: 400;
-        transition: 200ms;
-        font-size: small;
-    }
-    .nav-link:hover {
-        opacity: 0.5;
-    }
-    button {
-        border: none;
-        background: none;
-    }
+  background-color: $dark-grey;
+  padding: 0.5em;
+  .nav-link {
+    text-decoration: none;
+    color: $dark-grey;
+    opacity: 1;
+    font-family: "work sans", sans serif;
+    font-size: 1.5em;
+    font-weight: 400;
+    transition: 200ms;
+    font-size: small;
+  }
+  .nav-link:hover {
+    opacity: 0.5;
+  }
+  button {
+    border: none;
+    background: none;
+  }
+  .bi {
+    color: $white;
+    font-size: 40px;
+    border: none;
+    background: none;
+  }
+  .nav-text {
+    color: $white;
+    padding: 0.75em;
+  }
+}
+
+@include md-up {
+  .navbar {
+    padding: 0.75em;
     .bi {
-        color: $white;
-        font-size: 50px;
-        border: none;
-        background: none;
+      font-size: 50px;
     }
+  }
 }
