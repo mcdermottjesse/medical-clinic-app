@@ -1,20 +1,17 @@
 @import "variables";
 .login-page {
   height: 100%;
-  background-color: $dark-grey;
   display: flex;
   justify-content: center;
   align-items: center;
 
-  .login-dark {
+  .login-box {
     width: 290px;
-    color: $white;
   }
 
   .illustration {
     text-align: center;
     font-size: 90px;
-    color: $light-blue;
   }
 
   .form-control {
@@ -25,7 +22,7 @@
     box-shadow: none;
     outline: none;
     margin-bottom: 2em;
-    color: $white;
+    color: $grey;
   }
 
   .form-control:focus,
@@ -34,16 +31,15 @@
     border: none;
     box-shadow: none;
     outline: none;
-    color: $white;
+    color: $grey;
   }
 
   .shared-link {
     display: flex;
     justify-content: center;
     font-size: 14px;
-    color: $light-grey;
-    opacity: 0.9;
     text-decoration: none;
+    color: $grey;
   }
 
   .change-password {
