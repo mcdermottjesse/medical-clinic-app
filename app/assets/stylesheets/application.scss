@@ -19,6 +19,9 @@ html,
 body {
   height: 100%;
   font-size: small;
+  color: $grey;
+  background: url("medical-image.png");
+  background-size: 135% 100%;
 }
 
 .alert {
@@ -42,5 +45,21 @@ body {
   html,
   body {
     font-size: medium;
+  }
+}
+
+@include xl-up {
+  html,
+  body {
+    background: url("medical-image-xl.png");
+    background-size: 100% 100%;
+  }
+}
+
+@include lg {
+  html,
+  body {
+    background: url("medical-image-lg.png");
+    background-size: 100% 100%;
   }
 }

@@ -1,7 +1,6 @@
 @import "variables";
 
 .navbar {
-  background-color: $dark-grey;
   padding: 0.5em;
   .nav-link {
     text-decoration: none;
@@ -21,13 +20,12 @@
     background: none;
   }
   .bi {
-    color: $white;
+    color: $grey;
     font-size: 40px;
     border: none;
     background: none;
   }
   .nav-text {
-    color: $white;
     padding: 0.75em;
   }
 }
