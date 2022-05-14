@@ -4,9 +4,9 @@
   <% @users.each do |user| %>
     <div>
       <b class="ml-5">Email</b>
-      <%= user.email %>
+      <%= link_to user.email, edit_admin_user_path(user) %>
       <b>Name</b>
-      <%= user.first_name %> <% user.last_name %>
+      <%= user.first_name %> <%= user.last_name %>
     </div>
   <% end %>
 
