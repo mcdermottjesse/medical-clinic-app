@@ -1,5 +1,5 @@
 <div class="users-page">
-  <div class="new-user">
+  <div class="user-form">
     <h2 class="mb-3"><%= t "devise.invitations.new.header" %></h2>
 
     <%= form_for(@user, as: resource_name, url: invitation_path(resource_name), html: { method: :post }, data: { turbo: false }) do |f| %>

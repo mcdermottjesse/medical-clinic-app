@@ -25,6 +25,8 @@ body {
 }
 
 .alert {
+  display: flex;
+  justify-content: center;
   position: absolute;
   z-index: 1;
   width: 100%;
@@ -41,25 +43,10 @@ body {
   }
 }
 
-@include md-up {
-  html,
-  body {
-    font-size: medium;
-  }
-}
-
 @include xl-up {
   html,
   body {
     background: url("medical-image-xl.png");
-    background-size: 100% 100%;
-  }
-}
-
-@include md {
-  html,
-  body {
-    background-size: 100% 100%;
   }
 }
 
@@ -67,6 +54,13 @@ body {
   html,
   body {
     background: url("medical-image-lg.png");
+  }
+}
+
+@include md-up {
+  html,
+  body {
+    font-size: medium;
     background-size: 100% 100%;
   }
 }
