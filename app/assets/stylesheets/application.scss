@@ -56,10 +56,17 @@ body {
   }
 }
 
+@include md {
+  html,
+  body {
+    background-size: 100% 100%;
+  }
+}
+
 @include lg {
   html,
   body {
     background: url("medical-image-lg.png");
-    background-size: 100% 110%;
+    background-size: 100% 100%;
   }
 }
