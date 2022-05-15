@@ -1,0 +1,10 @@
+.users-page {
+  .new-user {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  .form-control {
+    margin-bottom: 1em;
+  }
+}
