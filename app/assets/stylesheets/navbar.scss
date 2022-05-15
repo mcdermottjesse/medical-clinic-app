@@ -2,6 +2,7 @@
 
 .navbar {
   padding: 0.5em;
+  justify-content: start;
   .nav-link {
     text-decoration: none;
     color: $dark-grey;
@@ -24,6 +25,10 @@
     font-size: 40px;
     border: none;
     background: none;
+    padding: 0;
+  }
+  .dropdown-menu {
+    top: 75%;
   }
   .nav-text {
     padding: 0.75em;
