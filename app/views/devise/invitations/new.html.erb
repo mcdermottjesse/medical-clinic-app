@@ -19,11 +19,11 @@
           </div>
           <div>
             Account Type
-            <%= f.select :account_type, options_for_select(User::ACCOUNTS)%>
+            <%= f.select :account_type, options_for_select(User::ACCOUNTS), {}, { class: "form-select" } %>
           </div>
           <div>
             Location
-            <%= f.select :location, options_for_select(User::LOCATIONS)%>
+            <%= f.select :location, options_for_select(User::LOCATIONS), {}, { class: "form-select" } %>
           </div>
         <% end -%>
 
