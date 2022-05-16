@@ -5,7 +5,7 @@ class Admin::InvitationsController < Devise::InvitationsController
   end
 
   def create
-    @user = User.new(invitation_params.merge(password: "temporary"))
+    @user = User.new(invitation_params.merge(password: "Temporary1!"))
     respond_to do |format|
       if @user.valid?
         @user = User.invite!(invitation_params.to_h)
