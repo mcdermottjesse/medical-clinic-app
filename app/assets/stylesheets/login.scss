@@ -3,6 +3,7 @@
 .login-page {
   .login-container {
     width: 18em;
+    
   }
 
   .form-control {
@@ -13,7 +14,7 @@
     box-shadow: none;
     outline: none;
     margin-bottom: 2em;
-    color: $grey;
+    
   }
 
   .form-control:focus,
@@ -22,7 +23,7 @@
     border: none;
     box-shadow: none;
     outline: none;
-    color: $grey;
+    
   }
 
   .shared-link {
@@ -30,7 +31,6 @@
     justify-content: center;
     font-size: 14px;
     text-decoration: none;
-    color: $grey;
   }
 
   .change-password {

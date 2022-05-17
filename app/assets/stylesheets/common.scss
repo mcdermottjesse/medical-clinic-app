@@ -1,7 +1,7 @@
 @import "variables";
 
 .btn-primary:not(.hover) {
-  background: $grey;
+  background-color: $black;
   border: none;
   border-radius: 4px;
   padding: 11px;
@@ -20,19 +20,22 @@
   flex-direction: column;
 }
 
+.card {
+  width: 90%;
+  background-color: $lavender;
+  border-radius: 3em;
+}
+
 .card-body {
   line-height: 2;
-  width: 90%;
   text-align: center;
-  background-color: $light-blue;
 }
-.card-body:nth-of-type(odd) {
-  background-color: $lavender;
-
+.card:nth-of-type(odd) {
+  background-color: transparent;
 }
 
 @include lg-up {
-  .card-body {
+  .card {
     width: 80%;
     padding: 2em;
     flex-direction: row;
