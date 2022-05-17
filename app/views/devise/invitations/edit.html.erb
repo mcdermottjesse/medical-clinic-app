@@ -2,20 +2,27 @@
   <div class="alert alert-danger"><%= @user.errors.full_messages.join(", ") %></div>
 <% end %>
 
-<div class="users-page center">
-  <div class="user-form">
+<div class="login-page center"> 
+  <div class="login-container">
+    <h5 class="mb-4">Create your password</h5>
     <%= form_for(resource, as: resource_name, url: invitation_path(resource_name), html: { method: :put }, data: { turbo: false }) do |f| %>
       <%= f.hidden_field :invitation_token, readonly: true %>
 
       <% if f.object.class.require_password_on_accepting %>
-        <div class="field">
-          <%= f.label :password %>
+        <div class="field change-password">
+          <b><%= f.label :password %></b>
+          <em> 
+            <ul>
+              <li><%= I18n.t("activerecord.errors.models.user.attributes.password.validation_message") %></li>
+              <li> <%= @minimum_password_length %> characters minimum </li>
+              <li> 16 characters maximum </li>
+            </ul>
+          </em>
           <%= f.password_field :password, class: "form-control" %>
         </div>
-
-        <div class="field">
-          <%= f.label :password_confirmation %>
-          <%= f.password_field :password_confirmation, class: "form-control mb-0" %>
+        <div class="field change-password">
+          <b><%= f.label :password_confirmation %></b>
+          <%= f.password_field :password_confirmation, class: "form-control" %>
         </div>
       <% end %>
 
