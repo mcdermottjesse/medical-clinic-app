@@ -24,10 +24,16 @@
   line-height: 2;
   width: 90%;
   text-align: center;
+  background-color: $light-blue;
+}
+.card-body:nth-of-type(odd) {
+  background-color: $lavender;
+
 }
 
-@include md-up {
+@include lg-up {
   .card-body {
+    width: 80%;
     padding: 2em;
     flex-direction: row;
     justify-content: space-between;
