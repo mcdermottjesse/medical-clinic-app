@@ -10,6 +10,7 @@
   text-shadow: none;
   outline: none;
   width: 100%;
+  text-align: center;
 }
 
 .center {
@@ -23,7 +24,7 @@
 .card {
   width: 90%;
   background-color: $lavender;
-  border-radius: 3em;
+  border-radius: 1em;
 }
 
 .card-body {
@@ -38,6 +39,7 @@
   .card {
     width: 80%;
     padding: 2em;
+    border-radius: 3em;
     flex-direction: row;
     justify-content: space-between;
   }
