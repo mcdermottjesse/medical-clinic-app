@@ -1,4 +1,6 @@
-<%= render "devise/shared/error_messages", resource: resource %>
+<% if @user.errors.any? %>
+  <div class="alert alert-danger"><%= @user.errors.full_messages.join(", ") %></div>
+<% end %>
 
 <div class="users-page center">
   <div class="user-form">
