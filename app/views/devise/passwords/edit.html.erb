@@ -1,4 +1,6 @@
-<%= render "devise/shared/error_messages", resource: resource %>
+<% if @user.errors.any? %>
+  <div class="alert alert-danger"><%= @user.errors.full_messages.join(", ") %></div>
+<% end %>
 
 <div class="login-page center"> 
   <div class="login-container">
@@ -8,12 +10,19 @@
       <%= f.hidden_field :reset_password_token %>
 
       <div class="change-password">
-        <%= f.label :password, "New password" %><br />
+        <b><%= f.label :password, "New password", class: "mb-3" %></b>
+        <em> 
+          <ul>
+            <li><%= I18n.t("activerecord.errors.models.user.attributes.password.validation_message") %></li>
+            <li> <%= @minimum_password_length %> characters minimum </li>
+            <li> 16 characters maximum </li>
+          </ul>
+        </em>
         <%= f.password_field :password, autofocus: true, autocomplete: "new-password",  class: "form-control" %>
       </div>
 
       <div class="change-password">
-        <%= f.label :password_confirmation, "Confirm new password" %><br />
+      <b><%= f.label :password_confirmation, "Confirm new password", class: "mb-3" %></b>
         <%= f.password_field :password_confirmation, autocomplete: "new-password",  class: "form-control" %>
       </div>
 
