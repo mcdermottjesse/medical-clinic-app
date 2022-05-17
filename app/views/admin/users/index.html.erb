@@ -1,16 +1,17 @@
-<div class="user-page ms-4">
-  <h1>Users</h1>
+<div class="user-page">
+  <div class="center">
+    <h1>Users</h1>
 
-  <% @users.each do |user| %>
-    <div>
-      <b class="ml-5">Email</b>
-      <%= link_to user.email, edit_admin_user_path(user) %>
-      <b>Name</b>
-      <%= user.first_name %> <%= user.last_name %>
-    </div>
-  <% end %>
+    <% @users.each do |user| %>
+      <div class="card card-body mb-3">
+        <div class="me-2">
+          <%= link_to user.full_name, edit_admin_user_path(user) %>
+        </div>
+        <%= user.email %>
+      </div>
+    <% end %>
 
-  <%= link_to 'New User', new_user_invitation_path %> 
-
+    <%= link_to 'New User', new_user_invitation_path %> 
+  </div>
 </div>
 
