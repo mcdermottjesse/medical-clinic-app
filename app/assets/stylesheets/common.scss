@@ -20,6 +20,16 @@
   flex-direction: column;
 }
 
-.card {
-  flex-direction: row;
+.card-body {
+  line-height: 2;
+  width: 90%;
+  text-align: center;
+}
+
+@include md-up {
+  .card-body {
+    padding: 2em;
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }

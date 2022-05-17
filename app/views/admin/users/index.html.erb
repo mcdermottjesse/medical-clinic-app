@@ -4,10 +4,18 @@
 
     <% @users.each do |user| %>
       <div class="card card-body mb-3">
-        <div class="me-2">
+        <div>
           <%= link_to user.full_name, edit_admin_user_path(user) %>
         </div>
-        <%= user.email %>
+        <div>
+          <%= user.email %>
+        </div>
+        <div>
+          <%= user.location %>
+        </div>
+        <div>
+          <%= user.account_type %>
+        </div>
       </div>
     <% end %>
 
