@@ -10,4 +10,8 @@ class User < ApplicationRecord
 
   ACCOUNTS = ["Admin", "Manager", "Nurse", "Doctor", "Care Worker"]
   LOCATIONS = ["Victoria General", "Royal Jubilee", "Sanich Penisula", "Nanaimo Regional"]
+
+  def full_name
+    [first_name, last_name].join(" ")
+  end
 end
