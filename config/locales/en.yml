@@ -36,4 +36,4 @@ en:
         user:
           attributes:
             password:
-              validation_message: "Must have atleast 1 number, symbol, uppercase and lowercase letter"
+              validation_message: "must have atleast 1 number, symbol, uppercase and lowercase letter"
