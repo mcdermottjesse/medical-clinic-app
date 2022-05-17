@@ -1,9 +1,10 @@
 $white: #fff;
 $blue: #214a80;
-$light-blue: #add8e6;
+$light-blue: rgba(231,254,255,0.5);
 $dark-grey: #1e2833;
 $grey: #434a52;
 $light-grey: #6f7a85;
+$lavender: rgba(230,230,250,0.5);
 
 $screen-md-min: 415px;
 
@@ -16,25 +17,31 @@ $screen-lg-max: 1439px;
 $screen-xl-min: 1440px;
 
 @mixin md {
-  @media (min-width: $screen-md-min) and (max-width: #{$screen-md-max}) {
+  @media (min-width: $screen-md-min) and (max-width: $screen-md-max) {
     @content;
   }
 }
 
 @mixin lg {
-  @media (min-width: $screen-lg-min) and (max-width: #{$screen-lg-max}) {
+  @media (min-width: $screen-lg-min) and (max-width: $screen-lg-max) {
     @content;
   }
 }
 
 @mixin md-up {
-  @media (min-width: #{$screen-md-max}) {
+  @media (min-width: $screen-md-max) {
+    @content;
+  }
+}
+
+@mixin lg-up {
+  @media (min-width: $screen-lg-min) {
     @content;
   }
 }
 
 @mixin xl-up {
-  @media (min-width: #{$screen-xl-min}) {
+  @media (min-width: $screen-xl-min) {
     @content;
   }
 }
