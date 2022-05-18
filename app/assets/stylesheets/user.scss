@@ -12,17 +12,18 @@
     width: 18em;
   }
 
-  .container {
-    height: 63vh;
-    overflow-y: scroll;
+  .user-details {
+    height: 75vh;
+    overflow-y: auto;
     overflow-x: hidden;
   }
 
-  .new-user {
-    margin-bottom: 30px;
-    .btn-primary {
-      width: 10em;
-    }
+  .user-header {
+    display: flex;
+    justify-content: space-between;
+    width: 95%;
+    margin: auto;
+    margin-bottom: 1em;
   }
 
   .user-text {
@@ -52,13 +53,5 @@
 
   .user-account:hover .user-text {
     visibility: visible;
-  }
-}
-
-@include lg-up {
-  .users-page {
-    .user-text {
-      margin-left: 0em;
-    }
   }
 }
