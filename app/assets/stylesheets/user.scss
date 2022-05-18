@@ -27,15 +27,15 @@
 
   .user-text {
     visibility: hidden;
-    width: 100px;
+    width: 90px;
     background-color: $black;
     color: $white;
     text-align: center;
     padding: 3px;
     border-radius: 6px;
-    margin-left: 1em;
     position: absolute;
     z-index: 1;
+    margin-left: 30vw;
   }
 
   .user-name:hover .user-text {
@@ -52,5 +52,13 @@
 
   .user-account:hover .user-text {
     visibility: visible;
+  }
+}
+
+@include lg-up {
+  .users-page {
+    .user-text {
+      margin-left: 0em;
+    }
   }
 }

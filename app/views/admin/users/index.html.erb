@@ -9,19 +9,19 @@
         <div class="card card-body mb-3">
           <div class="user-name">
             <%= link_to user.full_name, edit_admin_user_path(user) %>
-            <span class="user-text">edit user</span>
+            <div class="user-text">edit user</div>
           </div>
           <div class="user-email">
             <%= user.email %>
-            <span class="user-text">email</span>
+            <div class="user-text">email</div>
           </div>
           <div class="user-location">
             <%= user.location %>
-            <span class="user-text">location</span>
+            <div class="user-text">location</div>
           </div>
           <div class="user-account">
             <%= user.account_type %>
-            <span class="user-text">account</span>
+            <div class="user-text">account</div>
           </div>
         </div>
       <% end %>
