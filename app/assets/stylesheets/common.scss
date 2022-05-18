@@ -22,7 +22,6 @@
 }
 
 .card {
-  width: 90%;
   background-color: $lavender;
   border-radius: 1em;
 }
@@ -37,7 +36,7 @@
 
 @include lg-up {
   .card {
-    width: 80%;
+    line-height: 2;
     padding: 2em;
     border-radius: 3em;
     flex-direction: row;

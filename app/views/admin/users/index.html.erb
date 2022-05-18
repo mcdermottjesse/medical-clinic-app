@@ -4,26 +4,28 @@
     <div class="new-user">
       <%= link_to 'Create New User', new_user_invitation_path, class: "btn-primary" %>
     </div>
-    <% @users.each do |user| %>
-      <div class="card card-body mb-3">
-        <div class="user-name">
-          <%= link_to user.full_name, edit_admin_user_path(user) %>
-          <span class="user-text">edit user</span>
+    <div class="container">
+      <% @users.each do |user| %>
+        <div class="card card-body mb-3">
+          <div class="user-name">
+            <%= link_to user.full_name, edit_admin_user_path(user) %>
+            <span class="user-text">edit user</span>
+          </div>
+          <div class="user-email">
+            <%= user.email %>
+            <span class="user-text">email</span>
+          </div>
+          <div class="user-location">
+            <%= user.location %>
+            <span class="user-text">location</span>
+          </div>
+          <div class="user-account">
+            <%= user.account_type %>
+            <span class="user-text">account</span>
+          </div>
         </div>
-        <div class="user-email">
-          <%= user.email %>
-          <span class="user-text">email</span>
-        </div>
-        <div class="user-location">
-          <%= user.location %>
-          <span class="user-text">location</span>
-        </div>
-        <div class="user-account">
-          <%= user.account_type %>
-          <span class="user-text">account</span>
-        </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
 

@@ -6,15 +6,46 @@ $light-grey: #6f7a85;
 $lavender: rgba(230, 230, 250, 0.4); //transparent
 $purple: rgb(85, 85, 217); //link colour
 
+$screen-xs-min: 321px;
+
+$screen-xs-max: 375px;
+
+$screen-sm-min: 376px;
+
+$screen-sm-max: 414px;
+
 $screen-md-min: 415px;
 
 $screen-md-max: 768px;
 
 $screen-lg-min: 769px;
 
-$screen-lg-max: 1439px;
+$screen-lg-max: 1024px;
 
-$screen-xl-min: 1440px;
+$screen-xl-min: 1025px;
+
+$screen-xl-max: 1280px;
+
+$screen-xxl-min: 1440px;
+
+//compensate for iphone x height
+@mixin xs-length {
+  @media (min-width: $screen-xs-min) and (max-width: $screen-xs-max) and (min-height: 812px) {
+    @content;
+  }
+}
+
+@mixin xs {
+  @media (min-width: $screen-xs-min) and (max-width: $screen-xs-max) {
+    @content;
+  }
+}
+
+@mixin sm {
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    @content;
+  }
+}
 
 @mixin md {
   @media (min-width: $screen-md-min) and (max-width: $screen-md-max) {
@@ -24,6 +55,12 @@ $screen-xl-min: 1440px;
 
 @mixin lg {
   @media (min-width: $screen-lg-min) and (max-width: $screen-lg-max) {
+    @content;
+  }
+}
+
+@mixin xl {
+  @media (min-width: $screen-xl-min) and (max-width: $screen-xl-max) {
     @content;
   }
 }
@@ -40,8 +77,8 @@ $screen-xl-min: 1440px;
   }
 }
 
-@mixin xl-up {
-  @media (min-width: $screen-xl-min) {
+@mixin xxl-up {
+  @media (min-width: $screen-xxl-min) {
     @content;
   }
 }
