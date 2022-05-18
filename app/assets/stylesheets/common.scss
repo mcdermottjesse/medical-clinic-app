@@ -1,16 +1,17 @@
 @import "variables";
 
 .btn-primary:not(.hover) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: $black;
   border: none;
   border-radius: 4px;
   padding: 11px;
   box-shadow: none;
-  margin-top: 1.5em;
   text-shadow: none;
   outline: none;
   width: 100%;
-  text-align: center;
 }
 
 .center {
@@ -27,7 +28,7 @@
 }
 
 .card-body {
-  line-height: 2;
+  line-height: 1.5;
   text-align: center;
 }
 .card:nth-of-type(odd) {
@@ -36,10 +37,13 @@
 
 @include lg-up {
   .card {
-    line-height: 2;
     padding: 2em;
     border-radius: 3em;
     flex-direction: row;
     justify-content: space-between;
+  }
+
+  .card-body {
+    line-height: 2;
   }
 }
