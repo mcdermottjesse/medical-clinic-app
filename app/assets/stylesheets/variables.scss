@@ -30,13 +30,6 @@ $screen-xxl-min: 1281px;
 
 $screen-xxl-max: 1440px;
 
-//compensate for iphone x height
-@mixin xs-length {
-  @media (min-width: $screen-xs-min) and (max-width: $screen-xs-max) and (min-height: 812px) {
-    @content;
-  }
-}
-
 @mixin xs {
   @media (min-width: $screen-xs-min) and (max-width: $screen-xs-max) {
     @content;
