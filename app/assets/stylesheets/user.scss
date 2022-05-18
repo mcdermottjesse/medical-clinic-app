@@ -12,6 +12,12 @@
     width: 18em;
   }
 
+  .container {
+    height: 63vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+
   .new-user {
     margin-bottom: 30px;
     .btn-primary {
@@ -43,7 +49,7 @@
   .user-location:hover .user-text {
     visibility: visible;
   }
-  
+
   .user-account:hover .user-text {
     visibility: visible;
   }
