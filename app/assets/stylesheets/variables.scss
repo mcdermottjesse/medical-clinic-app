@@ -30,6 +30,8 @@ $screen-xxl-min: 1281px;
 
 $screen-xxl-max: 1440px;
 
+$screen-xxxl-min: 1441px;
+
 @mixin xs {
   @media (min-width: $screen-xs-min) and (max-width: $screen-xs-max) {
     @content;
@@ -72,8 +74,20 @@ $screen-xxl-max: 1440px;
   }
 }
 
+@mixin xl-up {
+  @media (min-width: $screen-xl-max) {
+    @content;
+  }
+}
+
 @mixin xxl-up {
   @media (min-width: $screen-xxl-max) {
+    @content;
+  }
+}
+
+@mixin xxxl-up {
+  @media (min-width: $screen-xxxl-min) {
     @content;
   }
 }

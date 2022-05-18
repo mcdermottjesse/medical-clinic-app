@@ -59,3 +59,33 @@
     visibility: visible;
   }
 }
+
+@include md {
+  .users-page .user-text {
+    margin-left: 36vw;
+  }
+}
+
+@include lg-up {
+  .users-page {
+    .user-text {
+      margin-left: 5.5vw;
+    }
+    .user-name,
+    .user-email,
+    .user-location,
+    .user-account {
+      width: 25vw;
+      white-space: wrap;
+      overflow: hidden;
+    }
+  }
+}
+
+@include xxxl-up {
+  .users-page {
+    .user-text {
+      margin-left: 4.5vw;
+    }
+  }
+}
