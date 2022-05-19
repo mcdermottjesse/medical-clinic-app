@@ -20,6 +20,22 @@
     height: 75vh;
     overflow-y: auto;
     overflow-x: hidden;
+    scrollbar-color: $grey transparent; //Firefox scrollbar css
+  }
+
+  //Chrome, Safari etc scrollbar css
+  .user-details::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  .user-details::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+   
+  .user-details::-webkit-scrollbar-thumb {
+    background: $grey; 
+    border-radius: 10px;
+    margin-bottom: 10em;
   }
 
   .user-header {
