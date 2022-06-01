@@ -27,13 +27,13 @@
   .user-details::-webkit-scrollbar {
     width: 10px;
   }
-  
+
   .user-details::-webkit-scrollbar-track {
     background-color: transparent;
   }
-   
+
   .user-details::-webkit-scrollbar-thumb {
-    background: $grey; 
+    background: $grey;
     border-radius: 10px;
     margin-bottom: 10em;
   }
@@ -76,9 +76,26 @@
   }
 }
 
+@include xs {
+  .users-page .user-details {
+    height: 80vh;
+  }
+}
+
+@include sm {
+  .users-page .user-details {
+    height: 82vh;
+  }
+}
+
 @include md {
-  .users-page .user-text {
-    margin-left: 36vw;
+  .users-page {
+    .user-text {
+      margin-left: 36vw;
+    }
+    .user-details {
+      height: 83vh;
+    }
   }
 }
 
@@ -102,6 +119,9 @@
   .users-page {
     .user-text {
       margin-left: 4.5vw;
+    }
+    .user-details {
+      height: 90vh;
     }
   }
 }
