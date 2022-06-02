@@ -3,8 +3,7 @@ class Admin::UsersController < ApplicationController
   before_action :authorize_resource
 
   def index
-   params[:location] == "All Locations" ?  users = User.all : users = User.where(location: params[:location])
-   
+    @location_param == "All Locations" ? users = User.all : users = User.where(location: @location_param)
     @users = users.paginate(page: params[:page], per_page: 6)
   end
 
@@ -13,7 +12,7 @@ class Admin::UsersController < ApplicationController
     @user.skip_password_validation = true
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to admin_users_path(location: params[:location]), notice: "User succesfully updated" }
+        format.html { redirect_to admin_users_path(location: @location_param), notice: "User succesfully updated" }
         format.json { render :index, status: :created, location: @user }
       else
         format.html { redirect_to edit_admin_user_path(@user), alert: "Unable to save the User: #{@user.errors.full_messages.join(", ")}." }
