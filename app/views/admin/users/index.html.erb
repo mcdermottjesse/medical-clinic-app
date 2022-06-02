@@ -3,9 +3,6 @@
     <div class="container">
       <div class="user-header">
         <h1>Users</h1>
-        <div>
-          <%= link_to 'Create New User', new_user_invitation_path, class: "btn-primary" %>
-        </div>
       </div>
       <div class="user-details">
         <% @users.each do |user| %>
@@ -28,8 +25,13 @@
             </div>
           </div>
         <% end %>
-        <div class="pagination">
-          <%= will_paginate @users, previous_label: 'Prev', next_label: 'Next' %>
+        <div class="space-between">
+          <div class="pagination">
+            <%= will_paginate @users, previous_label: 'Prev', next_label: 'Next' %>
+          </div>
+          <div class="center-item">
+            <%= link_to 'Create New User', new_user_invitation_path, class: "btn-primary new-user-btn" %>
+          </div>
         </div>
       </div>
     </div>

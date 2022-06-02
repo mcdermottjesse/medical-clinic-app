@@ -69,6 +69,14 @@
   margin-left: 1em;
 }
 
+@include md-up {
+  .space-between {
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+  }
+}
+
 @include lg-up {
   .card {
     padding: 2em;

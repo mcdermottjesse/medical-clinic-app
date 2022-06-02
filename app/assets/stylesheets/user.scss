@@ -1,6 +1,11 @@
 @import "variables";
 
 .users-page {
+  .new-user-btn {
+    width: fit-content;
+    margin-top: 1em;
+  }
+
   .user-form {
     display: flex;
     align-items: center;
@@ -39,10 +44,7 @@
   }
 
   .user-header {
-    display: flex;
-    justify-content: space-between;
-    width: 95%;
-    margin: auto;
+    margin-left: 1vw;
     margin-bottom: 1em;
   }
 
@@ -99,6 +101,12 @@
   }
 }
 
+@include md-up {
+  .users-page .new-user-btn {
+    margin-top: 0;
+  }
+}
+
 @include lg-up {
   .users-page {
     .user-text {
@@ -119,9 +127,6 @@
   .users-page {
     .user-text {
       margin-left: 4.5vw;
-    }
-    .user-details {
-      height: 90vh;
     }
   }
 }

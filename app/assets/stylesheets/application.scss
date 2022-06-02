@@ -44,7 +44,12 @@ ul li {
   z-index: 1;
   width: 100%;
   font-size: x-small;
-  animation: fade 10s forwards;
+  animation: fade 8s forwards;
+}
+
+.center-item {
+  display: flex;
+  justify-content: center;
 }
 
 @keyframes fade {
