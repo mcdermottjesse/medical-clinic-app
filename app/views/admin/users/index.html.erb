@@ -3,6 +3,9 @@
     <div class="container">
       <div class="user-header">
         <h1>Users</h1>
+        <%= form_tag(admin_users_path, method: :get) do %>
+          <%= select_tag :location, options_for_select(User::LOCATIONS, selected: params[:location]), onchange: 'this.form.submit();' %>
+        <% end %>
       </div>
       <div class="user-details">
         <% @users.each do |user| %>
