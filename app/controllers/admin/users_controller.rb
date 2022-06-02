@@ -1,5 +1,6 @@
 class Admin::UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update, :destroy]
+  before_action :authorize_resource, except: [:index]
 
   def index
     @users = User.paginate(page: params[:page], per_page: 6)
@@ -35,5 +36,9 @@ class Admin::UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def authorize_resource
+    authorize [:admin, @user]
   end
 end
