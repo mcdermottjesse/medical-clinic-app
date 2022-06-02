@@ -10,7 +10,7 @@ class User < ApplicationRecord
   validates :password, format: { with: /\A(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}\z/, message: :validation_message }, unless: :skip_password_validation
 
   ACCOUNTS = ["Admin", "Manager", "Nurse", "Doctor", "Care Worker"]
-  LOCATIONS = ["Victoria General", "Royal Jubilee", "Sanich Penisula", "Nanaimo Regional"]
+  LOCATIONS = ["All Locations", "Victoria General", "Royal Jubilee", "Sanich Penisula", "Nanaimo Regional"]
 
   def full_name
     [first_name, last_name].join(" ")
