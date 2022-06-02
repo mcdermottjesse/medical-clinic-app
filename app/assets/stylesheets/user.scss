@@ -6,6 +6,13 @@
     margin-top: 1em;
   }
 
+  .delete-btn {
+    margin-top: 2em;
+    background: none;
+    border: none;
+    color: $warning;
+  }
+
   .user-form {
     display: flex;
     align-items: center;
