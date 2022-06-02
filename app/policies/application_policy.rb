@@ -36,6 +36,14 @@ class ApplicationPolicy
     false
   end
 
+  def authorized_user?
+    user.admin? || user.manager?
+  end
+
+  def valid_user?
+    user.admin? || user.manager? || user.doctor? || user.nurse? || user.care_worker?
+  end
+
   class Scope
     def initialize(user, scope)
       @user = user

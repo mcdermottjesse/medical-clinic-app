@@ -15,4 +15,24 @@ class User < ApplicationRecord
   def full_name
     [first_name, last_name].join(" ")
   end
+
+  def admin?
+    account_type == "Admin"
+  end
+
+  def manager?
+    account_type == "Manager"
+  end
+
+  def doctor?
+    account_type == "Doctor"
+  end
+
+  def nurse?
+    account_type == "Nurse"
+  end
+
+  def care_worker?
+    account_type == "Care Worker"
+  end
 end
