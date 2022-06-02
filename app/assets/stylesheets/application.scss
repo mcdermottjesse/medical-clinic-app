@@ -64,27 +64,48 @@ ul li {
   }
 }
 
-@include xxl-up {
+@include md-up {
   html,
   body {
-    background: url("medical-image-xl.png");
+    font-size: medium;
+  }
+  .alert {
+    font-size: small;
   }
 }
 
 @include lg-up {
   html,
   body {
-    background: url("medical-image-lg.png");
+    background: url("medical-image-xl.png");
   }
 }
 
-@include md-up {
+@include md {
+  html,
+  body {
+    background-size: 100% 100%;
+  }
+}
+
+@include lg {
+  html,
+  body {
+    background-size: 107% 100%;
+  }
+}
+
+@include xl {
+  html,
+  body {
+    background-size: 105% 100%;
+  }
+}
+
+@include xxl-up {
   html,
   body {
     font-size: medium;
-    background-size: 100% 110%;
-  }
-  .alert {
-    font-size: small;
+    background-size: 100% 100%;
   }
 }

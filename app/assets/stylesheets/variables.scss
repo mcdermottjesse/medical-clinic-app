@@ -62,6 +62,12 @@ $screen-xxxl-min: 1441px;
   }
 }
 
+@mixin xxl {
+  @media (min-width: $screen-xxl-min) and (max-width: $screen-xxl-max) {
+    @content;
+  }
+}
+
 @mixin md-up {
   @media (min-width: $screen-md-max) {
     @content;
