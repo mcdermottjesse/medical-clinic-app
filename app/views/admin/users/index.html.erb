@@ -27,10 +27,10 @@
         <% end %>
         <div class="space-between">
           <div class="pagination">
-            <%= will_paginate @users, previous_label: 'Prev', next_label: 'Next' %>
+            <%= will_paginate @users, previous_label: "Prev", next_label: "Next" %>
           </div>
           <div class="center-item">
-            <%= link_to 'Create New User', new_user_invitation_path, class: "btn-primary new-user-btn" %>
+            <%= link_to "Create New User", new_user_invitation_path, class: "btn-primary new-user-btn" %>
           </div>
         </div>
       </div>

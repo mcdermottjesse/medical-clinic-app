@@ -1,5 +1,5 @@
 class Admin::UsersController < ApplicationController
-  before_action :set_user, only: [:edit, :update]
+  before_action :set_user, only: [:edit, :update, :destroy]
 
   def index
     @users = User.paginate(page: params[:page], per_page: 6)
@@ -16,6 +16,14 @@ class Admin::UsersController < ApplicationController
         format.html { redirect_to edit_admin_user_path(@user), alert: "Unable to save the User: #{@user.errors.full_messages.join(", ")}." }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def destroy
+    @user.destroy
+    respond_to do |format|
+      format.html { redirect_to admin_users_path, notice: "User was successfully destroyed." }
+      format.json { head :no_content }
     end
   end
 
