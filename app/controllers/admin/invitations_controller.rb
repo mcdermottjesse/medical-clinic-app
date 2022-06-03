@@ -1,5 +1,5 @@
 class Admin::InvitationsController < Devise::InvitationsController
-  
+  before_action :authorize_resource, if: :user_signed_in? # check if user is signed in to invite a new user to set password
   def new
     @user = User.new
   end
@@ -22,5 +22,9 @@ class Admin::InvitationsController < Devise::InvitationsController
 
   def invitation_params
     params.require(:user).permit(:email, :first_name, :last_name, :account_type, :location)
+  end
+
+  def authorize_resource
+    authorize [:admin, :user]
   end
 end
