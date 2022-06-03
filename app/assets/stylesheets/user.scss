@@ -24,7 +24,7 @@
   }
 
   .user-details {
-    height: 65vh;
+    height: 70vh;
     overflow-y: auto;
     overflow-x: hidden;
     scrollbar-color: $grey transparent; //Firefox scrollbar css
@@ -77,13 +77,13 @@
 
 @include xs {
   .users-page .user-details {
-    height: 70vh;
+    height: 74vh;
   }
 }
 
 @include sm {
   .users-page .user-details {
-    height: 72vh;
+    height: 75vh;
   }
 }
 
