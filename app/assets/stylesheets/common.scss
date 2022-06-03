@@ -7,11 +7,12 @@
   background-color: $black;
   border: none;
   border-radius: 4px;
-  padding: 11px;
+  padding: 8px;
   box-shadow: none;
   text-shadow: none;
   outline: none;
   width: 100%;
+  cursor: pointer;
 }
 
 .center {
@@ -20,6 +21,12 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+.space-between {
+  display: flex;
+  justify-content: space-between;
+  padding: 1em;
 }
 
 .card {
@@ -67,14 +74,6 @@
 }
 .next_page {
   margin-left: 1em;
-}
-
-@include md-up {
-  .space-between {
-    display: flex;
-    justify-content: space-between;
-    padding: 1em;
-  }
 }
 
 @include lg-up {

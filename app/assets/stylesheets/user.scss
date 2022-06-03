@@ -1,11 +1,6 @@
 @import "variables";
 
 .users-page {
-  .new-user-btn {
-    width: fit-content;
-    margin-top: 1em;
-  }
-
   .delete-btn {
     margin-top: 2em;
     background: none;
@@ -29,7 +24,7 @@
   }
 
   .user-details {
-    height: 75vh;
+    height: 65vh;
     overflow-y: auto;
     overflow-x: hidden;
     scrollbar-color: $grey transparent; //Firefox scrollbar css
@@ -48,17 +43,6 @@
     background: $grey;
     border-radius: 10px;
     margin-bottom: 10em;
-  }
-
-  .user-header {
-    display: flex;
-    justify-content: space-between;
-    margin-left: 1vw;
-    margin-bottom: 1em;
-  }
-
-  .filter {
-    margin-top: 0.5em;
   }
 
   .user-text {
@@ -93,13 +77,13 @@
 
 @include xs {
   .users-page .user-details {
-    height: 80vh;
+    height: 70vh;
   }
 }
 
 @include sm {
   .users-page .user-details {
-    height: 82vh;
+    height: 72vh;
   }
 }
 
@@ -109,15 +93,7 @@
       margin-left: 36vw;
     }
     .user-details {
-      height: 83vh;
-    }
-  }
-}
-
-@include md-up {
-  .users-page {
-    .new-user-btn {
-      margin-top: 0;
+      height: 78vh;
     }
   }
 }
@@ -134,9 +110,6 @@
       width: 25vw;
       white-space: wrap;
       overflow: hidden;
-    }
-    .filter {
-      margin-top: 1em;
     }
   }
 }
