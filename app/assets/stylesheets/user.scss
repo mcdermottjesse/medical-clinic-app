@@ -51,8 +51,14 @@
   }
 
   .user-header {
+    display: flex;
+    justify-content: space-between;
     margin-left: 1vw;
     margin-bottom: 1em;
+  }
+
+  .filter {
+    margin-top: 0.5em;
   }
 
   .user-text {
@@ -109,8 +115,10 @@
 }
 
 @include md-up {
-  .users-page .new-user-btn {
-    margin-top: 0;
+  .users-page {
+    .new-user-btn {
+      margin-top: 0;
+    }
   }
 }
 
@@ -126,6 +134,9 @@
       width: 25vw;
       white-space: wrap;
       overflow: hidden;
+    }
+    .filter {
+      margin-top: 1em;
     }
   }
 }
