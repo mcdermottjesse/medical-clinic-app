@@ -24,7 +24,7 @@ class Admin::UsersController < ApplicationController
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to admin_users_path, notice: "User was successfully destroyed." }
+      format.html { redirect_to admin_users_path(location: @location_param), notice: "User was successfully destroyed." }
       format.json { head :no_content }
     end
   end

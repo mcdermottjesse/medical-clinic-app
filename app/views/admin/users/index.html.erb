@@ -4,14 +4,14 @@
       <div class="user-header">
         <h1>Users</h1>
         <%= form_tag(admin_users_path, method: :get) do %>
-          <%= select_tag :location, options_for_select(User::LOCATIONS, selected: @location_param), onchange: 'this.form.submit();' %>
+          <%= select_tag :location, options_for_select(User::LOCATIONS, @location_param), onchange: 'this.form.submit();' %>
         <% end %>
       </div>
       <div class="user-details">
         <% @users.each do |user| %>
           <div class="card card-body mb-3">
             <div class="user-name">
-              <%= link_to user.full_name, edit_admin_user_path(user) %>
+              <%= link_to user.full_name, edit_admin_user_path(user, location: @location_param) %>
               <div class="user-text">edit user</div>
             </div>
             <div class="user-email">
