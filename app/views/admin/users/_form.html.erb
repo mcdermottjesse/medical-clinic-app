@@ -19,11 +19,12 @@
       </div>
       <div>
         Location
-        <%= f.select :location, options_for_select(User::LOCATIONS, @user.location), {}, { class: "form-select" } %>
+        <%= f.select :location, options_for_select(User::LOCATIONS.drop(1), @user.location), {}, { class: "form-select" } %>
       </div>
       <div class="actions">
         <%= f.submit "Save", class: "btn-primary" %>
       </div>
+      <%= hidden_field_tag(:location, @location_param) %>
     <% end %>
   </div>
 </div>
