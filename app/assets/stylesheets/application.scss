@@ -23,6 +23,17 @@ body {
   background: url("medical-image.png");
   background-size: 135% 100%;
 }
+.form-select,
+.form-control {
+  font-size: 16px;
+}
+.form-select:focus,
+.form-control:focus,
+.form-control:visited {
+  border: none;
+  box-shadow: none;
+  outline: none;
+}
 
 a {
   text-decoration: none;
