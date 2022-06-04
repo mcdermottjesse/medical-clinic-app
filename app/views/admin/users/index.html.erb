@@ -10,7 +10,7 @@
         </div>
         <div>
           <%= form_tag(admin_users_path, method: :get) do %>
-            <%= select_tag :location, options_for_select(User::LOCATIONS, @location_param), onchange: 'this.form.submit();', class: "btn-primary" %>
+            <%= select_tag :location, options_for_select(User::LOCATIONS, @location_param), onchange: 'this.form.submit();', class: "filter btn-primary" %>
           <% end %>
         </div>
       </div>
