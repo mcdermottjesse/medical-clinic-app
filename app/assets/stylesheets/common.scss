@@ -1,13 +1,94 @@
 @import "variables";
 
-.btn-primary {
-  background: $grey;
+.btn-primary:not(.hover) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $black;
   border: none;
   border-radius: 4px;
-  padding: 11px;
+  padding: 8px;
   box-shadow: none;
-  margin-top: 26px;
   text-shadow: none;
   outline: none;
   width: 100%;
+}
+
+.filter {
+  cursor: pointer;
+  height: 2.75em;
+}
+
+.center {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.space-between {
+  display: flex;
+  justify-content: space-between;
+  padding: 1em;
+}
+
+.card {
+  background-color: $lavender;
+  border-radius: 1em;
+}
+
+.card-body {
+  line-height: 1.5;
+  text-align: center;
+}
+.card:nth-of-type(odd) {
+  background-color: transparent;
+}
+
+.pagination {
+  cursor: default;
+  a,
+  span,
+  em {
+    padding: 0.2em 0.5em;
+  }
+  .disabled {
+    color: $light-grey;
+  }
+  .current {
+    font-style: normal;
+    font-weight: bold;
+    color: $black;
+  }
+  a {
+    color: $purple;
+  }
+}
+.page_info {
+  color: #aaaaaa;
+  padding-top: 0.8em;
+}
+.previous_page,
+.next_page {
+  border-width: 2px;
+}
+.previous_page {
+  margin-right: 1em;
+}
+.next_page {
+  margin-left: 1em;
+}
+
+@include lg-up {
+  .card {
+    padding: 2em;
+    border-radius: 3em;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .card-body {
+    line-height: 2;
+  }
 }

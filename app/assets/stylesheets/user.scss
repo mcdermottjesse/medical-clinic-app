@@ -1,0 +1,111 @@
+@import "variables";
+
+.users-page {
+  .delete-btn {
+    margin-top: 2em;
+    background: none;
+    border: none;
+    color: $warning;
+  }
+
+  .user-form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .form-control {
+    margin-bottom: 1em;
+    width: 18em;
+  }
+
+  .form-select {
+    margin-bottom: 1em;
+  }
+
+  .user-details {
+    height: 62vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-color: $grey transparent; //Firefox scrollbar css
+  }
+
+  //Chrome, Safari etc scrollbar css
+  .user-details::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  .user-details::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  .user-details::-webkit-scrollbar-thumb {
+    background: $grey;
+    border-radius: 10px;
+    margin-bottom: 10em;
+  }
+
+  .user-text {
+    visibility: hidden;
+    width: 90px;
+    background-color: $black;
+    color: $white;
+    text-align: center;
+    padding: 3px;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    margin-left: 30vw;
+  }
+
+  .user-name:hover .user-text {
+    visibility: visible;
+  }
+
+  .user-email:hover .user-text {
+    visibility: visible;
+  }
+
+  .user-location:hover .user-text {
+    visibility: visible;
+  }
+
+  .user-account:hover .user-text {
+    visibility: visible;
+  }
+}
+
+@include md {
+  .users-page {
+    .user-text {
+      margin-left: 36vw;
+    }
+    .user-details {
+      height: 70vh;
+    }
+  }
+}
+
+@include lg-up {
+  .users-page {
+    .user-text {
+      margin-left: 5.5vw;
+    }
+    .user-name,
+    .user-email,
+    .user-location,
+    .user-account {
+      width: 25vw;
+      white-space: wrap;
+      overflow: hidden;
+    }
+  }
+}
+
+@include xxxl-up {
+  .users-page {
+    .user-text {
+      margin-left: 4.5vw;
+    }
+  }
+}

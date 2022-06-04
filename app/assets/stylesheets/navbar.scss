@@ -2,6 +2,7 @@
 
 .navbar {
   padding: 0.5em;
+  justify-content: start;
   .nav-link {
     text-decoration: none;
     color: $dark-grey;
@@ -15,18 +16,22 @@
   .nav-link:hover {
     opacity: 0.5;
   }
-  button {
-    border: none;
-    background: none;
-  }
+
   .bi {
-    color: $grey;
+    color: $black;
     font-size: 40px;
     border: none;
     background: none;
+    padding: 0;
+  }
+
+  .dropdown-menu {
+    top: 75%;
   }
   .nav-text {
     padding: 0.75em;
+    width: 80%;
+    word-wrap: break-word;
   }
 }
 
