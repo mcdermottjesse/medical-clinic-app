@@ -19,22 +19,71 @@ html,
 body {
   height: 100%;
   font-size: small;
-  color: $grey;
+  color: $black;
   background: url("medical-image.png");
   background-size: 135% 100%;
+  caret-color: $purple;
+}
+.form-select,
+.form-control {
+  font-size: 16px;
+}
+
+.form-select:focus,
+.form-control:focus,
+.form-control:visited {
+  border-width: 3px;
+  border-color: $black;
+  box-shadow: none;
+}
+
+button {
+  border: none;
+  background: none;
+}
+
+button:focus {
+  outline: none;
+}
+
+.btn-primary:focus:active {
+  box-shadow: none;
+}
+
+a {
+  text-decoration: none;
+  color: $purple;
+}
+
+a:hover {
+  color: $light-grey;
+}
+
+ul li {
+  margin-bottom: 1em;
 }
 
 .alert {
+  display: flex;
+  justify-content: center;
   position: absolute;
   z-index: 1;
   width: 100%;
-  font-size: small;
-  animation: fade 10s forwards;
+  font-size: x-small;
+  animation: fade 8s forwards;
+}
+
+.center-item {
+  display: flex;
+  justify-content: center;
 }
 
 @keyframes fade {
   0% {
     opacity: 1;
+  }
+  95% {
+    opacity: 0.75;
   }
   100% {
     opacity: 0;
@@ -46,12 +95,21 @@ body {
   body {
     font-size: medium;
   }
+  .alert {
+    font-size: small;
+  }
 }
 
-@include xl-up {
+@include lg-up {
   html,
   body {
     background: url("medical-image-xl.png");
+  }
+}
+
+@include md {
+  html,
+  body {
     background-size: 100% 100%;
   }
 }
@@ -59,7 +117,21 @@ body {
 @include lg {
   html,
   body {
-    background: url("medical-image-lg.png");
+    background-size: 107% 100%;
+  }
+}
+
+@include xl {
+  html,
+  body {
+    background-size: 105% 100%;
+  }
+}
+
+@include xxl-up {
+  html,
+  body {
+    font-size: medium;
     background-size: 100% 100%;
   }
 }
