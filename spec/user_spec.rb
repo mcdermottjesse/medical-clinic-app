@@ -8,7 +8,7 @@ RSpec.describe User, type: :model do
   end
 
   it "is valid if password is between 8 and 16 characters and matches format of atleast 1 number, symbol, uppercase and lowercase letter" do
-    expect((subject.password).match?( /\A(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}\z/)).to eq(true)
+    expect((subject.password).match?(/\A(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}\z/)).to eq(true)
   end
 
   it "is not valid without a first_name" do
