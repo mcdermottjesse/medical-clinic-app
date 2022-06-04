@@ -16,10 +16,7 @@
   .nav-link:hover {
     opacity: 0.5;
   }
-  button {
-    border: none;
-    background: none;
-  }
+
   .bi {
     color: $black;
     font-size: 40px;
@@ -27,6 +24,7 @@
     background: none;
     padding: 0;
   }
+
   .dropdown-menu {
     top: 75%;
   }

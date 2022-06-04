@@ -22,17 +22,32 @@ body {
   color: $black;
   background: url("medical-image.png");
   background-size: 135% 100%;
+  caret-color: $purple;
 }
 .form-select,
 .form-control {
   font-size: 16px;
 }
+
 .form-select:focus,
 .form-control:focus,
 .form-control:visited {
-  border: none;
+  border-width: 3px;
+  border-color: $black;
   box-shadow: none;
+}
+
+button {
+  border: none;
+  background: none;
+}
+
+button:focus {
   outline: none;
+}
+
+.btn-primary:focus:active {
+  box-shadow: none;
 }
 
 a {

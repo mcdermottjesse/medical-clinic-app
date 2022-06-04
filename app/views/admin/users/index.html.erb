@@ -35,12 +35,10 @@
             </div>
           </div>
         <% end %>
-        <div class="space-between">
-          <div class="pagination">
-            <%= will_paginate @users, previous_label: "Prev", next_label: "Next" %>
-          </div>
-        </div>
       </div>
+    </div>
+    <div class="pagination">
+      <%= will_paginate @users, previous_label: "Prev", next_label: "Next" %>
     </div>
   </div>
 </div>
