@@ -21,7 +21,7 @@ gem "importmap-rails"
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails"
 
-gem 'sass-rails'
+gem "sass-rails"
 
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
@@ -38,8 +38,8 @@ gem "redis", "~> 4.0"
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
 
-gem 'devise'
-gem 'devise_invitable', '~> 2.0.0'
+gem "devise"
+gem "devise_invitable", "~> 2.0.0"
 
 gem "pundit"
 
@@ -49,7 +49,7 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
-gem 'will_paginate', '~> 3.3.0'
+gem "will_paginate", "~> 3.3.0"
 # Use Sass to process CSS
 # gem "sassc-rails"
 
@@ -59,14 +59,15 @@ gem 'will_paginate', '~> 3.3.0'
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
-  gem 'dotenv-rails'
-  gem 'rspec-rails', '~> 6.0.0.rc1'
+  gem "dotenv-rails"
+  gem "rspec-rails", "~> 6.0.0.rc1"
+  gem "byebug"
 end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
-  gem 'letter_opener'
+  gem "letter_opener"
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
@@ -74,4 +75,3 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 end
-
