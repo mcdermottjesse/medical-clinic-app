@@ -70,4 +70,51 @@ RSpec.describe User, type: :model do
     subject.password = "TestPassword1234!"
     expect(subject).to_not be_valid
   end
+
+  context "User methods" do
+    it "joins first and last name to create full name" do
+      user = User.new(first_name: "John", last_name: "Doe")
+      expect(user.full_name).to eq("John Doe")
+    end
+    it "identifies admin?" do
+      user = User.new(account_type: "Admin")
+      expect(user.admin?).to be_truthy
+      expect(user.manager?).to be_falsey
+      expect(user.doctor?).to be_falsey
+      expect(user.nurse?).to be_falsey
+      expect(user.care_worker?).to be_falsey
+    end
+    it "identifies manager?" do
+      user = User.new(account_type: "Manager")
+      expect(user.manager?).to be_truthy
+      expect(user.admin?).to be_falsey
+      expect(user.doctor?).to be_falsey
+      expect(user.nurse?).to be_falsey
+      expect(user.care_worker?).to be_falsey
+    end
+    it "identifies doctor?" do
+      user = User.new(account_type: "Doctor")
+      expect(user.doctor?).to be_truthy
+      expect(user.admin?).to be_falsey
+      expect(user.manager?).to be_falsey
+      expect(user.nurse?).to be_falsey
+      expect(user.care_worker?).to be_falsey
+    end
+    it "identifies nurse?" do
+      user = User.new(account_type: "Nurse")
+      expect(user.nurse?).to be_truthy
+      expect(user.admin?).to be_falsey
+      expect(user.manager?).to be_falsey
+      expect(user.doctor?).to be_falsey
+      expect(user.care_worker?).to be_falsey
+    end
+    it "identifies care_worker?" do
+      user = User.new(account_type: "Care Worker")
+      expect(user.care_worker?).to be_truthy
+      expect(user.admin?).to be_falsey
+      expect(user.manager?).to be_falsey
+      expect(user.doctor?).to be_falsey
+      expect(user.nurse?).to be_falsey
+    end
+  end
 end

@@ -2,10 +2,18 @@ require "rails_helper"
 
 RSpec.describe "admin/users", type: :request do
   include Devise::Test::IntegrationHelpers
-  let(:valid_attributes) { { first_name: "Valid", last_name: "Test", account_type: "Admin", location: "Victoria General", email: "valid.testt@email.com", password: "Test1234!" } }
-  let(:invite_user_attributes) { { first_name: "Invite", last_name: "User", account_type: "Admin", location: "Victoria General", email: "new.user@email.com" } }
-  let(:new_user_attributes) { { first_name: "Testtwo", last_name: "Usertwo", account_type: "Care Worker", location: "Victoria General", email: "test2.user2@email.com", password: "Test1234!" } }
-  let(:invalid_attributes) { { first_name: "", last_name: "", account_type: "Nurse", location: "Royal Jubilee", email: "", password: "InvalidPassword" } }
+  let(:valid_attributes) { 
+    { first_name: "Valid", last_name: "Test", account_type: "Admin", location: "Victoria General", email: "valid.testt@email.com", password: "Test1234!" } 
+  }
+  let(:invite_user_attributes) { 
+    { first_name: "Invite", last_name: "User", account_type: "Admin", location: "Victoria General", email: "new.user@email.com" } 
+  }
+  let(:new_user_attributes) { 
+    { first_name: "Testtwo", last_name: "Usertwo", account_type: "Care Worker", location: "Victoria General", email: "test2.user2@email.com", password: "Test1234!" } 
+  }
+  let(:invalid_attributes) { 
+    { first_name: "", last_name: "", account_type: "Nurse", location: "Royal Jubilee", email: "", password: "InvalidPassword" } 
+  }
 
   before do
     @user = User.create! valid_attributes
