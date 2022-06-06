@@ -62,6 +62,7 @@ group :development, :test do
   gem "dotenv-rails"
   gem "rspec-rails", "~> 6.0.0.rc1"
   gem "byebug"
+  gem 'cypress-on-rails', '~> 1.0'
 end
 
 group :development do
