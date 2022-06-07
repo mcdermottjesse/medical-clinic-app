@@ -16,6 +16,8 @@ RSpec.describe "admin/users", type: :request do
   }
 
   before do
+    DatabaseCleaner.strategy = :truncation
+    DatabaseCleaner.clean
     @user = User.create! valid_attributes
     sign_in @user
   end

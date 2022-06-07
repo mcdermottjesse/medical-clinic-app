@@ -3,7 +3,7 @@ User.create!(
   first_name: "Cypress",
   last_name: "Test",
   location: "Victoria General",
-  email: "test@exploratorlabs.com",
+  email: "test@cypress.com",
   password: "Testonly1!",
   account_type: "Admin",
 )
