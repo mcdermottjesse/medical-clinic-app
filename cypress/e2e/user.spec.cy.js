@@ -1,9 +1,9 @@
-describe('Test User Feature', function() {
+describe('Test User feature', function() {
 	beforeEach('logs-in to home page', function() {
 		cy.visit('http://localhost:5017/users/sign_in');
 		cy.app('clean');
 		cy.appScenario('basic');
-		cy.get('#user_email').type('test@exploratorlabs.com');
+		cy.get('#user_email').type('test@cypress.com');
 		cy.get('#user_password').type('Testonly1!');
 		cy.contains('Log in').click();
 		cy.contains('Signed in successfully.');
