@@ -26,5 +26,21 @@ describe('Test User feature', function() {
 	it('accesses User edit', function() {
 		cy.get('.user-name > a').click();
 		cy.location('href').should('eq', 'http://localhost:5017/admin/users/1/edit?location=Victoria+General');
+    cy.contains('Edit User')
 	});
+
+  it('accessed User new', function() {
+    cy.get('.space-between > :nth-child(1) > .btn-primary').click();
+    cy.contains('New User');
+    cy.contains('Send invitation');
+  });
+
+  it.only('edits a User', function() {
+    cy.get('.user-name > a').click();
+    cy.get('#user_first_name').type("Edit");
+    cy.get('#user_last_name').type("Edit");
+
+  })
+
+
 });
