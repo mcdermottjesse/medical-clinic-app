@@ -11,7 +11,6 @@ describe('Test User feature', function() {
 		cy.get('.bi').click();
 		cy.get('.dropdown-menu > [href="/admin/users?location=Victoria+General"]').click();
 	});
-
 	afterEach('logout', function() {
 		cy.get('.bi').click();
 		cy.get('.button_to > .nav-link').click();
@@ -22,25 +21,42 @@ describe('Test User feature', function() {
 	it('accesses User index', function() {
 		cy.contains('Users');
 	});
-
 	it('accesses User edit', function() {
 		cy.get('.user-name > a').click();
 		cy.location('href').should('eq', 'http://localhost:5017/admin/users/1/edit?location=Victoria+General');
     cy.contains('Edit User')
 	});
-
   it('accessed User new', function() {
     cy.get('.space-between > :nth-child(1) > .btn-primary').click();
     cy.contains('New User');
     cy.contains('Send invitation');
   });
-
-  it.only('edits a User', function() {
+  it('filters User by location', function() {
+    cy.get('#location').select('Nanaimo Regional');
+    cy.contains('Second Test');
+    cy.contains('Nanaimo Regional');
+    cy.contains('Cypress Test').should('not.exist');
+  })
+  it('edits a User', function() {
     cy.get('.user-name > a').click();
     cy.get('#user_first_name').type("Edit");
     cy.get('#user_last_name').type("Edit");
-
-  })
-
-
+    cy.get('#user_email').clear().type('edited@cypress.com');
+    cy.get('#user_account_type').select('Manager');
+    cy.get('#user_location').select('Sanich Penisula');
+    cy.get('.btn-primary').click();
+    cy.contains('User succesfully updated');
+    cy.contains('Users');
+    cy.contains('New User');
+  });
+  it('creates a new User', function() {
+    cy.get('.space-between > :nth-child(1) > .btn-primary').click();
+    cy.get('#user_first_name').type('New');
+    cy.get('#user_last_name').type('User');
+    cy.get('#user_email').type('new@email.com');
+    cy.get('#user_account_type').select('Nurse');
+    cy.get('#user_location').select('Royal Jubilee');
+    cy.get('.btn-primary').click();
+    cy.contains('User was successfully invited');
+  });
 });
