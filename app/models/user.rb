@@ -1,4 +1,10 @@
 class User < ApplicationRecord
+  class << self
+    include Search
+  end
+
+  include Name
+
   attr_accessor :skip_password_validation
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -10,10 +16,6 @@ class User < ApplicationRecord
 
   ACCOUNTS = ["Admin", "Manager", "Nurse", "Doctor", "Care Worker"]
   LOCATIONS = ["All Locations", "Victoria General", "Royal Jubilee", "Sanich Penisula", "Nanaimo Regional"]
-
-  def full_name
-    [first_name, last_name].join(" ")
-  end
 
   def admin?
     account_type == "Admin"

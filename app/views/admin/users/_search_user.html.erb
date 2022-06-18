@@ -1,0 +1,5 @@
+<%= form_tag(admin_users_path, method: :get) do %>
+  <%= hidden_field_tag(:location, @location_param) %>
+  <%= text_field_tag :search %>
+  <%= submit_tag "Search" %>
+<% end %>
