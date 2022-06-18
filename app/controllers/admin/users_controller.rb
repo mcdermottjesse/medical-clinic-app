@@ -4,7 +4,11 @@ class Admin::UsersController < ApplicationController
 
   def index
     @location_param == "All Locations" ? users = User.all : users = User.where(location: @location_param)
-    @users = users.paginate(page: params[:page], per_page: 6)
+    if search_params
+      @users = users.search_record(search_params).paginate(page: params[:page], per_page: 6)
+    else
+      @users = users.paginate(page: params[:page], per_page: 6)
+    end
   end
 
   def update
@@ -33,6 +37,10 @@ class Admin::UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :account_type, :location)
+  end
+
+  def search_params
+    params.require(:search) if params[:search].present?
   end
 
   def set_user
