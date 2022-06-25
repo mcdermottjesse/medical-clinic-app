@@ -46,6 +46,35 @@
   background-color: transparent;
 }
 
+.search-bar {
+  display: flex;
+}
+
+.drop-down-list {
+  position: absolute;
+  background-color: $white;
+  max-height: 7em;
+  width: 12em;
+  overflow-y: auto;
+  border: 1px solid;
+  border-color: $black;
+  border-radius: 10px;
+  padding: 0.75em;
+  z-index: 1;
+  &.hidden {
+    display: none;
+  }
+  .drop-down-element {
+    text-align: center;
+    padding: 0.25em;
+    cursor: pointer;
+    &:hover {
+      border-radius: 10px;
+      background-color: $purple;
+    }
+  }
+}
+
 .pagination {
   cursor: default;
   a,

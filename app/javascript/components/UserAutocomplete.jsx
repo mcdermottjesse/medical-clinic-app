@@ -47,7 +47,7 @@ const UserAutocomplete = () => {
 	};
 
 	return (
-		<div className="autocomplete-component">
+		<div>
 			<input
 				className="input"
 				type="text"
