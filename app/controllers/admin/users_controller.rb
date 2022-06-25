@@ -4,6 +4,12 @@ class Admin::UsersController < ApplicationController
 
   def index
     @location_param == "All Locations" ? users = User.all : users = User.where(location: @location_param)
+
+    if all_users_params
+      @users = User.select(:first_name, :last_name).distinct.order("last_name ASC")
+      render :json => @users
+    end
+
     if search_params
       @users = users.search_record(search_params).paginate(page: params[:page], per_page: 6)
     else
@@ -41,6 +47,10 @@ class Admin::UsersController < ApplicationController
 
   def search_params
     params.require(:search) if params[:search].present?
+  end
+
+  def all_users_params
+    params.require(:all_users) if params[:all_users] == "true"
   end
 
   def set_user
