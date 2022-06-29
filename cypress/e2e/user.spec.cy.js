@@ -32,7 +32,7 @@ describe('Test User feature', function() {
     cy.contains('Send invitation');
   });
   it('filters User by location', function() {
-    cy.get('#location').select('Nanaimo Regional');
+    cy.get(':nth-child(2) > form > #location').select('Nanaimo Regional');
     cy.contains('Second Test');
     cy.contains('Nanaimo Regional');
     cy.contains('Cypress Test').should('not.exist');
