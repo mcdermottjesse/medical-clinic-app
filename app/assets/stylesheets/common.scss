@@ -49,17 +49,17 @@
 .search-bar {
   margin-top: 0.25em;
   display: flex;
+  font-size: 16px;
 }
 
 .drop-down-list {
   position: absolute;
   background-color: $white;
-  max-height: 10em;
-  width: 11.75em;
+  max-height: 12em;
+  width: 11em;
   overflow-y: auto;
-  border: 1px solid;
-  border-color: $black;
-  border-radius: 10px;
+  border: 1px solid $purple;
+  border-radius: 5px;
   padding: 0.75em;
   z-index: 1;
   &.hidden {
@@ -70,8 +70,8 @@
     padding: 0.25em;
     cursor: pointer;
     &:hover {
-      border-radius: 10px;
-      background-color: $purple;
+      border-radius: 8px;
+      background-color: $lavender;
     }
   }
 }
