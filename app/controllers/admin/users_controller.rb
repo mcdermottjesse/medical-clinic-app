@@ -5,8 +5,8 @@ class Admin::UsersController < ApplicationController
   def index
     @location_param == "All Locations" ? users = User.all : users = User.where(location: @location_param)
 
-    if all_users_params
-      @users = User.select(:first_name, :last_name).distinct.order("last_name ASC")
+    if user_autocomplete_params
+      @users = User.select(:first_name, :last_name).distinct.where(location: user_autocomplete_params).order("last_name ASC")
       render :json => @users
     end
 
@@ -49,8 +49,11 @@ class Admin::UsersController < ApplicationController
     params.require(:search) if params[:search].present?
   end
 
-  def all_users_params
-    params.require(:all_users) if params[:all_users] == "true"
+  def user_autocomplete_params
+    if params[:user_search] == "true"
+      params.require(:user_search)
+      params.require(:user_location)
+    end
   end
 
   def set_user

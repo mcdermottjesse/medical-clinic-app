@@ -17,7 +17,16 @@ const UserAutocomplete = () => {
 
 	useEffect(() => {
 		const loadUsers = async () => {
-			const response = await axios.get('/admin/users.json?all_users=true');
+      const queryString = window.location.search;
+      const urlParams = new URLSearchParams(queryString);
+      const findLocation = urlParams.get("location");
+      const request = {
+        params: {
+          user_search: "true",
+          user_location: findLocation,
+        },
+      };
+			const response = await axios.get('/admin/users.json', request);
 			setUsers(response.data);
 		};
 		loadUsers();
