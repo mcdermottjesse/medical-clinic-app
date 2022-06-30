@@ -1,10 +1,8 @@
-<div class="center-div">
-  <img class="logo">
-</div>
 <div class="login-page center"> 
   <div class="login-container">
     <%= form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: false }) do |f| %> 
       <%# set turbo false to display login error messages %>
+      <div class="logo"></div>
       <div>
         <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", class: "form-control" %>
       </div>

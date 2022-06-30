@@ -18,17 +18,10 @@
   background-image: url("home-logo.png");
   background-size: 100% 100%;
   caret-color: $purple;
-  width: 20em;
-  height: 7.5em;
+  width: 18.25em;
+  height: 7em;
   background-repeat: no-repeat;
-  border: $white solid 0px;
-  border-radius: 10px;
-}
-
-.center-div {
-  padding-top: 7em;
-  display: flex;
-  justify-content: center;
+  margin-bottom: 2em;
 }
 
 .filter {
@@ -37,7 +30,7 @@
 }
 
 .center {
-  height: 55%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
