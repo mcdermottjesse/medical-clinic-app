@@ -45,7 +45,7 @@ describe('Test User feature', function() {
     cy.get('#user_account_type').select('Manager');
     cy.get('#user_location').select('Sanich Penisula');
     cy.get('.btn-primary').click();
-    cy.contains('User succesfully updated');
+    cy.contains('Succesfully updated');
     cy.contains('Users');
     cy.contains('New User');
   });
