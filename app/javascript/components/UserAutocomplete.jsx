@@ -17,8 +17,7 @@ const UserAutocomplete = () => {
 
 	useEffect(() => {
 		const loadUsers = async () => {
-      const queryString = window.location.search;
-      const urlParams = new URLSearchParams(queryString);
+      const urlParams = new URLSearchParams(location.search);
       const findLocation = urlParams.get("location");
       const request = {
         params: {
@@ -37,9 +36,12 @@ const UserAutocomplete = () => {
 		};
 	}, []);
 
-	const onSuggestHandler = (text) => {
-		setText(text);
+	const onClickHandler = (text) => {
 		setSuggestions([]);
+      
+    const urlParams = new URLSearchParams(location.search);
+    const findLocation = urlParams.get("location");
+    location =`?search=${text}&location=${findLocation}`;
 	};
 
 	const onChangeHandler = (text) => {
@@ -79,7 +81,7 @@ const UserAutocomplete = () => {
 						<div
 							className="drop-down-element"
 							key={i}
-							onClick={() => onSuggestHandler(`${suggestion.first_name} ${suggestion.last_name}`)}
+							onClick={() => onClickHandler(`${suggestion.first_name} ${suggestion.last_name}`)}
 						>
 							{`${suggestion.first_name} ${suggestion.last_name}`}
 						</div>
