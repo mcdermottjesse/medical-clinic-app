@@ -38,9 +38,11 @@ const UserAutocomplete = () => {
 
 	const onClickHandler = (text) => {
 		setSuggestions([]);
-      
+    // access search params when user name suggestion clicked from autocomplete dropdown
+    // location.search = window.location.search
     const urlParams = new URLSearchParams(location.search);
     const findLocation = urlParams.get("location");
+    // location = window.location.href 
     location =`?search=${text}&location=${findLocation}`;
 	};
 
