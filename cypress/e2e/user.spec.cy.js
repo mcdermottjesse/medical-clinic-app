@@ -22,7 +22,7 @@ describe('Test User feature', function() {
 		cy.contains('Users');
 	});
 	it('accesses User edit', function() {
-		cy.get('.user-name > a').click();
+		cy.get(':nth-child(1) > .user-name > a').click();
 		cy.location('href').should('eq', 'http://localhost:5017/admin/users/1/edit?location=Victoria+General');
     cy.contains('Edit User')
 	});
@@ -31,6 +31,12 @@ describe('Test User feature', function() {
     cy.contains('New User');
     cy.contains('Send invitation');
   });
+  it('searches a User', function() {
+    cy.get('.input').type('Third')
+    cy.get(".drop-down-element").click();
+    cy.contains('Third Test');
+    cy.contains('Cypress Test').should('not.exist');
+  })
   it('filters User by location', function() {
     cy.get(':nth-child(2) > form > #location').select('Nanaimo Regional');
     cy.contains('Second Test');
@@ -38,7 +44,7 @@ describe('Test User feature', function() {
     cy.contains('Cypress Test').should('not.exist');
   })
   it('edits a User', function() {
-    cy.get('.user-name > a').click();
+    cy.get(':nth-child(1) > .user-name > a').click();
     cy.get('#user_first_name').type("Edit");
     cy.get('#user_last_name').type("Edit");
     cy.get('#user_email').clear().type('edited@cypress.com');
@@ -59,4 +65,13 @@ describe('Test User feature', function() {
     cy.get('.btn-primary').click();
     cy.contains('User was successfully invited');
   });
+  it('destroys a User', function() {
+    cy.get('#location').select('Nanaimo Regional');
+    cy.contains('Second Test').click();
+    cy.contains("Edit User");
+    cy.contains("Delete User");
+    cy.get('.delete-btn').click();
+    cy.contains("Successfully destroyed");
+    cy.contains('Second Test').should('not.exist');
+  })
 });

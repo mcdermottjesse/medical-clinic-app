@@ -15,3 +15,12 @@ User.create!(
   password: "Testonly1!",
   account_type: "Admin",
 )
+
+User.create!(
+  first_name: "Third",
+  last_name: "Test",
+  location: "Victoria General",
+  email: "third@cypress.com",
+  password: "Testonly1!",
+  account_type: "Admin",
+)
