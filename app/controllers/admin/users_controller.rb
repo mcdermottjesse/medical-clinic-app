@@ -6,7 +6,12 @@ class Admin::UsersController < ApplicationController
     @location_param == "All Locations" ? users = User.all : users = User.where(location: @location_param)
 
     if user_autocomplete_params
-      @users = User.select(:first_name, :last_name).distinct.where(location: user_autocomplete_params).order("last_name ASC")
+      user_suggestions = User.select(:first_name, :last_name).distinct
+      if user_autocomplete_params == "All Locations"
+        @users = user_suggestions.order("last_name ASC")
+      else
+        @users = user_suggestions.where(location: user_autocomplete_params).order("last_name ASC")
+      end
       render :json => @users
     end
 
