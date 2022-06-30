@@ -14,13 +14,30 @@
   width: 100%;
 }
 
+.logo {
+  background-image: url("home-logo.png");
+  background-size: 100% 100%;
+  caret-color: $purple;
+  width: 20em;
+  height: 7.5em;
+  background-repeat: no-repeat;
+  border: $white solid 0px;
+  border-radius: 10px;
+}
+
+.center-div {
+  padding-top: 7em;
+  display: flex;
+  justify-content: center;
+}
+
 .filter {
   cursor: pointer;
   height: 2.75em;
 }
 
 .center {
-  height: 100%;
+  height: 55%;
   display: flex;
   justify-content: center;
   align-items: center;
