@@ -30,7 +30,9 @@ body {
 }
 
 .input {
+  padding: 2.5px;
   width: 11em;
+  border-radius: 8px;
   font-size: 16px;
   border-width: 3px;
   border-color: $black;
