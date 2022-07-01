@@ -51,7 +51,6 @@ class Admin::UsersController < ApplicationController
     params.require(:user).permit(:first_name, :last_name, :email, :account_type, :location)
   end
 
-<<<<<<< HEAD
   def search_params
     params.require(:search) if params[:search].present?
   end
@@ -63,8 +62,6 @@ class Admin::UsersController < ApplicationController
     end
   end
 
-=======
->>>>>>> 86f4f1fab8cf267e7b0abc25c5884dc36e1ecded
   def set_user
     @user = User.find(params[:id])
   end
