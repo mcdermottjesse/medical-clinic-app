@@ -31,6 +31,9 @@
         <%= f.submit t("devise.invitations.new.submit_button"), class: "btn-primary" %>
       </div>
     <% end %>
+    <div class="mt-4">
+      <%= link_to "Back", admin_users_path(location: @location_param) %>
+    </div>
   </div>
 </div>
 
