@@ -14,6 +14,16 @@
   width: 100%;
 }
 
+.logo {
+  background-image: url("home-logo.png");
+  background-size: 100% 100%;
+  caret-color: $purple;
+  width: 18.25em;
+  height: 7em;
+  background-repeat: no-repeat;
+  margin-bottom: 2em;
+}
+
 .filter {
   cursor: pointer;
   height: 2.75em;
@@ -30,7 +40,7 @@
 .space-between {
   display: flex;
   justify-content: space-between;
-  padding: 1em;
+  padding: 0.25em;
 }
 
 .card {
@@ -44,6 +54,37 @@
 }
 .card:nth-of-type(odd) {
   background-color: transparent;
+}
+
+.search-bar {
+  margin-top: 0.25em;
+  display: flex;
+  font-size: 16px;
+}
+
+.drop-down-list {
+  position: absolute;
+  background-color: $teal;
+  font-size: small;
+  max-height: 12em;
+  width: 13.5em;
+  overflow-y: auto;
+  border: 1px solid $purple;
+  border-radius: 5px;
+  padding: 0.75em;
+  z-index: 1;
+  &.hidden {
+    display: none;
+  }
+  .drop-down-element {
+    text-align: center;
+    padding: 0.5em;
+    cursor: pointer;
+    &:hover {
+      border-radius: 8px;
+      color: $purple;
+    }
+  }
 }
 
 .pagination {
@@ -78,6 +119,13 @@
 }
 .next_page {
   margin-left: 1em;
+}
+
+@include md-up {
+  .drop-down-list {
+    font-size: medium;
+    width: 11em;
+  }
 }
 
 @include lg-up {

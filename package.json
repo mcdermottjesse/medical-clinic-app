@@ -1,5 +1,16 @@
 {
   "devDependencies": {
     "cypress": "^10.0.2"
+  },
+  "dependencies": {
+    "@hotwired/turbo-rails": "^7.1.3",
+    "axios": "^0.27.2",
+    "esbuild": "^0.14.47",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "scripts": {
+    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outfile=app/assets/builds/application.js --public-path=assets --loader:.js=jsx",
+    "watch": "esbuild app/javascript/*.* --watch --bundle --outfile=app/assets/builds/application.js --loader:.js=jsx"
   }
 }
