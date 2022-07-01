@@ -73,8 +73,7 @@ RSpec.describe User, type: :model do
 
   context "User methods" do
     it "joins first and last name to create full name" do
-      user = User.new(first_name: "John", last_name: "Doe")
-      expect(user.full_name).to eq("John Doe")
+      expect(subject.full_name).to eq("Unit Test")
     end
     it "identifies admin?" do
       user = User.new(account_type: "Admin")
@@ -115,6 +114,11 @@ RSpec.describe User, type: :model do
       expect(user.manager?).to be_falsey
       expect(user.doctor?).to be_falsey
       expect(user.nurse?).to be_falsey
+    end
+    it "searches a User by name" do
+      # searching from test db
+      result = User.search_record("Cyp")
+      expect(result[0].first_name).to eq("Cypress")
     end
   end
 end
