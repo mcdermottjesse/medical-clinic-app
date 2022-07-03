@@ -7,7 +7,7 @@
       </div>
       <div class="space-between">
         <div>
-          <%= link_to "New User", new_user_invitation_path, class: "btn-primary" %>
+          <%= link_to "New User", new_user_invitation_path(location: @location_param), class: "btn-primary" %>
         </div>
         <div>
           <%= form_tag(admin_users_path, method: :get) do %>
