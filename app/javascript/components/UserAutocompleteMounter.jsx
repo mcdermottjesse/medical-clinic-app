@@ -5,5 +5,7 @@ import UserAutocomplete from './UserAutocomplete';
 const userAutocomplete = document.getElementById('auto-complete-user');
 
 document.addEventListener('DOMContentLoaded', () => {
-	createRoot(userAutocomplete).render(<UserAutocomplete />);
+	if (userAutocomplete) {
+		createRoot(userAutocomplete).render(<UserAutocomplete />);
+	}
 });

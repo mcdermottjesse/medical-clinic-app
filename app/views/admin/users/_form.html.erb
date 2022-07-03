@@ -1,5 +1,5 @@
 <div class="users-page">
-  <div class="user-form mt-3">
+  <div class="user-form">
     <%= form_with model: [:admin, @user], url: { action: :update, location: @location_param }, data: { turbo: false } do |f| %>
       <div>
         First Name

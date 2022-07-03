@@ -21,8 +21,6 @@ body {
   font-size: small;
   color: $black;
   background-color: $teal;
-  // background: url("medical-image.png");
-  // background-size: 135% 100%;
   caret-color: $purple;
 }
 .form-select,
@@ -113,41 +111,5 @@ ul li {
   }
   .alert {
     font-size: small;
-  }
-}
-
-@include lg-up {
-  html,
-  body {
-    // background: url("medical-image-xl.png");
-  }
-}
-
-@include md {
-  html,
-  body {
-    // background-size: 100% 100%;
-  }
-}
-
-@include lg {
-  html,
-  body {
-    // background-size: 107% 100%;
-  }
-}
-
-@include xl {
-  html,
-  body {
-    // background-size: 105% 100%;
-  }
-}
-
-@include xxl-up {
-  html,
-  body {
-    font-size: medium;
-    // background-size: 100% 100%;
   }
 }
