@@ -1,5 +1,7 @@
 <% if @user.errors.any? %>
-  <div class="alert alert-danger"><%= @user.errors.full_messages.join(", ") %></div>
+  <div class="center_item">
+    <div class="alert alert-danger"><%= @user.errors.full_messages.join(", ") %></div>
+  </div>
 <% end %>
 
 <div class="login-page center"> 

@@ -30,6 +30,7 @@
       <div class="actions">
         <%= f.submit t("devise.invitations.new.submit_button"), class: "btn-primary" %>
       </div>
+      <%= hidden_field_tag(:location, @location_param) %>
     <% end %>
     <div class="mt-4">
       <%= link_to "Back", admin_users_path(location: @location_param) %>
