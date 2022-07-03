@@ -15,4 +15,6 @@ end
     resources :users
   end
 
+  resources :clients
+
 end
