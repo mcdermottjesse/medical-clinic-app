@@ -1,0 +1,42 @@
+<div class="clients-page">
+  <div class="center">
+    <div class="container">
+      <div class="space-between">
+        <h1>Clients</h1>
+        
+      </div>
+      <div class="space-between">
+        <div>
+          <%= link_to "New Client", new_client_path(location: @location_param), class: "btn-primary" %>
+        </div>
+        <div>
+          <%= form_tag(clients_path, method: :get) do %>
+            <%= select_tag :location, options_for_select(Client::LOCATIONS, @location_param), onchange: 'this.form.submit();', class: "filter btn-primary" %>
+          <% end %>
+        </div>
+      </div>
+      <div class="client-details">
+        <% @clients.each do |client| %>
+          <div class="card card-body mb-3">
+            <div class="client-code">
+              <%= user.client_code %>
+              <div class="client-text">email</div>
+            </div>
+            <div class="client-name">
+              <%= link_to user.full_name, edit_client_path(client, location: @location_param) %>
+              <div class="client-text">edit user</div>
+            </div>
+            <
+            <div class="client-location">
+              <%= client.location %>
+              <div class="client-text">location</div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="pagination">
+      <%= will_paginate @clients, previous_label: "Prev", next_label: "Next" %>
+    </div>
+  </div>
+</div>
