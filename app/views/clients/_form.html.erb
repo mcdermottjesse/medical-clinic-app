@@ -1,4 +1,4 @@
-<%= form_with model: @client, url: { location: @location_param }, data: { turbo: false } do |f| %>
+<%= form_with model: @client do |f| %>
   <div>
     First Name
     <%= f.text_field :first_name, class: "form-control" %>

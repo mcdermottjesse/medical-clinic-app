@@ -9,9 +9,21 @@ class ClientsController < ApplicationController
   end
 
   def new
+    @client = Client.new
   end
 
   def create
+    @client = Client.new(client_params)
+    respond_to do |format|
+      if @client.save
+        format.html { redirect_to clients_path(@client, location: @location_param), notice: "Save successfully" }
+        format.json { render :index, status: :created, location: @client }
+      else
+        flash[:alert] = "Unable to save the Client: #{@client.errors.full_messages.join(", ")}."
+        format.html { render :new }
+        format.json { render json: @client.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def edit
@@ -29,6 +41,15 @@ class ClientsController < ApplicationController
   end
 
   private
+
+  def client_params
+    params.require(:client).permit(
+      :first_name,
+      :last_name,
+      :email,
+      :location,
+    )
+  end
 
   def set_client
     Client.find(params[:id])
