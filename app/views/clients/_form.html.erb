@@ -9,11 +9,12 @@
   </div>
   <div>
     DOB
-    <%= f.text_field :dob, class: "form-control" %>
+    <%= f.date_field :dob, class: "form-control" %>
+    <%#= make clickable area larger %>
   </div>
   <div>
     Pronoun
-    <%= f.text_field :pronoun, class: "form-control" %>
+    <%= f.select :pronoun, options_for_select(Client::PRONOUNS, @client), {}, { class: "form-select" } %>
   </div>
   <div>
     Healthcard Number
@@ -38,10 +39,6 @@
   <div>
     Emergency Contact Info
     <%= f.text_field :emergency_contact_info, class: "form-control" %>
-  </div>
-  <div>
-    Location
-    <%= f.text_field :location, class: "form-control" %>
   </div>
   <div>
     Location

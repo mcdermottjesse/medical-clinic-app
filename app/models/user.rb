@@ -14,7 +14,7 @@ class User < ApplicationRecord
 
   validates :password, format: { with: /\A(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}\z/, message: :validation_message }, unless: :skip_password_validation
 
-  ACCOUNTS = ["Admin", "Manager", "Nurse", "Doctor", "Care Worker"]
+  ACCOUNT_TYPES = ["Admin", "Manager", "Nurse", "Doctor", "Care Worker"]
 
   def admin?
     account_type == "Admin"

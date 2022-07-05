@@ -13,7 +13,7 @@
   </div>
   <div>
     Account Type
-    <%= f.select :account_type, options_for_select(User::ACCOUNTS, @user.account_type), {}, { class: "form-select" } %>
+    <%= f.select :account_type, options_for_select(User::ACCOUNT_TYPES, @user.account_type), {}, { class: "form-select" } %>
   </div>
   <div>
     Location
