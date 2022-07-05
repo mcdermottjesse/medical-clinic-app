@@ -44,10 +44,21 @@ class ClientsController < ApplicationController
 
   def client_params
     params.require(:client).permit(
+      # client_code to be auto generated
       :first_name,
       :last_name,
+      :dob,
+      :pronoun,
+      :healthcard_number,
+      :health_card_expiry,
       :email,
+      :phone_number,
+      :emergency_contact_name,
+      :emergency_contact_info,
       :location,
+      :bed_number,
+      :general_info,
+      :consent
     )
   end
 

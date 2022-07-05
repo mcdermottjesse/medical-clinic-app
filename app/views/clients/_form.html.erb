@@ -8,12 +8,56 @@
     <%= f.text_field :last_name, class: "form-control" %>
   </div>
   <div>
+    DOB
+    <%= f.text_field :dob, class: "form-control" %>
+  </div>
+  <div>
+    Pronoun
+    <%= f.text_field :pronoun, class: "form-control" %>
+  </div>
+  <div>
+    Healthcard Number
+    <%= f.text_field :health_card_number, class: "form-control" %>
+  </div>
+  <div>
+    Healthcard Expiry
+    <%= f.text_field :health_card_expiry, class: "form-control" %>
+  </div>
+  <div>
     Email
     <%= f.text_field :email, class: "form-control" %>
   </div>
   <div>
+    Phone Number
+    <%= f.text_field :phone_number, class: "form-control" %>
+  </div>
+  <div>
+    Emergency Contact Name
+    <%= f.text_field :emergency_contact_name, class: "form-control" %>
+  </div>
+  <div>
+    Emergency Contact Info
+    <%= f.text_field :emergency_contact_info, class: "form-control" %>
+  </div>
+  <div>
+    Location
+    <%= f.text_field :location, class: "form-control" %>
+  </div>
+  <div>
     Location
     <%= f.select :location, options_for_select(Client::LOCATIONS.drop(1), @client), {}, { class: "form-select" } %>
+  </div>
+  <div>
+    Bed Number
+    <%= f.text_field :bed_number, class: "form-control" %>
+  </div>
+  <div>
+    General Info
+    <%= f.text_field :general_info, class: "form-control" %>
+  </div>
+  <div>
+    Do you give consent?
+    <%= f.check_box :consent %>
   </div>
   <div class="actions">
     <%= f.submit "Save", class: "btn-primary" %>
