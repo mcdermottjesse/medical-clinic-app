@@ -14,7 +14,11 @@
   </div>
   <div>
     Pronoun
-    <%= f.select :pronoun, options_for_select(Client::PRONOUNS, @client), {}, { class: "form-select" } %>
+    <%= f.select :pronoun, options_for_select(Client::PRONOUNS, @client), {}, { class: "form-select", id: "pronoun-select" } %>
+  </div>
+  <div>
+    Other Pronoun
+    <%= f.text_field :health_card_number, class: "form-control", id: "hide-pronoun" %>
   </div>
   <div>
     Healthcard Number

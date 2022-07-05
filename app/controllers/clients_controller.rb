@@ -49,6 +49,7 @@ class ClientsController < ApplicationController
       :last_name,
       :dob,
       :pronoun,
+      :other_pronoun,
       :healthcard_number,
       :health_card_expiry,
       :email,
