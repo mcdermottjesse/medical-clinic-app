@@ -16,9 +16,9 @@
     Pronoun
     <%= f.select :pronoun, options_for_select(Client::PRONOUNS, @client), {}, { class: "form-select", id: "pronoun-select" } %>
   </div>
-  <div>
+  <div id="hide-pronoun">
     Other Pronoun
-    <%= f.text_field :health_card_number, class: "form-control", id: "hide-pronoun" %>
+    <%= f.text_field :health_card_number, class: "form-control" %>
   </div>
   <div>
     Healthcard Number
