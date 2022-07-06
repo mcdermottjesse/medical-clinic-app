@@ -4,4 +4,4 @@ import "@hotwired/turbo-rails"
 import './components/UserAutocompleteMounter'
 
 //helpers
-import'./helpers/hide'
+import'./helpers/HidePronoun'
