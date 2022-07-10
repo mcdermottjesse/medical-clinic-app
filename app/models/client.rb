@@ -5,6 +5,8 @@ class Client < ApplicationRecord
 
   include Name, Location
 
+  validates :dob, presence: true
+
   before_create :generate_client_code
 
   PRONOUNS = ["She/Her", "They/Them", "He/Him", "Other"]
