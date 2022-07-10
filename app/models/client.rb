@@ -11,10 +11,9 @@ class Client < ApplicationRecord
 
   PRONOUNS = ["She/Her", "They/Them", "He/Him", "Other"]
 
-  
   def generate_client_code
     loop do
-      self.client_code = first_name[0] + last_name[0] + ([*('A'..'Z'), *('0'..'9')]).sample(4).join + dob.strftime("%y")
+      self.client_code = first_name[0] + last_name[0] + ([*("A".."Z"), *("0".."9")]).sample(4).join + dob.strftime("%y")
       # * = splat operator, it destructures array
       break unless Client.pluck(:client_code).include?(self.client_code)
     end
