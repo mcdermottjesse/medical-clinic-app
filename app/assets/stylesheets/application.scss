@@ -30,7 +30,7 @@ body {
 
 .form-control {
   margin-bottom: 1em;
-  width: 18em;
+  width: 100%;
 }
 
 .form-select {
@@ -120,5 +120,9 @@ ul li {
   }
   .alert {
     font-size: small;
+  }
+  .form-control {
+    margin-bottom: 1em;
+    width: 18em;
   }
 }
