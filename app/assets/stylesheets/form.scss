@@ -1,0 +1,38 @@
+@import "variables";
+
+//Add client form box class
+
+.form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.form-select,
+.form-control {
+  font-size: 16px;
+}
+
+.form-control {
+  margin-bottom: 1em;
+  width: 100%;
+}
+
+.form-select {
+  margin-bottom: 1em;
+}
+
+.form-select:focus,
+.form-control:focus,
+.form-control:visited {
+  border-width: 3px;
+  border-color: $black;
+  box-shadow: none;
+}
+
+@include md-up {
+  .form-control {
+    margin-bottom: 1em;
+    width: 18em;
+  }
+}

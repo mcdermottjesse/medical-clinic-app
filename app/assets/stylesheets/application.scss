@@ -23,19 +23,6 @@ body {
   background-color: $teal;
   caret-color: $purple;
 }
-.form-select,
-.form-control {
-  font-size: 16px;
-}
-
-.form-control {
-  margin-bottom: 1em;
-  width: 100%;
-}
-
-.form-select {
-  margin-bottom: 1em;
-}
 
 .input {
   height: 1.75em;
@@ -51,14 +38,6 @@ body {
 .input:focus {
   outline: none;
   border: 3px solid $purple;
-}
-
-.form-select:focus,
-.form-control:focus,
-.form-control:visited {
-  border-width: 3px;
-  border-color: $black;
-  box-shadow: none;
 }
 
 button {
@@ -120,9 +99,5 @@ ul li {
   }
   .alert {
     font-size: small;
-  }
-  .form-control {
-    margin-bottom: 1em;
-    width: 18em;
   }
 }
