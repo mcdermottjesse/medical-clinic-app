@@ -39,9 +39,8 @@
     align-items: center;
     margin-bottom: 1.5em;
   }
-
   .actions {
-    width: 50%;
+    width: 100%;
   }
 }
 
@@ -49,6 +48,9 @@
   .clients-page {
     .row {
       display: flex;
+    }
+    .actions {
+      width: 75%;
     }
   }
 }
