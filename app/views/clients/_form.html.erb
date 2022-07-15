@@ -72,8 +72,10 @@
     Do you give consent?
     <%= f.check_box :consent, class: "checkbox" %>
   </div>
-  <div class="actions">
-    <%= f.submit "Save", class: "btn-primary" %>
+  <div class="center-item">
+    <div class="actions">
+      <%= f.submit "Save", class: "btn-primary" %>
+    </div>
   </div>
   <%= hidden_field_tag(:location, @location_param) %>
 <% end %>
