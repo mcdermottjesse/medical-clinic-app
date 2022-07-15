@@ -24,4 +24,24 @@
   .client-location:hover .client-text {
     visibility: visible;
   }
+
+  .row {
+    display: block;
+  }
+
+  .other-pronoun {
+    width: 100%;
+  }
+
+  .consent {
+    margin-bottom: 1.5em;
+  }
+}
+
+@include md-up {
+  .clients-page {
+    .row {
+      display: flex;
+    }
+  }
 }
