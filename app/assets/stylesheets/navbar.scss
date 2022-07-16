@@ -4,10 +4,11 @@
   padding: 0.5em;
   justify-content: start;
   .nav-link {
-  text-decoration: underline;
+    text-decoration: underline;
     color: $white;
     transition: 200ms;
   }
+  
   .nav-link:hover {
     color: $purple;
   }
@@ -20,11 +21,13 @@
     padding: 0;
   }
 
-  .dropdown-menu {
-    top: 75%;
+  .nav-dropdown {
+    margin-top: 14em;
+    position: absolute;
     background-color: $black;
-    border: 2px solid $black
+    border: 2px solid $black;
   }
+
   .nav-text {
     padding: 0.75em;
     width: 80%;

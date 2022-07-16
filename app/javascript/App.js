@@ -1,7 +1,8 @@
-import "@hotwired/turbo-rails"
+import '@hotwired/turbo-rails';
 
 //components
-import './components/UserAutocompleteMounter'
+import './components/UserAutocompleteMounter';
 
 //helpers
-import'./helpers/HidePronoun'
+import './helpers/HidePronoun';
+import './helpers/NavbarDropdown';
