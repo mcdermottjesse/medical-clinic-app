@@ -11,9 +11,22 @@ class Client < ApplicationRecord
 
   validates :consent, presence: true, unless: :skip_consent_validation
 
-  before_create :generate_client_code
+  before_validation :format_health_number
+
+  validates_format_of :health_card_number, with:  /\A[0-9]{4}-[0-9]{3}-[0-9]{3}\z/ # format = 1234-567-890
+
+  before_validation :generate_client_code
 
   PRONOUNS = ["She/Her", "They/Them", "He/Him", "Other"]
+
+  def format_health_number
+    #insert hyphens if none are present but 10 numbers are included, else render validation error message
+   regex_no_space   = /\A([0-9]{4})([0-9]{3})([0-9]{3})\z/
+   regex_with_space = /\A([0-9]{4}) ([0-9]{3}) ([0-9]{3})\z/
+    if self.health_card_number.match(regex_no_space) || self.health_card_number.match(regex_with_space)
+      self.health_card_number = [$1, $2, $3].join("-")
+    end
+  end
 
   def generate_client_code
     loop do

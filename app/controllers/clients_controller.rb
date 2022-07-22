@@ -2,7 +2,8 @@ class ClientsController < ApplicationController
   before_action :set_client, only: [:edit, :update, :destroy]
 
   def index
-    @clients = Client.all.paginate(page: params[:page], per_page: 6)
+    @location_param == "All Locations" ? clients = Client.all : clients = Client.where(location: @location_param)
+    @clients = clients.paginate(page: params[:page], per_page: 6)
   end
 
   def show
