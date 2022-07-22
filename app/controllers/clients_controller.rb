@@ -16,7 +16,7 @@ class ClientsController < ApplicationController
     @client = Client.new(client_params)
     respond_to do |format|
       if @client.save
-        format.html { redirect_to clients_path(@client, location: @location_param), notice: "Save successfully" }
+        format.html { redirect_to clients_path(@client, location: @location_param), notice: "Client successfully created" }
         format.json { render :index, status: :created, location: @client }
       else
         flash[:alert] = "Unable to save the Client: #{@client.errors.full_messages.join(", ")}."
@@ -30,12 +30,22 @@ class ClientsController < ApplicationController
   end
 
   def update
+    respond_to do |format|
+      if @client.update(client_params)
+        format.html { redirect_to clients_path(location: @location_param), notice: "Client successfully updated" }
+        format.json { render :index, status: :ok, location: @user }
+      else
+        flash[:alert] = "Unable to update the Client: #{@client.errors.full_messages.join(", ")}."
+        format.html { render :edit }
+        format.json { render json: @client.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def destroy
     @client.destroy
     respond_to do |format|
-      format.html { redirect_to admin_users_path(location: @location_param), notice: "Successfully destroyed." }
+      format.html { redirect_to clients_path(location: @location_param), notice: "Client successfully destroyed" }
       format.json { head :no_content }
     end
   end
@@ -44,13 +54,13 @@ class ClientsController < ApplicationController
 
   def client_params
     params.require(:client).permit(
-      # client_code to be auto generated
+      # client_code is auto generated
       :first_name,
       :last_name,
       :dob,
       :pronoun,
       :other_pronoun,
-      :healthcard_number,
+      :health_card_number,
       :health_card_expiry,
       :email,
       :phone_number,

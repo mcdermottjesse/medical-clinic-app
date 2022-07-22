@@ -9,7 +9,7 @@ class Admin::InvitationsController < Devise::InvitationsController
     respond_to do |format|
       if @user.valid?
         @user = User.invite!(invitation_params.to_h)
-        format.html { redirect_to authenticated_root_path, notice: "User was successfully invited." }
+        format.html { redirect_to authenticated_root_path, notice: "User was successfully invited" }
         format.json { render :index, status: :created, location: @user }
       else
         flash[:alert] = "Unable to save the User: #{@user.errors.full_messages.join(", ")}."
