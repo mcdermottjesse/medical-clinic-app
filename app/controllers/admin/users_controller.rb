@@ -3,7 +3,7 @@ class Admin::UsersController < ApplicationController
   before_action :authorize_resource
 
   def index
-    @location_param == "All Locations" ? users = User.all : users = User.where(location: @location_param)
+    @location_param == "All Locations" ? users = User.all.order("last_name ASC") : users = User.where(location: @location_param).order("last_name ASC")
 
     if user_autocomplete_params
       user_suggestions = User.select(:first_name, :last_name).distinct
