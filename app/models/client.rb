@@ -5,7 +5,11 @@ class Client < ApplicationRecord
 
   include Name, Location
 
-  validates :dob, presence: true
+  attr_accessor :skip_consent_validation
+
+  validates :first_name, :last_name, :dob, :location, :pronoun, :bed_number, presence: true
+
+  validates :consent, presence: true, unless: :skip_consent_validation
 
   before_create :generate_client_code
 

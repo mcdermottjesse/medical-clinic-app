@@ -54,3 +54,15 @@
     }
   }
 }
+
+@include lg-up {
+  .clients-page {
+    .client-code,
+    .client-name,
+    .client-location {
+      width: 25vw;
+      white-space: wrap;
+      overflow: hidden;
+    }
+  }
+}

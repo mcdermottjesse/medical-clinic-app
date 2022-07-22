@@ -30,10 +30,11 @@ class ClientsController < ApplicationController
   end
 
   def update
+    @client.skip_consent_validation = true
     respond_to do |format|
       if @client.update(client_params)
         format.html { redirect_to clients_path(location: @location_param), notice: "Client successfully updated" }
-        format.json { render :index, status: :ok, location: @user }
+        format.json { render :index, status: :ok, location: @client}
       else
         flash[:alert] = "Unable to update the Client: #{@client.errors.full_messages.join(", ")}."
         format.html { render :edit }
