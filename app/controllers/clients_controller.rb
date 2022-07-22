@@ -1,5 +1,5 @@
 class ClientsController < ApplicationController
-  before_action :set_user, only: [:edit, :update, :destroy]
+  before_action :set_client, only: [:edit, :update, :destroy]
 
   def index
     @clients = Client.all.paginate(page: params[:page], per_page: 6)
@@ -64,6 +64,6 @@ class ClientsController < ApplicationController
   end
 
   def set_client
-    Client.find(params[:id])
+    @client = Client.find(params[:id])
   end
 end
