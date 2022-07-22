@@ -1,4 +1,4 @@
-let otherPronounInput = document.getElementById('hide-pronoun')
+const otherPronounInput = document.getElementById('hide-pronoun')
 if (otherPronounInput) {
   document.addEventListener('DOMContentLoaded', () => {
     otherPronounInput.style.display = 'none';

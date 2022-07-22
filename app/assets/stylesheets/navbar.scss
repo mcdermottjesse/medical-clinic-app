@@ -2,16 +2,8 @@
 
 .navbar {
   padding: 0.5em;
+  padding-bottom: 0em;
   justify-content: start;
-  .nav-link {
-    text-decoration: underline;
-    color: $white;
-    transition: 200ms;
-  }
-  
-  .nav-link:hover {
-    color: $purple;
-  }
 
   .bi {
     color: $black;
@@ -21,13 +13,6 @@
     padding: 0;
   }
 
-  .nav-dropdown {
-    margin-top: 14em;
-    position: absolute;
-    background-color: $black;
-    border: 2px solid $black;
-  }
-
   .nav-text {
     padding: 0.75em;
     width: 80%;
@@ -35,9 +20,27 @@
   }
 }
 
+.nav-dropdown {
+  margin-left: 0.5em;
+  position: absolute;
+  background-color: $black;
+  border: 2px solid $black;
+}
+
+.nav-link {
+  text-decoration: underline;
+  color: $white;
+  transition: 200ms;
+}
+
+.nav-link:hover {
+  color: $purple;
+}
+
 @include md-up {
   .navbar {
     padding: 0.75em;
+    padding-bottom: 0em;
     .bi {
       font-size: 50px;
     }
