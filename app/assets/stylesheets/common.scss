@@ -1,4 +1,4 @@
-@import "variables";
+@import 'variables';
 
 .btn-primary:not(.hover) {
   display: flex;
@@ -15,7 +15,7 @@
 }
 
 .logo {
-  background-image: url("home-logo.png");
+  background-image: url('home-logo.png');
   background-size: 100% 100%;
   caret-color: $purple;
   width: 18.25em;
