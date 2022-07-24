@@ -2,7 +2,7 @@ class ClientsController < ApplicationController
   before_action :set_client, only: [:edit, :update, :destroy]
 
   def index
-    @location_param == "All Locations" ? clients = Client.all.order("last_name ASC") : clients = Client.where(location: @location_param).order("last_name ASC")
+    @location_param == 'All Locations' ? clients = Client.all.order('last_name ASC') : clients = Client.where(location: @location_param).order('last_name ASC')
     @clients = clients.paginate(page: params[:page], per_page: 6)
   end
 
@@ -17,10 +17,10 @@ class ClientsController < ApplicationController
     @client = Client.new(client_params)
     respond_to do |format|
       if @client.save
-        format.html { redirect_to clients_path(@client, location: @location_param), notice: "Client successfully created" }
+        format.html { redirect_to clients_path(@client, location: @location_param), notice: 'Client successfully created' }
         format.json { render :index, status: :created, location: @client }
       else
-        flash[:alert] = "Unable to save the Client: #{@client.errors.full_messages.join(", ")}."
+        flash[:alert] = "Unable to save the Client: #{@client.errors.full_messages.join(', ')}."
         format.html { render :new }
         format.json { render json: @client.errors, status: :unprocessable_entity }
       end
@@ -34,7 +34,7 @@ class ClientsController < ApplicationController
     @client.skip_consent_validation = true
     respond_to do |format|
       if @client.update(client_params)
-        format.html { redirect_to clients_path(location: @location_param), notice: "Client successfully updated" }
+        format.html { redirect_to clients_path(location: @location_param), notice: 'Client successfully updated' }
         format.json { render :index, status: :ok, location: @client}
       else
         flash[:alert] = "Unable to update the Client: #{@client.errors.full_messages.join(", ")}."
@@ -47,7 +47,7 @@ class ClientsController < ApplicationController
   def destroy
     @client.destroy
     respond_to do |format|
-      format.html { redirect_to clients_path(location: @location_param), notice: "Client successfully destroyed" }
+      format.html { redirect_to clients_path(location: @location_param), notice: 'Client successfully destroyed' }
       format.json { head :no_content }
     end
   end

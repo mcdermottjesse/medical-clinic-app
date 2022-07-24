@@ -3,14 +3,14 @@ class Admin::UsersController < ApplicationController
   before_action :authorize_resource
 
   def index
-    @location_param == "All Locations" ? users = User.all.order("last_name ASC") : users = User.where(location: @location_param).order("last_name ASC")
+    @location_param == 'All Locations' ? users = User.all.order('last_name ASC') : users = User.where(location: @location_param).order('last_name ASC')
 
     if user_autocomplete_params
       user_suggestions = User.select(:first_name, :last_name).distinct
-      if user_autocomplete_params == "All Locations"
-        @users = user_suggestions.order("last_name ASC")
+      if user_autocomplete_params == 'All Locations'
+        @users = user_suggestions.order('last_name ASC')
       else
-        @users = user_suggestions.where(location: user_autocomplete_params).order("last_name ASC")
+        @users = user_suggestions.where(location: user_autocomplete_params).order('last_name ASC')
       end
       render :json => @users
     end
@@ -27,7 +27,7 @@ class Admin::UsersController < ApplicationController
     @user.skip_password_validation = true
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to admin_users_path(location: @location_param), notice: "User succesfully updated" }
+        format.html { redirect_to admin_users_path(location: @location_param), notice: 'User succesfully updated' }
         format.json { render :index, status: :ok, location: @user }
       else
         flash[:alert] = "Unable to save the User: #{@user.errors.full_messages.join(", ")}."
@@ -40,7 +40,7 @@ class Admin::UsersController < ApplicationController
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to admin_users_path(location: @location_param), notice: "User successfully destroyed" }
+      format.html { redirect_to admin_users_path(location: @location_param), notice: 'User successfully destroyed' }
       format.json { head :no_content }
     end
   end
@@ -56,7 +56,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def user_autocomplete_params
-    if params[:user_search] == "true"
+    if params[:user_search] == 'true'
       params.require(:user_search)
       params.require(:user_location)
     end
