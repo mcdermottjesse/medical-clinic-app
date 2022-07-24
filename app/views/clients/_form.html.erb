@@ -1,82 +1,81 @@
 <%= form_with model: @client, data: { turbo: false } do |f| %>
-  <div class="row">
-    <div class="col">
+  <div class='row'>
+    <div class='col'>
       First Name
-      <%= f.text_field :first_name, class: "form-control" %>
+      <%= f.text_field :first_name, class: 'form-control' %>
     </div>
-    <div class="col">
+    <div class='col'>
       Last Name 
-      <%= f.text_field :last_name, class: "form-control" %>
+      <%= f.text_field :last_name, class: 'form-control' %>
     </div>
   </div>
-  <div class="row">
-    <div class="col">
+  <div class='row'>
+    <div class='col'>
       DOB
-      <%= f.date_field :dob, class: "form-control" %>
-      <%#= make clickable area larger %>
+      <%= f.date_field :dob, class: 'form-control' %>
     </div>
-    <div class="col">
+    <div class='col'>
       Pronoun
-      <%= f.select :pronoun, options_for_select(Client::PRONOUNS, @client.pronoun), {}, { class: "form-select", id: "pronoun-select" } %>
+      <%= f.select :pronoun, options_for_select(Client::PRONOUNS, @client.pronoun), {}, { class: 'form-select', id: 'pronoun-select' } %>
     </div>
   </div>
-  <div id="hide-pronoun">
+  <div id='hide-pronoun'>
     Other Pronoun
-    <%= f.text_field :other_pronoun, class: "form-control other-pronoun" %>
+    <%= f.text_field :other_pronoun, class: 'form-control other-pronoun' %>
   </div>
-  <div class="row">
-    <div class="col">
+  <div class='row'>
+    <div class='col'>
       Healthcard Number
-      <%= f.text_field :health_card_number, placeholder: "e.g 1234-567-890", class: "form-control" %>
+      <%= f.text_field :health_card_number, placeholder: 'e.g 1234-567-890', class: 'form-control' %>
     </div>
-    <div class="col">
+    <div class='col'>
       Healthcard Expiry
-      <%= f.text_field :health_card_expiry, class: "form-control" %>
+      <%= f.date_field :health_card_expiry, class: 'form-control' %>
     </div>
   </div>
-  <div class="row">
-    <div class="col">
+  <div class='row'>
+    <div class='col'>
       Email
-      <%= f.text_field :email, class: "form-control" %>
+      <%= f.email_field :email, class: 'form-control' %>
     </div>
-    <div class="col">
+    <div class='col'>
       Phone Number
-      <%= f.text_field :phone_number, class: "form-control" %>
+      <%= f.text_field :phone_number, placeholder: 'e.g (250) 123-4567', class: 'form-control' %>
     </div>
   </div>
-  <div class="row">
-    <div class="col">
+  <div class='row'>
+    <div class='col'>
       Emergency Contact Name
-      <%= f.text_field :emergency_contact_name, class: "form-control" %>
+      <%= f.text_field :emergency_contact_name, class: 'form-control' %>
     </div>
-    <div class="col">
-      Emergency Contact Info
-      <%= f.text_field :emergency_contact_info, class: "form-control" %>
+    <div class='col'>
+      Emergency Contact Phone
+      <%= f.text_field :emergency_contact_info, placeholder: 'e.g (250) 123-4567', class: 'form-control' %>
     </div>
   </div>
-  <div class="row">
-    <div class="col">
+  <div class='row'>
+    <div class='col'>
       Location
-      <%= f.select :location, options_for_select(Client::LOCATIONS.drop(1), @client.location), {}, { class: "form-select" } %>
+      <%= f.select :location, options_for_select(Client::LOCATIONS.drop(1), @client.location), {}, { class: 'form-select' } %>
     </div>
-    <div class="col">
+    <div class='col'>
       Bed Number
-      <%= f.text_field :bed_number, class: "form-control" %>
+      <%= f.text_field :bed_number, class: 'form-control' %>
     </div>
   </div>
   <div>
     General Info
-    <%= f.text_area :general_info, class: "form-control", id: "general-info" %>
+    <%= f.text_area :general_info, class: 'form-control', id: 'general-info' %>
   </div>
   <% if @client.new_record? %>
-    <div class="consent">
+    <div class='consent'>
       Do you give consent?
-      <%= f.check_box :consent, class: "checkbox" %>
+      <%= f.check_box :consent, class: 'checkbox' %>
     </div>
   <% end %>
-  <div class="center-item">
-    <div class="actions">
-      <%= f.submit "Save", class: "btn-primary" %>
+  <div class='center-item'>
+    <div class='actions'>
+      <%= f.submit 'Save', class: 'btn-primary' %>
     </div>
   </div>
   <%= hidden_field_tag(:location, @location_param) %>

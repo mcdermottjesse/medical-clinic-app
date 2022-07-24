@@ -1,26 +1,26 @@
 <%= form_with model: [:admin, @user], url: { action: :update, location: @location_param }, data: { turbo: false } do |f| %>
   <div>
     First Name
-    <%= f.text_field :first_name, class: "form-control" %>
+    <%= f.text_field :first_name, class: 'form-control' %>
   </div>
   <div>
     Last Name 
-    <%= f.text_field :last_name, class: "form-control" %>
+    <%= f.text_field :last_name, class: 'form-control' %>
   </div>
   <div>
     Email
-    <%= f.text_field :email, class: "form-control" %>
+    <%= f.email_field :email, class: 'form-control' %>
   </div>
   <div>
     Account Type
-    <%= f.select :account_type, options_for_select(User::ACCOUNT_TYPES, @user.account_type), {}, { class: "form-select" } %>
+    <%= f.select :account_type, options_for_select(User::ACCOUNT_TYPES, @user.account_type), {}, { class: 'form-select' } %>
   </div>
   <div>
     Location
-    <%= f.select :location, options_for_select(User::LOCATIONS.drop(1), @user.location), {}, { class: "form-select" } %>
+    <%= f.select :location, options_for_select(User::LOCATIONS.drop(1), @user.location), {}, { class: 'form-select' } %>
   </div>
-  <div class="actions">
-    <%= f.submit "Save", class: "btn-primary" %>
+  <div class='actions'>
+    <%= f.submit 'Save', class: 'btn-primary' %>
   </div>
   <%= hidden_field_tag(:location, @location_param) %>
 <% end %>
