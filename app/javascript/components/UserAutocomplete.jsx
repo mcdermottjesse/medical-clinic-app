@@ -18,10 +18,10 @@ const UserAutocomplete = () => {
 	useEffect(() => {
 		const loadUsers = async () => {
      const urlParams = new URLSearchParams(location.search);
-     const findLocation = urlParams.get("location");
+     const findLocation = urlParams.get('location');
       const request = {
         params: {
-          user_search: "true",
+          user_search: 'true',
           user_location: findLocation,
         },
       };
@@ -40,7 +40,7 @@ const UserAutocomplete = () => {
     // access search params when user name suggestion clicked from autocomplete dropdown
     // location.search = window.location.search
     const searchParams = new URLSearchParams(location.search);
-    const searchLocation = searchParams.get("location");
+    const searchLocation = searchParams.get('location');
     // location = window.location.href 
     location =`?search=${text}&location=${searchLocation}`;
 
@@ -63,10 +63,10 @@ const UserAutocomplete = () => {
 	return (
 		<div>
 			<input
-				className="input"
-				type="text"
-				placeholder="Search"
-				name="search"
+				className='input'
+				type='text'
+				placeholder='Search'
+				name='search'
 				value={text}
 				onChange={(e) => onChangeHandler(e.target.value)}
 				onBlur={() => {
@@ -77,12 +77,12 @@ const UserAutocomplete = () => {
 			/>
 			<div className={`drop-down-list ${open ? '' : 'hidden'}`} ref={inputRef}>
 				{suggestions.length === 0 ? (
-					<div className="drop-down-element"> No user found </div>
+					<div className='drop-down-element'> No user found </div>
 				) : (
 					suggestions &&
 					suggestions.map((suggestion, i) => (
 						<div
-							className="drop-down-element"
+							className='drop-down-element'
 							key={i}
 							onClick={() => onClickHandler(`${suggestion.first_name} ${suggestion.last_name}`)}
 						>

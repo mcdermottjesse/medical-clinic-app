@@ -4,7 +4,7 @@ if (otherPronounInput) {
     otherPronounInput.style.display = 'none';
     document.addEventListener('change', (event) => {
       const selectOption = event.target.value
-      selectOption === "Other" ? otherPronounInput.style.display = 'block' : otherPronounInput.style.display = 'none';
+      selectOption === 'Other' ? otherPronounInput.style.display = 'block' : otherPronounInput.style.display = 'none';
     });
   });
 }
