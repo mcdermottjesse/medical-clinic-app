@@ -1,4 +1,4 @@
-@import 'variables';
+@import "variables";
 
 .login-page {
   .login-container {
@@ -17,6 +17,7 @@
     box-shadow: none;
     outline: none;
     margin-bottom: 2em;
+    width: 100%;
   }
 
   .shared-link {

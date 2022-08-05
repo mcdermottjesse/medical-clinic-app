@@ -1,4 +1,4 @@
-@import 'variables';
+@import "variables";
 
 .clients-page {
   .client-text {
@@ -10,7 +10,6 @@
     padding: 3px;
     border-radius: 6px;
     position: absolute;
-    z-index: 1;
   }
 
   .client-code:hover .client-text {

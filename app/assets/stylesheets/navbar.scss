@@ -1,4 +1,4 @@
-@import 'variables';
+@import "variables";
 
 .navbar {
   padding: 0.5em;
@@ -25,6 +25,7 @@
   position: absolute;
   background-color: $black;
   border: 2px solid $black;
+  z-index: 1;
 }
 
 .nav-link {

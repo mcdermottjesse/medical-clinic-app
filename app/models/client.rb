@@ -58,12 +58,17 @@ class Client < ApplicationRecord
   end
 
   def generate_client_code
+    counter = 0
     loop do
+      counter += 1
+      
       self.client_code = first_name[0] + last_name[0] + ([*('A'..'Z'), *('0'..'9')]).sample(4).join + dob.strftime('%y')
       # * = splat operator, it destructures array
+      
+      raise "Could not find a unique Client Code. Please try again. If problem persists please contact Site Adminstrator" if counter > 100
+
       break unless Client.pluck(:client_code).include?(self.client_code)
 
-      # add error message if all code combinations have been used
     end
   end
 end

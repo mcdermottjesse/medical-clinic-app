@@ -56,7 +56,11 @@
   <div class='row'>
     <div class='col'>
       Location
-      <%= f.select :location, options_for_select(Client::LOCATIONS.drop(1), @client.location), {}, { class: 'form-select' } %>
+      <% if @client.new_record? %>
+        <%= f.select :location, options_for_select(Client::LOCATIONS.drop(1), current_user.location), {}, { class: 'form-select' } %>
+      <% else %>
+        <%= f.select :location, options_for_select(Client::LOCATIONS.drop(1), @client.location), {}, { class: 'form-select' } %>
+      <% end %>
     </div>
     <div class='col'>
       Bed Number
