@@ -23,7 +23,7 @@
           </div>
           <div>
             Location
-            <%= f.select :location, options_for_select(User::LOCATIONS.drop(1)), {}, { class: 'form-select' } %>
+            <%= f.select :location, options_for_select(User::LOCATIONS.drop(1), current_user.location), {}, { class: 'form-select' } %>
           </div>
         <% end -%>
 
