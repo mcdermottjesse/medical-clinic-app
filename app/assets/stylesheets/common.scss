@@ -153,6 +153,14 @@
   margin-left: 1em;
 }
 
+.delete-btn {
+  margin-top: 2em;
+  margin-bottom: 2em;
+  background: none;
+  border: none;
+  color: $warning;
+}
+
 @include md-up {
   .drop-down-list {
     font-size: medium;

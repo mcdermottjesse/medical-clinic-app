@@ -226,15 +226,10 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
-    stimulus-rails (1.0.4)
-      railties (>= 6.0.0)
     strscan (3.0.1)
     thor (1.2.1)
     tilt (2.0.10)
     timeout (0.2.0)
-    turbo-rails (1.0.1)
-      actionpack (>= 6.0.0)
-      railties (>= 6.0.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
     warden (1.2.9)
@@ -274,8 +269,6 @@ DEPENDENCIES
   rspec-rails (~> 6.0.0.rc1)
   sass-rails
   sprockets-rails
-  stimulus-rails
-  turbo-rails
   tzinfo-data
   web-console
   will_paginate (~> 3.3.0)
