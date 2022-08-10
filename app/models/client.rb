@@ -17,6 +17,8 @@ class Client < ApplicationRecord
 
   validates_format_of :phone_number, :emergency_contact_info, with: /\A\(([0-9]{3}+)\) [0-9]{3}-[0-9]{4}\z/ # format = (123) 456-7890
 
+  before_save :capitalize_name
+  
   before_create :generate_client_code
 
   PRONOUNS = ['She/Her', 'They/Them', 'He/Him', 'Other']
@@ -28,7 +30,7 @@ class Client < ApplicationRecord
     health_num_array = health_card_number.split('')
 
     if health_card_number !~ correct_format && health_num_array.length >= 10 && health_num_array.length <= 12
-      self.health_card_number = self.health_card_number.gsub(/\W/, '').insert(4, '-') # gsub removes all symbols e.g '#$%^' etc
+      self.health_card_number = self.health_card_number.gsub(/\W/, '').insert(4, '-') # gsub(/\W/, '') removes all symbols e.g '#$%^' etc
       self.health_card_number = self.health_card_number.insert(8, '-')
     end
   end
@@ -62,7 +64,7 @@ class Client < ApplicationRecord
     loop do
       counter += 1
       
-      self.client_code = first_name[0] + last_name[0] + ([*('A'..'Z'), *('0'..'9')]).sample(4).join + dob.strftime('%y')
+      self.client_code = first_name[0].capitalize + last_name[0].capitalize + ([*('A'..'Z'), *('0'..'9')]).sample(4).join + dob.strftime('%y')
       # * = splat operator, it destructures array
       
       raise "Could not find a unique Client Code. Please try again. If problem persists please contact Site Adminstrator" if counter > 100

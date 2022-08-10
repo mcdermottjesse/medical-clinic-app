@@ -57,7 +57,7 @@
     <div class='col'>
       Location
       <% if @client.new_record? %>
-        <%= f.select :location, options_for_select(Client::LOCATIONS.drop(1), current_user.location), {}, { class: 'form-select' } %>
+        <%= f.select :location, options_for_select(Client::LOCATIONS.drop(1), @location_param), {}, { class: 'form-select' } %>
       <% else %>
         <%= f.select :location, options_for_select(Client::LOCATIONS.drop(1), @client.location), {}, { class: 'form-select' } %>
       <% end %>

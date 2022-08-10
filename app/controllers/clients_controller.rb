@@ -17,7 +17,7 @@ class ClientsController < ApplicationController
     @client = Client.new(client_params)
     respond_to do |format|
       if @client.save
-        format.html { redirect_to clients_path(@client, location: @location_param), notice: 'Client successfully created' }
+        format.html { redirect_to clients_path(@client, location: @client.location), notice: 'Client successfully created' }
         format.json { render :index, status: :created, location: @client }
       else
         flash[:alert] = "Unable to save the Client: #{@client.errors.full_messages.join(', ')}."
@@ -34,7 +34,7 @@ class ClientsController < ApplicationController
     @client.skip_consent_validation = true
     respond_to do |format|
       if @client.update(client_params)
-        format.html { redirect_to clients_path(location: @location_param), notice: 'Client successfully updated' }
+        format.html { redirect_to clients_path(location: @client.location), notice: 'Client successfully updated' }
         format.json { render :index, status: :ok, location: @client}
       else
         flash[:alert] = "Unable to update the Client: #{@client.errors.full_messages.join(", ")}."
