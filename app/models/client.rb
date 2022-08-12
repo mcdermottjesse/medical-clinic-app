@@ -1,9 +1,4 @@
 class Client < ApplicationRecord
-  class << self
-    include Search
-  end
-
-  include Name, Location
 
   attr_accessor :skip_consent_validation
 
@@ -13,13 +8,19 @@ class Client < ApplicationRecord
 
   before_validation :format_health_number, :format_phone_number, :format_emergency_phone_number
 
-  validates_format_of :health_card_number, with: /\A[0-9]{4}-[0-9]{3}-[0-9]{3}\z/, allow_blank: true # format = 1234-567-890
+  validates_format_of :health_card_number, with: /\A[0-9]{4}-[0-9]{3}-[0-9]{3}\z/ # format = 1234-567-890
 
   validates_format_of :phone_number, :emergency_contact_info, with: /\A\(([0-9]{3}+)\) [0-9]{3}-[0-9]{4}\z/ # format = (123) 456-7890
 
   before_save :capitalize_name
   
   before_create :generate_client_code
+
+  class << self
+    include Search
+  end
+
+  include Name, Location
 
   PRONOUNS = ['She/Her', 'They/Them', 'He/Him', 'Other']
 

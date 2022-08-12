@@ -20,7 +20,6 @@ class ClientsController < ApplicationController
         format.html { redirect_to clients_path(@client, location: @client.location), notice: 'Client successfully created' }
         format.json { render :index, status: :created, location: @client }
       else
-        flash[:alert] = "Unable to save the Client: #{@client.errors.full_messages.join(', ')}."
         format.html { render :new }
         format.json { render json: @client.errors, status: :unprocessable_entity }
       end
@@ -37,7 +36,6 @@ class ClientsController < ApplicationController
         format.html { redirect_to clients_path(location: @client.location), notice: 'Client successfully updated' }
         format.json { render :index, status: :ok, location: @client}
       else
-        flash[:alert] = "Unable to update the Client: #{@client.errors.full_messages.join(", ")}."
         format.html { render :edit }
         format.json { render json: @client.errors, status: :unprocessable_entity }
       end

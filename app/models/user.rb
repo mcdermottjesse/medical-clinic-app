@@ -1,9 +1,4 @@
 class User < ApplicationRecord
-  class << self
-    include Search
-  end
-
-  include Name, Location
 
   attr_accessor :skip_password_validation
   # Include default devise modules. Others available are:
@@ -13,6 +8,12 @@ class User < ApplicationRecord
   validates :first_name, :last_name, :account_type, :location, presence: true
 
   validates :password, format: { with: /\A(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}\z/, message: :validation_message }, unless: :skip_password_validation
+
+  class << self
+    include Search
+  end
+
+  include Name, Location
 
   ACCOUNT_TYPES = ['Admin', 'Manager', 'Nurse', 'Doctor', 'Care Worker']
 
