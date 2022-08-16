@@ -12,7 +12,6 @@ class Admin::InvitationsController < Devise::InvitationsController
         format.html { redirect_to authenticated_root_path, notice: 'User was successfully invited' }
         format.json { render :index, status: :created, location: @user }
       else
-        flash[:alert] = "Unable to save the User: #{@user.errors.full_messages.join(", ")}."
         format.html { render :new }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
