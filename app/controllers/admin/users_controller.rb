@@ -30,7 +30,6 @@ class Admin::UsersController < ApplicationController
         format.html { redirect_to admin_users_path(location: @location_param), notice: 'User succesfully updated' }
         format.json { render :index, status: :ok, location: @user }
       else
-        flash[:alert] = "Unable to save the User: #{@user.errors.full_messages.join(", ")}."
         format.html { render :edit }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end

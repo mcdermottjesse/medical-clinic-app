@@ -2,10 +2,12 @@
   <div>
     First Name
     <%= f.text_field :first_name, class: 'form-control' %>
+    <p class='is-invalid text-danger form-error'> <%= @user.errors.full_messages_for(:first_name).join("") %> </p>
   </div>
   <div>
     Last Name 
     <%= f.text_field :last_name, class: 'form-control' %>
+    <p class='is-invalid text-danger form-error'> <%= @user.errors.full_messages_for(:last_name).join("") %> </p>
   </div>
   <div>
     Email
@@ -14,10 +16,12 @@
   <div>
     Account Type
     <%= f.select :account_type, options_for_select(User::ACCOUNT_TYPES, @user.account_type), {}, { class: 'form-select' } %>
+    <p class='is-invalid text-danger form-error'> <%= @user.errors.full_messages_for(:account_type).join("") %> </p>
   </div>
   <div>
     Location
     <%= f.select :location, options_for_select(User::LOCATIONS.drop(1), @user.location), {}, { class: 'form-select' } %>
+    <p class='is-invalid text-danger form-error'> <%= @user.errors.full_messages_for(:location).join("") %> </p>
   </div>
   <div class='actions'>
     <%= f.submit 'Save', class: 'btn-primary' %>
