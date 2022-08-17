@@ -6,6 +6,8 @@ class Client < ApplicationRecord
 
   validates :consent, presence: true, unless: :skip_consent_validation
 
+  validates :other_pronoun, presence: true, if: :other_pronoun_present
+
   before_validation :format_health_number, :format_phone_number, :format_emergency_phone_number
 
   validates_format_of :health_card_number, with: /\A[0-9]{4}-[0-9]{3}-[0-9]{3}\z/ # format = 1234-567-890
@@ -15,6 +17,8 @@ class Client < ApplicationRecord
   before_save :capitalize_name
   
   before_create :generate_client_code
+
+  before_update :clear_other_pronoun
 
   class << self
     include Search
@@ -58,6 +62,14 @@ class Client < ApplicationRecord
       self.emergency_contact_info = self.emergency_contact_info.insert(5, ' ')
       self.emergency_contact_info = self.emergency_contact_info.insert(9, '-')
     end
+  end
+
+  def other_pronoun_present
+    self.pronoun == "Other"
+  end
+
+  def clear_other_pronoun
+    self.other_pronoun = nil if self.pronoun != "Other"
   end
 
   def generate_client_code

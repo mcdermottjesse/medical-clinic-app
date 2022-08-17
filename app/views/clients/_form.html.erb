@@ -26,6 +26,7 @@
   <div id='hide-pronoun'>
     Other Pronoun
     <%= f.text_field :other_pronoun, class: 'form-control other-pronoun' %>
+    <p class='is-invalid text-danger form-error'><%= @client.errors.full_messages_for(:other_pronoun).join("") %> </p>
   </div>
   <div class='row'>
     <div class='col'>
