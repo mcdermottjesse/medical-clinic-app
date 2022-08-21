@@ -1,3 +1,3 @@
 module Location
-  LOCATIONS = ['All Locations', 'Victoria General', 'Royal Jubilee', 'Sanich Penisula', 'Nanaimo Regional']
+  LOCATIONS = ['All Locations', 'Victoria General', 'Royal Jubilee', 'Sanich Peninsula', 'Nanaimo Regional']
 end
