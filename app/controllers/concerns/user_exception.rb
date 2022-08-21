@@ -1,0 +1,2 @@
+class UserException < StandardError
+end 

@@ -20,6 +20,7 @@ class ClientsController < ApplicationController
         format.html { redirect_to clients_path(@client, location: @client.location), notice: 'Client successfully created' }
         format.json { render :index, status: :created, location: @client }
       else
+        flash.now[:alert] = 'There was an error creating the Client'
         format.html { render :new }
         format.json { render json: @client.errors, status: :unprocessable_entity }
       end
@@ -36,6 +37,7 @@ class ClientsController < ApplicationController
         format.html { redirect_to clients_path(location: @client.location), notice: 'Client successfully updated' }
         format.json { render :index, status: :ok, location: @client}
       else
+        flash.now[:alert] = 'There was an error updating the Client'
         format.html { render :edit }
         format.json { render json: @client.errors, status: :unprocessable_entity }
       end
@@ -45,8 +47,14 @@ class ClientsController < ApplicationController
   def destroy
     @client.destroy
     respond_to do |format|
-      format.html { redirect_to clients_path(location: @location_param), notice: 'Client successfully destroyed' }
-      format.json { head :no_content }
+      if @client.destroyed?
+        format.html { redirect_to clients_path(location: @location_param), notice: 'Client successfully destroyed' }
+        format.json { head :no_content }
+      else
+        flash.now[:alert] = 'There was an error deleting the Client'
+        format.html { render :edit }
+        format.json { render json: @client.errors, status: :unprocessable_entity }
+      end
     end
   end
 

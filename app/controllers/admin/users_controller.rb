@@ -30,6 +30,7 @@ class Admin::UsersController < ApplicationController
         format.html { redirect_to admin_users_path(location: @location_param), notice: 'User succesfully updated' }
         format.json { render :index, status: :ok, location: @user }
       else
+        flash.now[:alert] = 'There was an error updating the User'
         format.html { render :edit }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
@@ -39,8 +40,14 @@ class Admin::UsersController < ApplicationController
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to admin_users_path(location: @location_param), notice: 'User successfully destroyed' }
-      format.json { head :no_content }
+      if @user.destroyed?
+        format.html { redirect_to admin_users_path(location: @location_param), notice: 'User successfully destroyed' }
+        format.json { head :no_content }
+      else
+        flash.now[:alert] = 'There was an error deleting the User'
+        format.html { render :edit }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
     end
   end
 
