@@ -8,6 +8,8 @@ class Client < ApplicationRecord
 
   validates :other_pronoun, presence: true, if: :other_pronoun_present
 
+  validate :dob_validation, :health_card_expiry_validation # validate to render past/future date error message
+
   before_validation :format_health_number, :format_phone_number, :format_emergency_phone_number
 
   validates_format_of :health_card_number, with: /\A[0-9]{4}-[0-9]{3}-[0-9]{3}\z/ # format = 1234-567-890
