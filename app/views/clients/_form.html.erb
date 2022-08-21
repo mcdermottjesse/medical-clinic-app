@@ -3,41 +3,41 @@
     <div class='col'>
       First Name
       <%= f.text_field :first_name, class: 'form-control' %>
-      <p class='is-invalid text-danger form-error'> <%= @client.errors.full_messages_for(:first_name).join("") %> </p>
+      <p class='is-invalid text-danger form-error'> <%= @client.first_name_validation %> </p>
     </div>
     <div class='col'>
       Last Name 
       <%= f.text_field :last_name, class: 'form-control' %>
-      <p class='is-invalid text-danger form-error'> <%= @client.errors.full_messages_for(:last_name).join("") %> </p>
+      <p class='is-invalid text-danger form-error'> <%= @client.last_name_validation %> </p>
     </div>
   </div>
   <div class='row'>
     <div class='col'>
       DOB
       <%= f.date_field :dob, class: 'form-control' %>
-      <p class='is-invalid text-danger form-error'> <%= @client.errors.full_messages_for(:dob).join("") %> </p>
+      <p class='is-invalid text-danger form-error'> <%= @client.dob_validation %> </p>
     </div>
     <div class='col'>
       Pronoun
       <%= f.select :pronoun, options_for_select(Client::PRONOUNS, @client.pronoun), {}, { class: 'form-select', id: 'pronoun-select' } %>
-      <p class='is-invalid text-danger form-error'> <%= @client.errors.full_messages_for(:pronoun).join("") %> </p>
+      <p class='is-invalid text-danger form-error'> <%= @client.pronoun_validation %> </p>
     </div>
   </div>
   <div id='hide-pronoun'>
     Other Pronoun
     <%= f.text_field :other_pronoun, class: 'form-control other-pronoun' %>
-    <p class='is-invalid text-danger form-error'><%= @client.errors.full_messages_for(:other_pronoun).join("") %> </p>
+    <p class='is-invalid text-danger form-error'><%= @client.other_pronoun_validation %> </p>
   </div>
   <div class='row'>
     <div class='col'>
       Healthcard Number
       <%= f.text_field :health_card_number, placeholder: 'e.g 1234-567-890', class: 'form-control' %>
-      <p class='is-invalid text-danger form-error'> <%= @client.errors.full_messages_for(:health_card_number).join("") %> </p>
+      <p class='is-invalid text-danger form-error'> <%= @client.health_card_number_validation %> </p>
     </div>
     <div class='col'>
       Healthcard Expiry
       <%= f.date_field :health_card_expiry, class: 'form-control' %>
-      <p class='is-invalid text-danger form-error'> <%= @client.errors.full_messages_for(:health_card_expiry).join("") %> </p>
+      <p class='is-invalid text-danger form-error'> <%= @client.health_card_expiry_validation %> </p>
     </div>
   </div>
   <div class='row'>
@@ -48,19 +48,19 @@
     <div class='col'>
       Phone Number
       <%= f.text_field :phone_number, placeholder: 'e.g (250) 123-4567', class: 'form-control' %>
-      <p class='is-invalid text-danger form-error'> <%= @client.errors.full_messages_for(:phone_number).join("") %> </p>
+      <p class='is-invalid text-danger form-error'> <%= @client.phone_validation %> </p>
     </div>
   </div>
   <div class='row'>
     <div class='col'>
       Emergency Contact Name
       <%= f.text_field :emergency_contact_name, class: 'form-control' %>
-      <p class='is-invalid text-danger form-error'> <%= @client.errors.full_messages_for(:emergency_contact_name).join("") %> </p>
+      <p class='is-invalid text-danger form-error'> <%= @client.emergency_contact_name_validation %> </p>
     </div>
     <div class='col'>
       Emergency Contact Phone
       <%= f.text_field :emergency_contact_info, placeholder: 'e.g (250) 123-4567', class: 'form-control' %>
-      <p class='is-invalid text-danger form-error'> <%= @client.errors.full_messages_for(:emergency_contact_info).join("") %> </p>
+      <p class='is-invalid text-danger form-error'> <%= @client.emergency_contact_info_validation %> </p>
     </div>
   </div>
   <div class='row'>
@@ -71,12 +71,12 @@
       <% else %>
         <%= f.select :location, options_for_select(Client::LOCATIONS.drop(1), @client.location), {}, { class: 'form-select' } %>
       <% end %>
-      <p class='is-invalid text-danger form-error'> <%= @client.errors.full_messages_for(:location).join("") %> </p>
+      <p class='is-invalid text-danger form-error'> <%= @client.location_validation %> </p>
     </div>
     <div class='col'>
       Bed Number
       <%= f.text_field :bed_number, class: 'form-control' %>
-      <p class='is-invalid text-danger form-error'> <%= @client.errors.full_messages_for(:bed_number).join("") %> </p>
+      <p class='is-invalid text-danger form-error'> <%= @client.bed_number_validation %> </p>
     </div>
   </div>
   <div>
@@ -88,7 +88,7 @@
       Do you give consent?
       <%= f.check_box :consent, class: 'checkbox' %>
     </div>
-    <p class='is-invalid text-danger form-error center-item'> <%= @client.errors.full_messages_for(:consent).join("") %> </p>
+    <p class='is-invalid text-danger form-error center-item'> <%= @client.consent_validation %> </p>
   <% end %>
   <div class='center-item'>
     <div class='actions'>

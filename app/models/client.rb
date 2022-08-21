@@ -24,7 +24,7 @@ class Client < ApplicationRecord
     include Search
   end
 
-  include Name, Location
+  include Name, Location, ValidationMessage
 
   PRONOUNS = ['She/Her', 'They/Them', 'He/Him', 'Other']
 
