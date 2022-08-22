@@ -20,15 +20,15 @@
           <div class='card card-body mb-3'>
             <div class='client-code'>
               <%= client.client_code %>
-              <div class='client-text'>client code</div>
+              <span class='client-text'>client code</span>
             </div>
             <div class='client-name'>
               <%= link_to client.full_name, edit_client_path(client, location: @location_param) %>
-              <div class='client-text'>edit client</div>
+              <span class='client-text'>edit</span>
             </div>
             <div class='client-location'>
               <%= client.location %>
-              <div class='client-text'>location</div>
+              <span class='client-text'>location</span>
             </div>
           </div>
         <% end %>

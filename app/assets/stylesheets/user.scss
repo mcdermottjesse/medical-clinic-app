@@ -1,9 +1,9 @@
-@import 'variables';
+@import "variables";
 
 .users-page {
   .user-text {
     visibility: hidden;
-    width: 90px;
+    width: 80px;
     background-color: $black;
     color: $white;
     text-align: center;
@@ -11,14 +11,11 @@
     border-radius: 6px;
     position: absolute;
     z-index: 1;
-    margin-left: 30vw;
+    margin-left: 5px;
+    font-size: small;
   }
 
   .user-name:hover .user-text {
-    visibility: visible;
-  }
-
-  .user-email:hover .user-text {
     visibility: visible;
   }
 
@@ -33,9 +30,6 @@
 
 @include md {
   .users-page {
-    .user-text {
-      margin-left: 36vw;
-    }
     .user-details {
       height: 70vh;
     }
@@ -44,24 +38,12 @@
 
 @include lg-up {
   .users-page {
-    .user-text {
-      margin-left: 5.5vw;
-    }
     .user-name,
-    .user-email,
     .user-location,
     .user-account {
       width: 25vw;
       white-space: wrap;
       overflow: hidden;
-    }
-  }
-}
-
-@include xxxl-up {
-  .users-page {
-    .user-text {
-      margin-left: 4.5vw;
     }
   }
 }

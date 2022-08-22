@@ -13,8 +13,11 @@
   </div>
   <div class='row'>
     <div class='col'>
-      DOB
-      <%= f.date_field :dob, class: 'form-control' %>
+      <div class='dob-field'>
+        DOB
+        <%= f.date_field :dob, max: Date.today, class: 'form-control' %>
+        <p class='date-text'>Ensure date is <b>not</b> in the future and is filled correctly</p>
+      </div>
       <p class='is-invalid text-danger form-error'> <%= @client.dob_validation %> </p>
     </div>
     <div class='col'>
@@ -35,8 +38,11 @@
       <p class='is-invalid text-danger form-error'> <%= @client.health_card_number_validation %> </p>
     </div>
     <div class='col'>
-      Healthcard Expiry
-      <%= f.date_field :health_card_expiry, class: 'form-control' %>
+      <div class='expiry-field'>
+        Healthcard Expiry
+        <%= f.date_field :health_card_expiry, min: Date.tomorrow, class: 'form-control' %>
+        <p class='date-text'>Ensure date <b>is</b> in the future and is filled correctly</p>
+      </div>
       <p class='is-invalid text-danger form-error'> <%= @client.health_card_expiry_validation %> </p>
     </div>
   </div>
