@@ -48,10 +48,6 @@
     display: block;
   }
 
-  .other-pronoun {
-    width: 100%;
-  }
-
   .consent {
     display: flex;
     justify-content: center;
@@ -67,6 +63,9 @@
   .clients-page {
     .row {
       display: flex;
+    }
+    .other-pronoun {
+      width: 100%;
     }
     .actions {
       width: 75%;
