@@ -18,7 +18,6 @@ module ErrorResponse
       render "errors/internal_server_error"
     rescue => e
       @development_error = e # display error ourput for development only! delete in production
-      # @error = "Something went wrong. Please try again. If problem persists please contact Site Adminstrator"
       render "errors/internal_server_error"
     end
   end
