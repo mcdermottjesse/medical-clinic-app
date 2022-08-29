@@ -17,4 +17,6 @@ end
 
   resources :clients
 
+  match "/404", :to => "errors#not_found", :via => :all
+
 end
