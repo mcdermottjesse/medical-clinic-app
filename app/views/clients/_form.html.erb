@@ -47,7 +47,7 @@
     </div>
   </div>
   <div>
-    <%= f.check_box :valid_health_card, checked: @health_card_number_present_check || @health_card_expiry_present_check, class: 'mb-3 me-1 checkbox' %> Check if <b>NO</b> healthcard information provided
+    <%= f.check_box :valid_health_card, checked: @health_card_number_present_check || @health_card_expiry_present_check, class: 'mb-3 me-1 checkbox' %> Check if <b>NO</b> healthcard provided
   </div>
   <div class='row'>
     <div class='col'>
@@ -76,9 +76,9 @@
     <div class='col'>
       Location
       <% if @client.location.blank? %>
-        <%= f.select :location, options_for_select(Client::LOCATIONS.drop(1), @location_param), {}, { class: 'form-select' } %>
+        <%= f.select :location, options_for_select(Client::LOCATIONS.drop(1), @location_param), {}, { class: 'form-control form-select' } %>
       <% else %>
-        <%= f.select :location, options_for_select(Client::LOCATIONS.drop(1), @client.location), {}, { class: 'form-select' } %>
+        <%= f.select :location, options_for_select(Client::LOCATIONS.drop(1), @client.location), {}, { class: 'form-control form-select' } %>
       <% end %>
       <p class='is-invalid text-danger form-error'> <%= @client.location_validation %> </p>
     </div>
