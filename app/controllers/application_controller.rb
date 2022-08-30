@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  before_action :authenticate_user!, :filter_params
+  before_action :authenticate_user!, :filter_params, except: [:not_found]
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   include Pundit::Authorization
