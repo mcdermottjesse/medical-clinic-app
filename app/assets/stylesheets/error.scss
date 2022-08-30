@@ -2,7 +2,7 @@
 
 .error-page {
   .error-message {
-    margin-left: 2em;
+    width: 85%;
   }
   .error-image {
     background-image: url("error-image.png");
@@ -10,12 +10,15 @@
     width: 24em;
     height: 24em;
   }
+  .btn-primary:not(.hover) {
+    background-color: $purple;
+  }
 }
 
 @include md-up {
   .error-page {
     .error-message {
-      margin-left: 0;
+      width: unset;
     }
   }
 }
