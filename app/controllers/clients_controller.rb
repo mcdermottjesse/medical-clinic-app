@@ -1,5 +1,5 @@
 class ClientsController < ApplicationController
-  before_action :set_client, only: [:edit, :update, :destroy]
+  before_action :set_client, only: [:show, :edit, :update, :destroy]
   before_action :skip_validation_health_card, :skip_validation_consent, only: [:update]
   before_action :health_card_checkbox_checked, only: [:edit]
 

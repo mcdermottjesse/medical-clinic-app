@@ -23,7 +23,7 @@
               <span class='client-text'>client code</span>
             </div>
             <div class='client-name'>
-              <%= link_to client.full_name, edit_client_path(client, location: @location_param) %>
+              <%= link_to client.full_name, client_path(client, location: @location_param) %>
               <span class='client-text'>edit</span>
             </div>
             <div class='client-location'>
