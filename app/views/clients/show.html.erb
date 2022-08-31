@@ -1,11 +1,11 @@
 <div class='client-profile'>
   <div class='center'>
     <div class="card bg-light">
-      <% if @client.avatar.attached? %>
-        <img src="<%=(url_for(@client.avatar))%>" class='client-image img-fluid rounded-start'>
-      <% end %>
       <div class="card-body">
-        <h5 class="card-title"><%= @client.full_name %></h5>
+        <h5 class="card-title mb-4"><%= @client.full_name %></h5>
+        <% if @client.avatar.attached? %>
+          <img src="<%=(url_for(@client.avatar))%>" class='client-image img-fluid rounded-start mb-4'>
+        <% end %>
         <p class="card-text"><b>Client Code:</b> <%= @client.client_code %></p>
         <p class="card-text"><b>Bed Number:</b> <%= @client.bed_number %></p>
         <p class="card-text"><b>Location:</b> <%= @client.location %></p>
