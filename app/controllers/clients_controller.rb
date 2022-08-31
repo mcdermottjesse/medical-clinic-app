@@ -9,6 +9,7 @@ class ClientsController < ApplicationController
   end
 
   def show
+    @client.other_pronoun.present? ? @client_pronoun = @client.other_pronoun : @client_pronoun = @client.pronoun
   end
 
   def new

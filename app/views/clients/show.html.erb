@@ -1,3 +1,13 @@
-CLIENT SHOW PAGE
-
-<%= @client.full_name %>
+<div class='client-profile'>
+  <div class='center'>
+    <div class="card">
+    <div class='client-image'></div>
+      <div class="card-body">
+        <h5 class="card-title"><%= @client.full_name %></h5>
+        <p class="card-text"><b>DOB:</b> <%= @client.dob %></p>
+        <p class="card-text"><b>Pronoun:</b> <%= @client_pronoun %></p>
+        <%= link_to 'Edit Client', edit_client_path(@client, location: @location_param) %>
+      </div>
+    </div>
+  </div>
+</div>
