@@ -13,6 +13,11 @@
   </div>
   <div class='row'>
     <div class='col'>
+      <%= f.file_field :avatar %>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col'>
       <div class='dob-field'>
         DOB
         <%= f.date_field :dob, max: Date.today, class: 'form-control' %>

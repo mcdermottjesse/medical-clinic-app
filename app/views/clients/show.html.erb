@@ -1,7 +1,9 @@
 <div class='client-profile'>
   <div class='center'>
     <div class="card bg-light">
-    <div class='client-image img-fluid'></div>
+      <% if @client.avatar.attached? %>
+        <img src="<%=(url_for(@client.avatar))%>" class='client-image img-fluid'>
+      <% end %>
       <div class="card-body">
         <h5 class="card-title"><%= @client.full_name %></h5>
         <p class="card-text"><b>Client Code:</b> <%= @client.client_code %></p>

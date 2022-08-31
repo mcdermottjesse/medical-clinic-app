@@ -72,6 +72,7 @@ class ClientsController < ApplicationController
       # client_code is auto generated
       :first_name,
       :last_name,
+      :avatar,
       :dob,
       :pronoun,
       :other_pronoun,

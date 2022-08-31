@@ -1,6 +1,8 @@
 class Client < ApplicationRecord
   attr_accessor :skip_consent_validation, :skip_health_card_validation
 
+  has_one_attached :avatar
+
   validates :first_name, :last_name, :dob, :location, :pronoun, :bed_number, :emergency_contact_name, presence: true
 
   validates :consent, presence: true, unless: :skip_consent_validation
