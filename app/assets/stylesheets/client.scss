@@ -61,12 +61,13 @@
 
 .client-profile {
   .card {
+    margin-top: 5em;
     width: 75%;
   }
   .client-image {
     background-image: url("error-image.png");
     background-size: 100% 100%;
-    width: 24em;
+    width: 30em;
     height: 24em;
   }
 }

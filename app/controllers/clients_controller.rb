@@ -10,6 +10,10 @@ class ClientsController < ApplicationController
 
   def show
     @client.other_pronoun.present? ? @client_pronoun = @client.other_pronoun : @client_pronoun = @client.pronoun
+    @health_card_number_label = "Health Card Number: " if @client.health_card_number.present?
+    @health_card_expiry_label = "Health Card Expiry: " if @client.health_card_expiry.present?
+    @email_label = "Email: " if @client.email.present?
+    @general_info_label = "General Info: " if @client.general_info.present? 
   end
 
   def new
@@ -21,7 +25,7 @@ class ClientsController < ApplicationController
     skip_validation_health_card
     respond_to do |format|
       if @client.save
-        format.html { redirect_to clients_path(@client, location: @client.location), notice: "Client successfully created" }
+        format.html { redirect_to client_path(@client, location: @client.location), notice: "#{@client.full_name} successfully created" }
         format.json { render :index, status: :created, location: @client }
       else
         flash.now[:alert] = "There was an error creating the Client"
@@ -37,7 +41,7 @@ class ClientsController < ApplicationController
   def update
     respond_to do |format|
       if @client.update(client_params)
-        format.html { redirect_to clients_path(location: @client.location), notice: "Client successfully updated" }
+        format.html { redirect_to client_path(@client, location: @client.location), notice: "#{@client.full_name} successfully updated" }
         format.json { render :index, status: :ok, location: @client }
       else
         flash.now[:alert] = "There was an error updating the Client"
