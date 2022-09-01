@@ -3,7 +3,7 @@ class Client < ApplicationRecord
 
   has_one_attached :avatar
 
-  validates :first_name, :last_name, :dob, :location, :pronoun, :bed_number, :emergency_contact_name, presence: true
+  validates :first_name, :last_name, :avatar, :dob, :location, :pronoun, :bed_number, :emergency_contact_name, presence: true
 
   validates :consent, presence: true, unless: :skip_consent_validation
 

@@ -13,7 +13,9 @@
   </div>
   <div class='row'>
     <div class='col'>
-      <%= f.file_field :avatar %>
+      <b>Client Photo:</b>
+      <%= f.file_field :avatar, placeholder: 'Upload Client Photo' %>
+      <p class='is-invalid text-danger form-error'><%= @client.avatar_validation %></p>
     </div>
   </div>
   <div class='row'>

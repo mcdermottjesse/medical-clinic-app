@@ -8,6 +8,10 @@ module ValidationMessage
     errors.full_messages_for(:last_name).join("")
   end
 
+  def avatar_validation
+    "Must include photo of client" if errors[:avatar].any?
+  end
+
   def dob_validation
     if dob.present? && dob > Date.today
       errors.add(:dob, message: "must be in the past")
