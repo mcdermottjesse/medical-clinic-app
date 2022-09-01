@@ -62,7 +62,7 @@
 .client-profile {
   .card {
     margin-top: 2em;
-    width: 80%;
+    width: 90%;
     margin-bottom: 2em;
   }
   .row {
@@ -102,6 +102,9 @@
     }
   }
   .client-profile {
+    .card {
+      width: 80%;
+    }
     .row {
       display: flex;
     }
