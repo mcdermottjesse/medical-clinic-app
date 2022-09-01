@@ -6,18 +6,30 @@
         <% if @client.avatar.attached? %>
           <img src="<%=(url_for(@client.avatar))%>" class='client-image img-fluid rounded-start mb-4'>
         <% end %>
-        <p class="card-text"><b>Client Code:</b> <%= @client.client_code %></p>
-        <p class="card-text"><b>Bed Number:</b> <%= @client.bed_number %></p>
-        <p class="card-text"><b>Location:</b> <%= @client.location %></p>
-        <p class="card-text"><b>DOB:</b> <%= @client.dob %></p>
-        <p class="card-text"><b>Pronoun:</b> <%= @client_pronoun %></p>
-        <p class="card-text"><b><%= @health_card_number_label %></b> <%= @client.health_card_number %></p>
-        <p class="card-text"><b><%= @health_card_expiry_label %></b> <%= @client.health_card_expiry %></p>
-        <p class="card-text"><b><%= @email_label %></b> <%= @client.email %></p>
-        <p class="card-text"><b>Phone Number:</b> <%= @client.phone_number %></p>
-        <p class="card-text"><b>Emergency Contact Name:</b> <%= @client.emergency_contact_name %></p>
-        <p class="card-text"><b>Emergency Contact Info:</b> <%= @client.emergency_contact_info %></p>
-        <p class="card-text"><b><%=  @general_info_label %></b> <%= @client.general_info %></p>
+        <p><b>Client Code:</b> <%= @client.client_code %></p>
+        <p><b>Bed Number:</b> <%= @client.bed_number %></p>
+        <p><b>Location:</b> <%= @client.location %></p>
+        <p><b>DOB:</b> <%= @client.dob %></p>
+        <p><b>Pronoun:</b> <%= @client_pronoun %></p>
+        <p><b><%= @health_card_number_label %></b> <%= @client.health_card_number %></p>
+        <p><b><%= @health_card_expiry_label %></b> <%= @client.health_card_expiry %></p>
+        <p><b><%= @email_label %></b> <%= @client.email %></p>
+        <p><b>Phone Number:</b> <%= @client.phone_number %></p>
+        <p>
+          <b>Emergency Contact Name:</b> 
+          </br> 
+          <%= @client.emergency_contact_name %>
+        </p>
+        <p>
+          <b>Emergency Contact Info:</b> 
+          </br>
+          <%= @client.emergency_contact_info %>
+        </p>
+        <p>
+          <b><%= @general_info_label %></b> 
+          </br> 
+          <%= @client.general_info %>
+        </p>
         <%= link_to 'Edit Client', edit_client_path(@client, location: @location_param), class: 'card-link' %>
         <%= link_to 'Back', clients_path(location: @location_param), class: 'card-link'%>
       </div>
