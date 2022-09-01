@@ -1,4 +1,6 @@
 class ClientsController < ApplicationController
+  include ClientHelper
+
   before_action :set_client, only: [:show, :edit, :update, :destroy]
   before_action :skip_validation_health_card, :skip_validation_consent, only: [:update]
   before_action :health_card_checkbox_checked, only: [:edit]
@@ -9,11 +11,7 @@ class ClientsController < ApplicationController
   end
 
   def show
-    @client.other_pronoun.present? ? @client_pronoun = @client.other_pronoun : @client_pronoun = @client.pronoun
-    @health_card_number_label = "Health Number: " if @client.health_card_number.present?
-    @health_card_expiry_label = "Health Card Expiry: " if @client.health_card_expiry.present?
-    @email_label = "Email: " if @client.email.present?
-    @general_info_label = "General Info: " if @client.general_info.present? 
+    display_content_if_present
   end
 
   def new

@@ -1,4 +1,4 @@
-module ErrorResponse
+module Errors::ErrorResponse
   extend ActiveSupport::Concern
 
   included do
@@ -10,10 +10,10 @@ module ErrorResponse
   def internal_server_error
     begin
       yield
-    rescue ClientException => e
+    rescue Errors::ClientException => e
       @error = e
       render "errors/internal_server_error"
-    rescue UserException => e
+    rescue Errors::UserException => e
       @error = e
       render "errors/internal_server_error"
     rescue => e

@@ -1,2 +1,0 @@
-class UserException < StandardError
-end 
