@@ -12,6 +12,7 @@ class ClientsController < ApplicationController
 
   def show
     display_content_if_present
+    health_card_expiry_warning
   end
 
   def new

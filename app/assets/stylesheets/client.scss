@@ -75,6 +75,11 @@
   .card-title {
     margin-top: 2em;
   }
+  .alert-danger {
+    padding: 5px;
+    font-size: x-small;
+    border-radius: 8px;
+  }
 }
 
 @include md-up {

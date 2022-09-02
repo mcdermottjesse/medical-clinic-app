@@ -19,7 +19,14 @@
               <p><b>DOB:</b> <%= @client.dob %></p>
               <p><b>Pronoun:</b> <%= @client_pronoun %></p>
               <p><b><%= @health_card_number_label %></b> <%= @client.health_card_number %></p>
-              <p><b><%= @health_card_expiry_label %></b> <%= @client.health_card_expiry %></p>
+              <p>
+                <b><%= @health_card_expiry_label %></b> 
+                <%= @client.health_card_expiry %>
+                <br>
+                <% if @health_card_expiry_message.present? %>
+                  <em class="alert-danger"><%= @health_card_expiry_message %></em>
+                <% end %>
+              </p>
               <p><b><%= @email_label %></b> <%= @client.email %></p>
               <p><b>Phone Number:</b> <%= @client.phone_number %></p>
               <p>
