@@ -9,7 +9,7 @@ describe('Test User feature', function() {
 		cy.contains('Signed in successfully.');
 		cy.contains('Home');
 		cy.get('.bi').click();
-		cy.get('.dropdown-menu > [href="/admin/users?location=Victoria+General"]').click();
+    cy.get('.nav-dropdown > [href="/admin/users?location=Victoria+General"]').click();
 	});
 	afterEach('logout', function() {
 		cy.get('.bi').click();
@@ -51,7 +51,7 @@ describe('Test User feature', function() {
     cy.get('#user_account_type').select('Manager');
     cy.get('#user_location').select('Sanich Peninsula');
     cy.get('.btn-primary').click();
-    cy.contains('Succesfully updated');
+    cy.contains('User succesfully updated');
     cy.contains('Users');
     cy.contains('New User');
   });
@@ -66,12 +66,12 @@ describe('Test User feature', function() {
     cy.contains('User was successfully invited');
   });
   it('destroys a User', function() {
-    cy.get('#location').select('Nanaimo Regional');
+    cy.get(':nth-child(2) > form > #location').select('Nanaimo Regional');
     cy.contains('Second Test').click();
     cy.contains("Edit User");
     cy.contains("Delete User");
     cy.get('.delete-btn').click();
-    cy.contains("Successfully destroyed");
+    cy.contains("User successfully destroyed");
     cy.contains('Second Test').should('not.exist');
   })
 });

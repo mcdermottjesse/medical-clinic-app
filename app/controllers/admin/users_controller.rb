@@ -1,6 +1,5 @@
 class Admin::UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update, :destroy]
-  before_action :authorize_resource
 
   def index
     @location_param == 'All Locations' ? users = User.all.order('last_name ASC') : users = User.where(location: @location_param).order('last_name ASC')
@@ -70,9 +69,5 @@ class Admin::UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
-  end
-
-  def authorize_resource
-    authorize [:admin, :user]
   end
 end

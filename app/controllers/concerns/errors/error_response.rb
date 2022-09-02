@@ -17,7 +17,7 @@ module Errors::ErrorResponse
       @error = e
       render "errors/internal_server_error"
     rescue => e
-      @development_error = e # display error ourput for development only! delete in production
+      @development_error = e # display error ourput for development only! delete in production?
       render "errors/internal_server_error"
     end
   end
