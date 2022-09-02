@@ -7,11 +7,13 @@ module ClientHelper
     @general_info_label = "General Info: " if @client.general_info.present?
   end
 
-  def health_card_expiry_warning
-    @health_card_expiry_message = "Health Card has expired" if Date.today >= @client.health_card_expiry
-    if Date.today + 2.weeks >= @client.health_card_expiry && Date.today < @client.health_card_expiry
-      days_until_expiry = @client.health_card_expiry - Date.today
-      @health_card_expiry_message = "Health Card expires in #{days_until_expiry.to_i} day/s"
+  def health_card_expiry_warning 
+    if @client.health_card_expiry.present?
+      @health_card_expiry_message = "Health Card has expired" if Date.today >= @client.health_card_expiry
+      if Date.today + 2.weeks >= @client.health_card_expiry && Date.today < @client.health_card_expiry
+        days_until_expiry = @client.health_card_expiry - Date.today
+        @health_card_expiry_message = "Health Card expires in #{days_until_expiry.to_i} day/s"
+      end
     end
   end
 end

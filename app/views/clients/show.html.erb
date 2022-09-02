@@ -22,8 +22,8 @@
               <p>
                 <b><%= @health_card_expiry_label %></b> 
                 <%= @client.health_card_expiry %>
-                <br>
                 <% if @health_card_expiry_message.present? %>
+                  <br>
                   <em class="alert-danger"><%= @health_card_expiry_message %></em>
                 <% end %>
               </p>
