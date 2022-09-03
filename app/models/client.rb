@@ -86,7 +86,7 @@ class Client < ApplicationRecord
 
       self.client_code = first_name[0].capitalize + last_name[0].capitalize + ([*("A".."Z"), *("0".."9")]).sample(4).join + dob.strftime("%y")
       # * = splat operator, it destructures array
-
+      # client code 8 numbers/letters
       raise ClientException.new("Could not find a unique Client Code. Please try again. If problem persists please contact Site Adminstrator") if counter > 100
 
       break unless Client.pluck(:client_code).include?(self.client_code)
