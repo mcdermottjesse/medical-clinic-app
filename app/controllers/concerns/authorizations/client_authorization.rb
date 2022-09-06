@@ -6,7 +6,7 @@ module Authorizations::ClientAuthorization
   end
 
   def authorize_client_resource
-    authorize [:client]
+    authorize :client
   end
 
   def clients_controller?
