@@ -4,7 +4,7 @@ class ClientPolicy < ApplicationPolicy
   end
 
   def show?
-    authorized_user?
+    valid_user?
   end
 
   def new?

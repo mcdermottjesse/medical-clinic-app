@@ -47,14 +47,14 @@
     <div class='col'>
       <div class='expiry-field'>
         Health Card Expiry
-        <%= f.date_field :health_card_expiry, min: Date.tomorrow, class: 'form-control' %>
+        <%= f.date_field :health_card_expiry, min: Date.tomorrow, class: 'form-control', id: 'health-card-expiry-field' %>
         <p class='date-text'>Ensure date <b>is</b> in the future and is filled correctly</p>
       </div>
       <p class='is-invalid text-danger form-error'> <%= @client.health_card_expiry_validation %> </p>
     </div>
   </div>
   <div>
-    <%= f.check_box :valid_health_card, checked: @health_card_number_present_check || @health_card_expiry_present_check, class: 'mb-3 me-1 checkbox' %> Check if <b>NO</b> healthcard provided
+    <%= f.check_box :valid_health_card, checked: @health_card_number_present_check || @health_card_expiry_present_check, class: 'mb-3 me-1 checkbox', id: 'health-card-checkbox' %> Check if <b>NO</b> healthcard provided
   </div>
   <div class='row'>
     <div class='col'>
