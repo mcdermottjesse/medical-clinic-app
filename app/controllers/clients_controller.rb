@@ -8,7 +8,22 @@ class ClientsController < ApplicationController
 
   def index
     @location_param == "All Locations" ? clients = Client.all.order("last_name ASC") : clients = Client.where(location: @location_param).order("last_name ASC")
-    @clients = clients.paginate(page: params[:page], per_page: 6)
+    
+    if client_autocomplete_params
+      client_suggestions = Client.select(:first_name, :last_name).distinct
+      if client_autocomplete_params == "All Locations"
+        @clients = client_suggestions.order("last_name ASC")
+      else
+        @clients = client_suggestions.where(location: client_autocomplete_params).order("last_name ASC")
+      end
+      render :json => @clients
+    end
+    
+    if search_params
+      @clients = clients.search_record(search_params).paginate(page: params[:page], per_page: 6)
+    else
+      @clients = clients.paginate(page: params[:page], per_page: 6)
+    end
   end
 
   def show
@@ -91,6 +106,17 @@ class ClientsController < ApplicationController
 
   def set_client
     @client = Client.find(params[:id])
+  end
+
+  def search_params
+    params.require(:search) if params[:search].present?
+  end
+
+  def client_autocomplete_params
+    if params[:client_search] == "true"
+      params.require(:client_search)
+      params.require(:client_location)
+    end
   end
 
   def skip_validation_health_card

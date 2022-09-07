@@ -3,8 +3,8 @@ import axios from 'axios';
 
 const inputRef = React.createRef();
 
-const UserAutocomplete = () => {
-	const [ users, setUsers ] = useState([]);
+const ClientAutocomplete = () => {
+	const [ clients, setClients ] = useState([]);
 	const [ text, setText ] = useState('');
 	const [ suggestions, setSuggestions ] = useState([]);
 	const [ open, setOpen ] = useState(false);
@@ -16,19 +16,19 @@ const UserAutocomplete = () => {
 	};
 
 	useEffect(() => {
-		const loadUsers = async () => {
+		const loadClients = async () => {
 			const urlParams = new URLSearchParams(location.search);
 			const findLocation = urlParams.get('location');
 			const request = {
 				params: {
-					user_search: 'true',
-					user_location: findLocation
+					client_search: 'true',
+					client_location: findLocation
 				}
 			};
-			const response = await axios.get('/admin/users.json', request);
-			setUsers(response.data);
+			const response = await axios.get('/clients.json', request);
+			setClients(response.data);
 		};
-		loadUsers();
+		loadClients();
 		document.addEventListener('click', handleOuterClick);
 
 		return () => {
@@ -37,7 +37,7 @@ const UserAutocomplete = () => {
 	}, []);
 
 	const onClickHandler = (text) => {
-		// access search params when user name suggestion clicked from autocomplete dropdown
+		// access search params when client name suggestion clicked from autocomplete dropdown
 		// location.search = window.location.search
 		const searchParams = new URLSearchParams(location.search);
 		const searchLocation = searchParams.get('location');
@@ -50,9 +50,9 @@ const UserAutocomplete = () => {
 	const onChangeHandler = (text) => {
 		let matches = [];
 		if (text.length > 0) {
-			matches = users.filter((user) => {
+			matches = clients.filter((client) => {
 				const regex = new RegExp(`${text}`, 'gi');
-				return `${user.first_name} ${user.last_name}`.match(regex);
+				return `${client.first_name} ${client.last_name}`.match(regex);
 			});
 		}
 		setSuggestions(matches);
@@ -77,7 +77,7 @@ const UserAutocomplete = () => {
 			/>
 			<div className={`drop-down-list ${open ? '' : 'hidden'}`} ref={inputRef}>
 				{suggestions.length === 0 ? (
-					<div className="drop-down-element"> No user found </div>
+					<div className="drop-down-element"> No client found </div>
 				) : (
 					suggestions &&
 					suggestions.map((suggestion, i) => (
@@ -95,4 +95,4 @@ const UserAutocomplete = () => {
 	);
 };
 
-export default UserAutocomplete;
+export default ClientAutocomplete;
