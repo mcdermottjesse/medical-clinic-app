@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   end
 
   def user_not_authorized
-    flash[:alert] = 'You are not authorized to perform this action.'
+    flash[:alert] = "You are not authorized to perform this action."
     redirect_back(fallback_location: authenticated_root_path)
   end
 
@@ -27,5 +27,13 @@ class ApplicationController < ActionController::Base
 
   def valid_user
     @valid_user = current_user.account_type == "Admin" || current_user.account_type == "Manager"
+  end
+
+  def unauthorized_location
+    # stops unauthorized users accessing other locations via url params
+    if !@valid_user && @location_param != current_user.location
+      flash[:alert] = "You are not authorized to perform this action."
+      redirect_back(fallback_location: authenticated_root_path)
+    end
   end
 end

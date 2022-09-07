@@ -4,6 +4,7 @@ class ClientsController < ApplicationController
   before_action :set_client, only: [:show, :edit, :update, :destroy]
   before_action :skip_validation_health_card, :skip_validation_consent, only: [:update]
   before_action :health_card_checkbox_checked, only: [:edit]
+  before_action :unauthorized_location, only: [:index, :show]
 
   def index
     @location_param == "All Locations" ? clients = Client.all.order("last_name ASC") : clients = Client.where(location: @location_param).order("last_name ASC")
