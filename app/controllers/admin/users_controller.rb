@@ -1,6 +1,6 @@
 class Admin::UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update, :destroy]
-  before_action :unauthorized_location, only: [:index]
+  before_action :unauthorized_location, unless: :user_autocomplete_params
 
   def index
     @location_param == "All Locations" ? users = User.all.order("last_name ASC") : users = User.where(location: @location_param).order("last_name ASC")
