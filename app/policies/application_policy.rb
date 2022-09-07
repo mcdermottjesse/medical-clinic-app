@@ -40,6 +40,10 @@ class ApplicationPolicy
     user.admin? || user.manager?
   end
 
+  def mid_level_authorized_user?
+    user.admin? || user.manager? || user.doctor? || user.nurse?
+  end
+
   def valid_user?
     user.admin? || user.manager? || user.doctor? || user.nurse? || user.care_worker?
   end

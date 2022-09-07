@@ -8,19 +8,19 @@ class ClientPolicy < ApplicationPolicy
   end
 
   def new?
-    authorized_user?
+    mid_level_authorized_user?
   end
 
   def create?
-    authorized_user?
+    mid_level_authorized_user?
   end
 
   def edit?
-    authorized_user?
+    mid_level_authorized_user?
   end
 
   def update?
-    authorized_user?
+    mid_level_authorized_user?
   end
 
   def destroy?
