@@ -4,7 +4,11 @@ RSpec.describe "clients", type: :request do
   include Devise::Test::IntegrationHelpers
 
   let(:valid_user) {
-    { first_name: "Valid", last_name: "Test", account_type: "Admin", location: "Victoria General", email: "valid.testt@email.com", password: "Test1234!" }
+    { first_name: "Valid", last_name: "Test", account_type: "Admin", location: "Victoria General", email: "valid.test@email.com", password: "Test1234!" }
+  }
+
+  let(:invalid_user) {
+    { first_name: "Invalid", last_name: "User", account_type: "Care Worker", location: "Victoria General", email: "invalid.test@email.com", password: "Test1234!" }
   }
 
   let(:valid_client) {
@@ -27,7 +31,6 @@ RSpec.describe "clients", type: :request do
       consent: true
     }
   }
-
 
   let(:new_client) {
     { 
@@ -105,7 +108,23 @@ RSpec.describe "clients", type: :request do
         expect(response).to be_successful
       end
     end
-    # add unauthorized test once authorizations put in place. e.g if user is not admin/manager can only create for own location?
+    context "unauthorized User" do
+      it "does not create a new Client if User account type is unauthorized" do
+        sign_out @user
+        user = User.create! invalid_user
+        sign_in user
+        expect {
+          post clients_path, params: { client: valid_client, location: valid_client[:location]}
+        }.to change(Client, :count).by(0)
+      end
+      it "redirects to Home page" do
+        sign_out @user
+        user = User.create! invalid_user
+        sign_in user
+        post clients_path, params: { client: valid_client, location: valid_client[:location] }
+        expect(response).to redirect_to(authenticated_root_path)
+      end
+    end
   end
 
   describe "PATCH /update" do
@@ -124,7 +143,7 @@ RSpec.describe "clients", type: :request do
         phone_number: "(999) 444-0000", 
         emergency_contact_name: "Emergency Person",
         emergency_contact_info: "(123) 456-7890",
-        location: "Nanaimo General",
+        location: "Victoria General",
         bed_number: 9,
         general_info: "General info for Test Client updated",
         consent: true
@@ -143,7 +162,7 @@ RSpec.describe "clients", type: :request do
         expect(@client.email).to eq("updateclient@email.com")
         expect(@client.phone_number).to eq("(999) 444-0000")
         expect(@client.bed_number).to eq(9)
-        expect(@client.location).to eq("Nanaimo General")
+        expect(@client.location).to eq("Victoria General")
         expect(@client.general_info).to eq("General info for Test Client updated")
       end
       it "redirects to Client show after update" do
@@ -165,7 +184,24 @@ RSpec.describe "clients", type: :request do
         expect(response).to be_successful
       end
     end
-     # add unauthorized test once authorizations put in place. e.g if user is not admin/manager can only edit for own location?
+     context "unauthorized User" do
+      it "does not update a Client if User account type is unauthorized" do
+        sign_out @user
+        user = User.create! invalid_user
+        sign_in user
+        patch client_path(@client), params: { client: updated_attributes, location: updated_attributes[:location]}
+        @client.reload
+        expect(@client.first_name).to_not eq("Testupdate")
+        expect(@client.first_name).to eq("Test")
+      end
+      it "redirects to Home page" do
+        sign_out @user
+        user = User.create! invalid_user
+        sign_in user
+        patch client_path(@client), params: { client: updated_attributes, location: updated_attributes[:location] }
+        expect(response).to redirect_to(authenticated_root_path)
+      end
+    end
   end
   describe "DELETE /destroy" do
     context "Can destroy a Client" do
@@ -179,6 +215,22 @@ RSpec.describe "clients", type: :request do
         expect(response).to redirect_to(clients_path)
       end
     end
-    # add unauthorized test once authorizations put in place. e.g if user is not admin/manager can only delete for own location?
+    context "unauthorized User" do
+      it "does not destroy a Client if User account type is unauthorized" do
+        sign_out @user
+        user = User.create! invalid_user
+        sign_in user
+        expect {
+          delete client_path(@client)
+        }.to change(Client, :count).by(0)
+      end
+      it "redirects to Home page" do
+        sign_out @user
+        user = User.create! invalid_user
+        sign_in user
+        delete client_path(@client)
+        expect(response).to redirect_to(authenticated_root_path)
+      end
+    end
   end
 end

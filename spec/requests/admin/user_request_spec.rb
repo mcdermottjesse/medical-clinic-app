@@ -102,7 +102,7 @@ RSpec.describe "admin/users", type: :request do
         user = User.create! new_user_attributes
         patch admin_user_path(user), params: { user: updated_attributes }
         user.reload
-        expect(response).to redirect_to(admin_users_path)
+        expect(response).to redirect_to(admin_users_path(location: user.location))
       end
     end
     context "invalid parameters" do
