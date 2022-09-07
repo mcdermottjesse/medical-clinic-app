@@ -27,7 +27,7 @@ class Admin::UsersController < ApplicationController
     @user.skip_password_validation = true
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to admin_users_path(location: @location_param), notice: "User succesfully updated" }
+        format.html { redirect_to admin_users_path(location: @user.location), notice: "User succesfully updated" }
         format.json { render :index, status: :ok, location: @user }
       else
         flash.now[:alert] = "There was an error updating the User"
