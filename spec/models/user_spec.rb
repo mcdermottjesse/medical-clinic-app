@@ -116,7 +116,7 @@ RSpec.describe User, type: :model do
       expect(user.nurse?).to be_falsey
     end
     it "searches a User by name" do
-      # searching from test db - therefore test db needs to be populated from basic.rb
+      # searching from test db - therefore test db needs to be populated
       result = User.search_record("Cyp")
       expect(result[0].first_name).to eq("Cypress")
     end

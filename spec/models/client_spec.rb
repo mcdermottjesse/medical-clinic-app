@@ -148,7 +148,7 @@ RSpec.describe Client, type: :model do
     end
 
     it "searches a Client by name" do
-      # searching from test db - therefore test db needs to be populated from basic.rb
+      # searching from test db - therefore test db needs to be populated
       result = Client.search_record("Fir")
       expect(result[0].first_name).to eq("First")
     end
