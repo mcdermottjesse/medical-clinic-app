@@ -21,7 +21,7 @@ RSpec.describe User, type: :model do
     expect(subject).to_not be_valid
   end
 
-  it "is not valid without a location" do
+  it "is not valid without a account type" do
     subject.account_type = nil
     expect(subject).to_not be_valid
   end
