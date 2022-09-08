@@ -22,13 +22,15 @@ RSpec.describe Client, type: :model do
     )
   }
 
-  client =
-    Client.create(
+  # using let instead of Client.create! here stops test db from populating.
+  let(:client_attributes) {
+    {
       first_name: "Create",
       last_name: "Client",
       avatar: Rack::Test::UploadedFile.new("spec/images/blank-profile-picture.png"),
       dob: "1989-01-01",
-      pronoun: "He/Him",
+      pronoun: "Other",
+      other_pronoun: "Something else",
       health_card_number: "(123)4567890",
       health_card_expiry: "2028-01-01",
       email: "createclient@email.com",
@@ -39,7 +41,8 @@ RSpec.describe Client, type: :model do
       bed_number: 17,
       general_info: "General info for Create Client",
       consent: true,
-    )
+    }
+  }
 
   it "is valid with valid attributes" do
     expect(subject).to be_valid
@@ -58,6 +61,7 @@ RSpec.describe Client, type: :model do
   end
 
   it "client code is formatted with 8 numbers/letters which includes Client initials and dob" do
+    client = Client.create! client_attributes
     expect(client.client_code).to_not be_nil
     expect(client.client_code.length).to be (8)
     expect(client.client_code).to include("CC")
@@ -89,6 +93,17 @@ RSpec.describe Client, type: :model do
     expect(subject).to_not be_valid
   end
 
+  it "will not validate other pronoun if pronoun selected is 'Other'" do
+    subject.pronoun = "Other"
+    expect(subject).to_not be_valid
+  end
+
+  it "will clear other pronoun value if pronoun is switched from 'Other' to a different value" do
+    client = Client.create! client_attributes
+    client.update!(pronoun: "They/Them")
+    expect(client.other_pronoun).to be_nil
+  end
+
   it "is not valid without a emergency contact name" do
     subject.emergency_contact_name = nil
     expect(subject).to_not be_valid
@@ -116,17 +131,26 @@ RSpec.describe Client, type: :model do
 
     it "will format health card number correctly and remove symbols if formatted without letters and has a length >= 10 <= 12" do
       # original input (123)4567890
+      client = Client.create! client_attributes
       expect(client.health_card_number).to eq("1234-567-890")
     end
 
     it "will format phone number correctly and remove symbols if formatted with numbers only and has a length >= 10 <= 14" do
       # original input 123-456-7890
+      client = Client.create! client_attributes
       expect(client.phone_number).to eq("(123) 456-7890")
     end
 
     it "will format emergency contact info correctly and remove symbols if formatted with numbers only and has a length >= 10 <= 14" do
       # original input 1234.4567.890
+      client = Client.create! client_attributes
       expect(client.emergency_contact_info).to eq("(123) 456-7890")
+    end
+
+    it "searches a Client by name" do
+      # searching from test db - therefore test db needs to be populated from basic.rb
+      result = Client.search_record("Fir")
+      expect(result[0].first_name).to eq("First")
     end
   end
 end
