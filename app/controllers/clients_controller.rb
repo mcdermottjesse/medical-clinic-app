@@ -109,7 +109,7 @@ class ClientsController < ApplicationController
   end
 
   def search_params
-    params.require(:search) if params[:search].present?
+    params.require(:search) if @search_param.present?
   end
 
   def client_autocomplete_params

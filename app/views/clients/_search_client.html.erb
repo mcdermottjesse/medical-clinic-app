@@ -3,6 +3,7 @@
   <div class='search-bar'>
     <div id='auto-complete-client'></div>
   </div>
+  <%= link_to 'All Clients', clients_path(location: @location_param), class: 'btn-primary' if @search_param.present? %>
 <% end %>
 
 <%# form tag enables name search without choosing name from autocomplete dropdown %>
