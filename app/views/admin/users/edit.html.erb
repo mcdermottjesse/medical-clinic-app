@@ -1,10 +1,10 @@
-<div class="users-page">
-  <div class="user-form">
+<div class='users-page'>
+  <div class='form'>
     <h2>Edit User</h2>
     <%= render 'form' %>
-    <div class="mt-4">
-      <%= link_to "Back", admin_users_path(location: @location_param) %>
+    <div class='mt-4'>
+      <%= link_to 'Back', admin_users_path(location: @location_param) %>
     </div>
-    <%= button_to "Delete User", admin_user_path(location: @location_param), method: :delete, form: { data: { turbo_confirm: "Are you sure you want to delete this user?" } }, class: "delete-btn" %>
+    <%= button_to 'Delete User', admin_user_path(location: @location_param), { onclick: "return confirm('Are you sure you want to delete this client?')", method: :delete, class: 'delete-btn' } %>
   </div>
 </div>

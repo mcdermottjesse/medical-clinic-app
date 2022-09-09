@@ -21,7 +21,7 @@ RSpec.describe User, type: :model do
     expect(subject).to_not be_valid
   end
 
-  it "is not valid without a location" do
+  it "is not valid without a account type" do
     subject.account_type = nil
     expect(subject).to_not be_valid
   end
@@ -116,7 +116,7 @@ RSpec.describe User, type: :model do
       expect(user.nurse?).to be_falsey
     end
     it "searches a User by name" do
-      # searching from test db
+      # searching from test db - therefore test db needs to be populated
       result = User.search_record("Cyp")
       expect(result[0].first_name).to eq("Cypress")
     end

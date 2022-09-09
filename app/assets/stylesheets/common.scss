@@ -1,4 +1,4 @@
-@import "variables";
+@import 'variables';
 
 .btn-primary:not(.hover) {
   display: flex;
@@ -15,7 +15,7 @@
 }
 
 .logo {
-  background-image: url("home-logo.png");
+  background-image: url('home-logo.png');
   background-size: 100% 100%;
   caret-color: $purple;
   width: 18.25em;
@@ -37,7 +37,7 @@
   flex-direction: column;
 }
 
-.center_item {
+.center-item {
   display: flex;
   justify-content: center;
 }
@@ -67,6 +67,28 @@
   font-size: 16px;
 }
 
+.details {
+  height: 60vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-color: $grey transparent; //Firefox scrollbar css
+}
+
+//Chrome, Safari etc scrollbar css
+.details::-webkit-scrollbar {
+  width: 10px;
+}
+
+.details::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.details::-webkit-scrollbar-thumb {
+  background: $grey;
+  border-radius: 10px;
+  margin-bottom: 10em;
+}
+
 .drop-down-list {
   position: absolute;
   background-color: $teal;
@@ -90,6 +112,11 @@
       color: $purple;
     }
   }
+}
+
+.checkbox {
+  transform: scale(1.25);
+  margin-left: 0.5em;
 }
 
 .pagination {
@@ -124,6 +151,14 @@
 }
 .next_page {
   margin-left: 1em;
+}
+
+.delete-btn {
+  margin-top: 2em;
+  margin-bottom: 2em;
+  background: none;
+  border: none;
+  color: $warning;
 }
 
 @include md-up {

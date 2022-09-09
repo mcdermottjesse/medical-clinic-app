@@ -1,0 +1,21 @@
+<div class='error-page'>
+  <div class='center'>
+    <div class='error-message'>
+      <h1>Something went wrong </h1>
+      <h3> 500 Status Error</h3>
+      <p>
+       Please try again. If problem persists please contact Site Adminstrator.
+      </p>
+      <p>
+        <%= @error %>
+      </p>
+      <p>
+        <%= @development_error %>
+      <p>
+    </div>
+    <div class='error-image'></div>
+    <div>
+      <%= link_to 'Back to Home Page', authenticated_root_path, class: 'mt-5 mb-4 btn-primary'  %>
+    </div>
+  </div>
+</div>

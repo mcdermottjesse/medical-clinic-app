@@ -1,0 +1,13 @@
+<div class='error-page'>
+  <div class='center'>
+    <div class='error-message'>
+      <h1>The page you were looking for doesn't exist.</h1>
+      <h3>404 Status Error</h3>
+      <p>You may have mistyped the address or the page may have moved.</p>
+    </div>
+    <div class='error-image'></div>
+    <div>
+      <%= link_to @error_link_text, authenticated_root_path, class: 'mt-5 mb-4 btn-primary' %>
+    </div>
+  </div>
+</div>

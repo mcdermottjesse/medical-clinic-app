@@ -1,0 +1,25 @@
+@import "variables";
+
+.error-page {
+  .error-message {
+    margin-top: 2em;
+    width: 85%;
+  }
+  .error-image {
+    background-image: url("error-image.png");
+    background-size: 100% 100%;
+    width: 24em;
+    height: 24em;
+  }
+  .btn-primary:not(.hover) {
+    background-color: $purple;
+  }
+}
+
+@include md-up {
+  .error-page {
+    .error-message {
+      width: unset;
+    }
+  }
+}

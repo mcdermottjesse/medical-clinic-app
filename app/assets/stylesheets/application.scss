@@ -13,7 +13,7 @@
  *= require_tree .
  *= require_self
  */
-@import "variables";
+@import 'variables';
 
 html,
 body {
@@ -22,10 +22,7 @@ body {
   color: $black;
   background-color: $teal;
   caret-color: $purple;
-}
-.form-select,
-.form-control {
-  font-size: 16px;
+  margin-bottom: 1em;
 }
 
 .input {
@@ -42,14 +39,6 @@ body {
 .input:focus {
   outline: none;
   border: 3px solid $purple;
-}
-
-.form-select:focus,
-.form-control:focus,
-.form-control:visited {
-  border-width: 3px;
-  border-color: $black;
-  box-shadow: none;
 }
 
 button {

@@ -17,14 +17,14 @@ const UserAutocomplete = () => {
 
 	useEffect(() => {
 		const loadUsers = async () => {
-     const urlParams = new URLSearchParams(location.search);
-     const findLocation = urlParams.get("location");
-      const request = {
-        params: {
-          user_search: "true",
-          user_location: findLocation,
-        },
-      };
+			const urlParams = new URLSearchParams(location.search);
+			const findLocation = urlParams.get('location');
+			const request = {
+				params: {
+					user_search: 'true',
+					user_location: findLocation
+				}
+			};
 			const response = await axios.get('/admin/users.json', request);
 			setUsers(response.data);
 		};
@@ -37,14 +37,14 @@ const UserAutocomplete = () => {
 	}, []);
 
 	const onClickHandler = (text) => {
-    // access search params when user name suggestion clicked from autocomplete dropdown
-    // location.search = window.location.search
-    const searchParams = new URLSearchParams(location.search);
-    const searchLocation = searchParams.get("location");
-    // location = window.location.href 
-    location =`?search=${text}&location=${searchLocation}`;
+		// access search params when user name suggestion clicked from autocomplete dropdown
+		// location.search = window.location.search
+		const searchParams = new URLSearchParams(location.search);
+		const searchLocation = searchParams.get('location');
+		// location = window.location.href
+		location = `?search=${text}&location=${searchLocation}`;
 
-    setSuggestions([]);
+		setSuggestions([]);
 	};
 
 	const onChangeHandler = (text) => {

@@ -1,9 +1,9 @@
 class Admin::UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update, :destroy]
-  before_action :authorize_resource
+  before_action :unauthorized_location, unless: :user_autocomplete_params
 
   def index
-    @location_param == "All Locations" ? users = User.all : users = User.where(location: @location_param)
+    @location_param == "All Locations" ? users = User.all.order("last_name ASC") : users = User.where(location: @location_param).order("last_name ASC")
 
     if user_autocomplete_params
       user_suggestions = User.select(:first_name, :last_name).distinct
@@ -27,10 +27,10 @@ class Admin::UsersController < ApplicationController
     @user.skip_password_validation = true
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to admin_users_path(location: @location_param), notice: "Succesfully updated" }
-        format.json { render :index, status: :created, location: @user }
+        format.html { redirect_to admin_users_path(location: @user.location), notice: "User succesfully updated" }
+        format.json { render :index, status: :ok, location: @user }
       else
-        flash[:alert] = "Unable to save the User: #{@user.errors.full_messages.join(", ")}."
+        flash.now[:alert] = "There was an error updating the User"
         format.html { render :edit }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
@@ -40,8 +40,14 @@ class Admin::UsersController < ApplicationController
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to admin_users_path(location: @location_param), notice: "Successfully destroyed." }
-      format.json { head :no_content }
+      if @user.destroyed?
+        format.html { redirect_to admin_users_path(location: @location_param), notice: "User successfully destroyed" }
+        format.json { head :no_content }
+      else
+        flash.now[:alert] = "There was an error deleting the User"
+        format.html { render :edit }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -64,9 +70,5 @@ class Admin::UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
-  end
-
-  def authorize_resource
-    authorize [:admin, :user]
   end
 end

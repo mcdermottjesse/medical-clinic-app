@@ -1,30 +1,30 @@
-<div class="users-page">
-  <div class="user-form">
-    <%= form_with model: [:admin, @user], url: { action: :update, location: @location_param }, data: { turbo: false } do |f| %>
-      <div>
-        First Name
-        <%= f.text_field :first_name, class: "form-control" %>
-      </div>
-      <div>
-        Last Name 
-        <%= f.text_field :last_name, class: "form-control" %>
-      </div>
-      <div>
-        Email
-        <%= f.text_field :email, class: "form-control" %>
-      </div>
-      <div>
-        Account Type
-        <%= f.select :account_type, options_for_select(User::ACCOUNTS, @user.account_type), {}, { class: "form-select" } %>
-      </div>
-      <div>
-        Location
-        <%= f.select :location, options_for_select(User::LOCATIONS.drop(1), @user.location), {}, { class: "form-select" } %>
-      </div>
-      <div class="actions">
-        <%= f.submit "Save", class: "btn-primary" %>
-      </div>
-      <%= hidden_field_tag(:location, @location_param) %>
-    <% end %>
+<%= form_with model: [:admin, @user], url: { action: :update, location: @location_param } do |f| %>
+  <div>
+    First Name
+    <%= f.text_field :first_name, class: 'form-control' %>
+    <p class='is-invalid text-danger form-error'> <%= @user.errors.full_messages_for(:first_name).join("") %> </p>
   </div>
-</div>
+  <div>
+    Last Name 
+    <%= f.text_field :last_name, class: 'form-control' %>
+    <p class='is-invalid text-danger form-error'> <%= @user.errors.full_messages_for(:last_name).join("") %> </p>
+  </div>
+  <div>
+    Email
+    <%= f.email_field :email, class: 'form-control' %>
+  </div>
+  <div>
+    Account Type
+    <%= f.select :account_type, options_for_select(User::ACCOUNT_TYPES, @user.account_type), {}, { class: 'form-select' } %>
+    <p class='is-invalid text-danger form-error'> <%= @user.errors.full_messages_for(:account_type).join("") %> </p>
+  </div>
+  <div>
+    Location
+    <%= f.select :location, options_for_select(User::LOCATIONS.drop(1), @user.location), {}, { class: 'form-select' } %>
+    <p class='is-invalid text-danger form-error'> <%= @user.errors.full_messages_for(:location).join("") %> </p>
+  </div>
+  <div class='actions'>
+    <%= f.submit 'Save', class: 'btn-primary' %>
+  </div>
+  <%= hidden_field_tag(:location, @location_param) %>
+<% end %>

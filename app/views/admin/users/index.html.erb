@@ -1,45 +1,42 @@
-<div class="users-page">
-  <div class="center">
-    <div class="container">
-      <div class="space-between">
+<div class='users-page'>
+  <div class='center'>
+    <div class='container'>
+      <div class='space-between'>
         <h1>Users</h1>
-        <%= render "search_user" %>
+        <%= render 'search_user' %>
       </div>
-      <div class="space-between">
+      <div class='space-between'>
         <div>
-          <%= link_to "New User", new_user_invitation_path(location: @location_param), class: "btn-primary" %>
+          <%= link_to 'New User', new_user_invitation_path(location: @location_param), class: 'btn-primary' %>
         </div>
         <div>
           <%= form_tag(admin_users_path, method: :get) do %>
-            <%= select_tag :location, options_for_select(User::LOCATIONS, @location_param), onchange: 'this.form.submit();', class: "filter btn-primary" %>
+            <%= select_tag :location, options_for_select(User::LOCATIONS, @location_param), onchange: 'this.form.submit();', class: 'filter btn-primary' if @authorized_users.present? %>
           <% end %>
         </div>
       </div>
-      <div class="user-details">
+      <div class='details'>
         <% @users.each do |user| %>
-          <div class="card card-body mb-3">
-            <div class="user-name">
+          <div class='card card-body mb-3'>
+            <div class='user-name'>
               <%= link_to user.full_name, edit_admin_user_path(user, location: @location_param) %>
-              <div class="user-text">edit user</div>
+              <span class='user-text'>edit</span>
             </div>
-            <div class="user-email">
               <%= user.email %>
-              <div class="user-text">email</div>
-            </div>
-            <div class="user-location">
+            <div class='user-location'>
               <%= user.location %>
-              <div class="user-text">location</div>
+              <span class='user-text'>location</span>
             </div>
-            <div class="user-account">
+            <div class='user-account'>
               <%= user.account_type %>
-              <div class="user-text">account</div>
+              <span class='user-text'>account</span>
             </div>
           </div>
         <% end %>
       </div>
     </div>
-    <div class="pagination">
-      <%= will_paginate @users, previous_label: "Prev", next_label: "Next" %>
+    <div class='pagination'>
+      <%= will_paginate @users, previous_label: 'Prev', next_label: 'Next' %>
     </div>
   </div>
 </div>

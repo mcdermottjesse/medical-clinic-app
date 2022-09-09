@@ -1,2 +1,8 @@
-import "@hotwired/turbo-rails"
-import './components/UserAutocompleteMounter'
+//components
+import './components/UserAutocompleteMounter';
+import './components/ClientAutocompleteMounter';
+
+//helpers
+import './helpers/ClearDate'
+import './helpers/HidePronoun';
+import './helpers/NavbarDropdown';

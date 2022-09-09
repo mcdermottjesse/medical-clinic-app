@@ -1,0 +1,117 @@
+<%= form_with model: @client do |f| %>
+  <div class='row'>
+    <div class='col'>
+      First Name
+      <%= f.text_field :first_name, class: 'form-control' %>
+      <p class='is-invalid text-danger form-error'> <%= @client.first_name_validation %> </p>
+    </div>
+    <div class='col'>
+      Last Name 
+      <%= f.text_field :last_name, class: 'form-control' %>
+      <p class='is-invalid text-danger form-error'> <%= @client.last_name_validation %> </p>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col'>
+      Client Photo
+      <%= f.file_field :avatar, class: 'form-control' %>
+      <p class='is-invalid text-danger form-error'><%= @client.avatar_validation %></p>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col'>
+      <div class='dob-field'>
+        DOB
+        <%= f.date_field :dob, max: Date.today, class: 'form-control' %>
+        <p class='date-text'>Ensure date <b>is</b> in the past and is filled correctly</p>
+      </div>
+      <p class='is-invalid text-danger form-error'> <%= @client.dob_validation %> </p>
+    </div>
+    <div class='col'>
+      Pronoun
+      <%= f.select :pronoun, options_for_select(Client::PRONOUNS, @client.pronoun), {}, { class: 'form-select form-control', id: 'pronoun-select' } %>
+      <p class='is-invalid text-danger form-error'> <%= @client.pronoun_validation %> </p>
+    </div>
+  </div>
+  <div id='hide-pronoun'>
+    Other Pronoun
+    <%= f.text_field :other_pronoun, class: 'form-control other-pronoun' %>
+    <p class='is-invalid text-danger form-error'><%= @client.other_pronoun_validation %> </p>
+  </div>
+  <div class='row'>
+    <div class='col'>
+      Health Card Number
+      <%= f.text_field :health_card_number, placeholder: 'e.g 1234-567-890', class: 'form-control' %>
+      <p class='is-invalid text-danger form-error'> <%= @client.health_card_number_validation %> </p>
+    </div>
+    <div class='col'>
+      <div class='expiry-field'>
+        Health Card Expiry
+        <%= f.date_field :health_card_expiry, min: Date.tomorrow, class: 'form-control', id: 'health-card-expiry-field' %>
+        <p class='date-text'>Ensure date <b>is</b> in the future and is filled correctly</p>
+      </div>
+      <p class='is-invalid text-danger form-error'> <%= @client.health_card_expiry_validation %> </p>
+    </div>
+  </div>
+  <div>
+    <%= f.check_box :valid_health_card, checked: @health_card_number_present_check || @health_card_expiry_present_check, class: 'mb-3 me-1 checkbox', id: 'health-card-checkbox' %> Check if <b>NO</b> healthcard provided
+  </div>
+  <div class='row'>
+    <div class='col'>
+      Email
+      <%= f.email_field :email, class: 'form-control' %>
+    </div>
+    <div class='col'>
+      Phone Number
+      <%= f.text_field :phone_number, placeholder: 'e.g (250) 123-4567', class: 'form-control' %>
+      <p class='is-invalid text-danger form-error'> <%= @client.phone_validation %> </p>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col'>
+      Emergency Contact Name
+      <%= f.text_field :emergency_contact_name, class: 'form-control' %>
+      <p class='is-invalid text-danger form-error'> <%= @client.emergency_contact_name_validation %> </p>
+    </div>
+    <div class='col'>
+      Emergency Contact Phone
+      <%= f.text_field :emergency_contact_info, placeholder: 'e.g (250) 123-4567', class: 'form-control' %>
+      <p class='is-invalid text-danger form-error'> <%= @client.emergency_contact_info_validation %> </p>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col'>
+      Location
+      <% if @client.location.blank? %>
+        <%= f.select :location, options_for_select(Client::LOCATIONS.drop(1), @location_param), {}, { class: 'form-control form-select' } if @authorized_users.present? %>
+        <%= f.text_field :location, value: @location_param, readonly: true, class: 'form-control' if !@authorized_users.present? %>
+      <% else %>
+        <%= f.select :location, options_for_select(Client::LOCATIONS.drop(1), @client.location), {}, { class: 'form-control form-select' } if @authorized_users.present? %>
+        <%= f.text_field :location, value: @client.location, readonly: true, class: 'form-control' if !@authorized_users.present? %>
+      <% end %>
+      <p class='is-invalid text-danger form-error'> <%= @client.location_validation %> </p>
+    </div>
+    <div class='col'>
+      Bed Number
+      <%= f.text_field :bed_number, class: 'form-control' %>
+      <p class='is-invalid text-danger form-error'> <%= @client.bed_number_validation %> </p>
+    </div>
+  </div>
+  <div>
+    General Info
+    <%= f.text_area :general_info, class: 'form-control', id: 'general-info' %>
+  </div>
+  <% if @client.new_record? %>
+    <div class='consent'>
+      Do you give consent?
+      <%= f.check_box :consent, class: 'checkbox' %>
+    </div>
+    <p class='is-invalid text-danger form-error center-item'> <%= @client.consent_validation %> </p>
+  <% end %>
+  <div class='center-item'>
+    <div class='actions'>
+      <%= f.submit 'Save', class: 'btn-primary' %>
+    </div>
+  </div>
+  <%= hidden_field_tag(:location, @location_param) %>
+<% end %>
