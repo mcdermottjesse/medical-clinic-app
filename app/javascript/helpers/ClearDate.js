@@ -3,6 +3,6 @@ const healthCardCheckBox = document.getElementById('health-card-checkbox')
 
 if(dateField) {
   healthCardCheckBox.addEventListener('click', () => {
-    dateField.value = ''
+    if (healthCardCheckBox.checked) dateField.value = ''
   })
 }
