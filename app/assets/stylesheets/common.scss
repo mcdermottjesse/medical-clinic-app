@@ -14,6 +14,15 @@
   width: 100%;
 }
 
+.btn-secondary:not(.hover) {
+  background-color: $purple;
+  border-radius: 4px;
+  padding: 8px;
+  box-shadow: none;
+  text-shadow: none;
+  outline: none;
+}
+
 .logo {
   background-image: url("home-logo.png");
   background-size: 100% 100%;
@@ -46,6 +55,11 @@
   display: flex;
   justify-content: space-between;
   padding: 0.25em;
+}
+
+.end-position {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .card {

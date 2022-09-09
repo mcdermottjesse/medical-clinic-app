@@ -32,6 +32,9 @@
             </div>
           </div>
         <% end %>
+        <div class='center-item mt-2 mb-3'>
+          <%= link_to 'View All Clients', clients_path(location: @location_param), class: 'btn-secondary btn-sm' if @search_param.present? %>
+        </div>
       </div>
     </div>
     <div class='pagination'>

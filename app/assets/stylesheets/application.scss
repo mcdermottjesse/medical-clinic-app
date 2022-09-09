@@ -13,7 +13,7 @@
  *= require_tree .
  *= require_self
  */
-@import 'variables';
+@import "variables";
 
 html,
 body {
@@ -51,6 +51,10 @@ button:focus {
 }
 
 .btn-primary:focus:active {
+  box-shadow: none;
+}
+
+.btn-secondary:focus:active {
   box-shadow: none;
 }
 
