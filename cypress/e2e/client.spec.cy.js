@@ -91,12 +91,12 @@ describe('Test Client feature', function() {
 		cy.location('href').should('eq', 'http://localhost:5017/clients/4?location=Nanaimo+Regional');
 	});
 
-	it.only('destroys a Client', function() {
+	it('destroys a Client', function() {
 		cy.get(':nth-child(2) > .client-name > a').click();
 		cy.get('[href="/clients/2/edit?location=Victoria+General"]').click();
 		cy.get('.delete-btn').click();
 		cy.contains('Client successfully destroyed');
-    cy.location('href').should('eq', 'http://localhost:5017/clients?location=Victoria+General');
+		cy.location('href').should('eq', 'http://localhost:5017/clients?location=Victoria+General');
 		cy.contains('Second Last').should('not.exist');
 	});
 });
