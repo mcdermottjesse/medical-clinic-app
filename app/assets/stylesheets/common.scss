@@ -1,4 +1,4 @@
-@import 'variables';
+@import "variables";
 
 .btn-primary:not(.hover) {
   display: flex;
@@ -14,8 +14,17 @@
   width: 100%;
 }
 
+.btn-secondary:not(.hover) {
+  background-color: $purple;
+  border-radius: 4px;
+  padding: 8px;
+  box-shadow: none;
+  text-shadow: none;
+  outline: none;
+}
+
 .logo {
-  background-image: url('home-logo.png');
+  background-image: url("home-logo.png");
   background-size: 100% 100%;
   caret-color: $purple;
   width: 18.25em;
@@ -48,6 +57,11 @@
   padding: 0.25em;
 }
 
+.end-position {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .card {
   background-color: $lavender;
   border-radius: 1em;
@@ -65,6 +79,11 @@
   margin-top: 0.25em;
   display: flex;
   font-size: 16px;
+  .input {
+    border-radius: 3px;
+    height: 2em;
+    width: 12.5em;
+  }
 }
 
 .details {
@@ -94,7 +113,7 @@
   background-color: $teal;
   font-size: small;
   max-height: 12em;
-  width: 13.5em;
+  width: 15.25em;
   overflow-y: auto;
   border: 1px solid $purple;
   border-radius: 5px;
@@ -164,7 +183,13 @@
 @include md-up {
   .drop-down-list {
     font-size: medium;
-    width: 11em;
+    width: 15em;
+  }
+  .search-bar {
+    .input {
+      height: 2.25em;
+      width: 15em;
+    }
   }
 }
 

@@ -14,6 +14,7 @@ class ApplicationController < ActionController::Base
 
   def filter_params
     @location_param = params[:location]
+    @search_param   = params[:search]
   end
 
   def user_not_authorized
