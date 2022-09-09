@@ -22,7 +22,7 @@ User.create!(
   location: "Victoria General",
   email: "third@cypress.com",
   password: "Testonly1!",
-  account_type: "Admin",
+  account_type: "Care Worker",
 )
 
 Client.create!(
