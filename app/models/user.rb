@@ -9,6 +9,8 @@ class User < ApplicationRecord
 
   validates :password, format: { with: /\A(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}\z/, message: :validation_message }, unless: :skip_password_validation
 
+  before_save :capitalize_name
+  
   class << self
     include Search
   end
