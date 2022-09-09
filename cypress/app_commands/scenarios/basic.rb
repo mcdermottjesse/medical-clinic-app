@@ -13,7 +13,7 @@ User.create!(
   location: "Nanaimo Regional",
   email: "second@cypress.com",
   password: "Testonly1!",
-  account_type: "Admin",
+  account_type: "Nurse",
 )
 
 User.create!(
@@ -76,5 +76,23 @@ Client.create!(
   location: "Royal Jubilee",
   bed_number: 20,
   general_info: "General info for Third Last",
+  consent: true,
+)
+
+Client.create!(
+  first_name: "Fourth",
+  last_name: "Last",
+  avatar: Rack::Test::UploadedFile.new("spec/images/blank-profile-picture.png"),
+  dob: "1960-01-18",
+  pronoun: "He/Him",
+  health_card_number: "1234-567-890",
+  health_card_expiry: "2028-01-01",
+  email: "fourth@email.com",
+  phone_number: "(123) 456-7890",
+  emergency_contact_name: "Emergency Person",
+  emergency_contact_info: "(123) 456-7890",
+  location: "Nanaimo Regional",
+  bed_number: 20,
+  general_info: "General info for Fourth Last",
   consent: true,
 )

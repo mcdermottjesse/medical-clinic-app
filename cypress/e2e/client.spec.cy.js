@@ -107,7 +107,7 @@ describe('Test Client feature', function() {
 			cy.contains('New Client successfully created');
 			cy.contains('General Info');
 			cy.contains('1995-07-24');
-			cy.location('href').should('eq', 'http://localhost:5017/clients/4?location=Nanaimo+Regional');
+			cy.location('href').should('eq', 'http://localhost:5017/clients/5?location=Nanaimo+Regional');
 		});
 
 		it('skips health card validations on create if no health card checkbox is checked', function() {
@@ -131,7 +131,7 @@ describe('Test Client feature', function() {
 			cy.contains('Skip HealthCard successfully created');
 			cy.contains('General Info');
 			cy.contains('1995-07-24');
-			cy.location('href').should('eq', 'http://localhost:5017/clients/4?location=Nanaimo+Regional');
+			cy.location('href').should('eq', 'http://localhost:5017/clients/5?location=Nanaimo+Regional');
 		});
 
 		it('destroys a Client', function() {
@@ -214,6 +214,23 @@ describe('Test Client feature', function() {
 			cy.contains(':nth-child(2) > form > #location').should('not.exist');
 			cy.visit('http://localhost:5017/clients?location=Nanaimo+Regional');
 			cy.contains('You are not authorized to perform this action');
+		});
+
+		it('does not destroy Client if User account type is not authorized', function() {
+			cy.get('.bi').click();
+			cy.get('.button_to > .nav-link').click();
+			// update account type for this user to test other account types (Care worker cannot access edit page)
+			cy.get('#user_email').type('second@cypress.com');
+			cy.get('#user_password').type('Testonly1!');
+			cy.contains('Log in').click();
+			cy.get('.bi').click();
+			cy.get('.nav-dropdown > [href="/clients?location=Nanaimo+Regional"]').click();
+			cy.get(':nth-child(1) > .client-name > a').click();
+			cy.get('[href="/clients/4/edit?location=Nanaimo+Regional"]').click();
+			cy.get('.delete-btn').click();
+			cy.contains('You are not authorized to perform this action');
+			cy.get('.mt-4 > a').click();
+			cy.contains('Fourth Last');
 		});
 	});
 });
