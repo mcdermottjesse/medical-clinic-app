@@ -1,4 +1,7 @@
 class Client < ApplicationRecord
+
+  has_many :client_logs
+
   attr_accessor :skip_consent_validation, :skip_health_card_validation
 
   has_one_attached :avatar

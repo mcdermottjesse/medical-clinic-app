@@ -1,5 +1,7 @@
 class User < ApplicationRecord
 
+  has_many :client_logs
+
   attr_accessor :skip_password_validation
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
