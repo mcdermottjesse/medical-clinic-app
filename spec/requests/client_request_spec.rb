@@ -54,7 +54,7 @@ RSpec.describe "clients", type: :request do
     }
   }
 
-  let(:invalid_client) { { id: 3, client_code: "NC321C90", first_name: "", last_name: "", dob: "", location: "Sanich Peninsula", consent: true } }
+  let(:invalid_client) { { id: 3, client_code: "NC321C90", first_name: "", last_name: "", dob: "", location: "Saanich Peninsula", consent: true } }
 
   before do
     DatabaseCleaner.strategy = :truncation
@@ -175,7 +175,7 @@ RSpec.describe "clients", type: :request do
       it "fails to update a Client" do
         patch client_path(@client), params: { client: invalid_client }
         @client.reload
-        expect(@client.location).to_not eq("Sanich Peninsula")
+        expect(@client.location).to_not eq("Saanich Peninsula")
         expect(@client.location).to eq("Victoria General")
         expect(@client.first_name).to eq("Test")
       end

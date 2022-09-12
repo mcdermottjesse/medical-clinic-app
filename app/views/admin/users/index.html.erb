@@ -22,9 +22,11 @@
               <%= link_to user.full_name, edit_admin_user_path(user, location: @location_param) %>
               <span class='user-text'>edit</span>
             </div>
+            <div class='user-email'>
               <%= user.email %>
+            </div>
             <div class='user-location'>
-              <%= user.location %>
+              <%= user.location %> 
               <span class='user-text'>location</span>
             </div>
             <div class='user-account'>
