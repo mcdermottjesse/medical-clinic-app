@@ -2,6 +2,6 @@ Client Logs for <%= @client.full_name %>
 
 <% @client_log.each do |client_log|%>
   <div>
-    <%= client_log.nurse_log %>
+    <%= link_to "#{client_log.nurse_log}", edit_client_client_log_path(@client, client_log, location: @location_param) %>
   </div>
 <% end %>
