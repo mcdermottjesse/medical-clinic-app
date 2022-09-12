@@ -67,12 +67,12 @@ describe('Test Client feature', function() {
 			cy.get('#client_last_name').type('Edit');
 			cy.get('#client_email').clear().type('edited@cypress.com');
 			cy.get('#client_phone_number').clear().type('0987654321');
-			cy.get('#client_location').select('Sanich Peninsula');
+			cy.get('#client_location').select('Saanich Peninsula');
 			cy.get('.btn-primary').click();
 			cy.contains('FirstEdit LastEdit successfully updated');
 			cy.contains('General Info');
 			cy.contains('edited@cypress.com');
-			cy.location('href').should('eq', 'http://localhost:5017/clients/1?location=Sanich+Peninsula');
+			cy.location('href').should('eq', 'http://localhost:5017/clients/1?location=Saanich+Peninsula');
 		});
 
 		it('skips health card validations on edit if no health card checkbox is checked', function() {

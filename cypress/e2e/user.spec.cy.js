@@ -55,7 +55,7 @@ describe('Test User feature', function() {
 			cy.get('#user_last_name').type('Edit');
 			cy.get('#user_email').clear().type('edited@cypress.com');
 			cy.get('#user_account_type').select('Manager');
-			cy.get('#user_location').select('Sanich Peninsula');
+			cy.get('#user_location').select('Saanich Peninsula');
 			cy.get('.btn-primary').click();
 			cy.contains('User succesfully updated');
 			cy.contains('Users');
