@@ -1,0 +1,9 @@
+<%= form_with model: [:client, @client_log] do |f| %>
+
+Nurse Log: <%= f.text_field :nurse_log, class: 'form-control' %>
+
+<%= f.submit 'Save', class: 'btn-primary' %>
+
+<%= hidden_field_tag(:location, @location_param) %>
+
+<% end %>

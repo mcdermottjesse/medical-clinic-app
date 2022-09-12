@@ -1,1 +1,7 @@
 Client Logs for <%= @client.full_name %>
+
+<% @client_log.each do |client_log|%>
+  <div>
+    <%= client_log.nurse_log %>
+  </div>
+<% end %>

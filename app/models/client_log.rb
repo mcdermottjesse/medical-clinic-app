@@ -1,4 +1,5 @@
 class ClientLog < ApplicationRecord
-  belongs_to :user, :client
+  belongs_to :user
+  belongs_to :client
 
 end
