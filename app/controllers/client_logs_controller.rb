@@ -15,8 +15,8 @@ class ClientLogsController < ApplicationController
 
   def create
     @client_log = ClientLog.new(client_log_params)
-    @client_log.user_id = current_user.id
-    @client_log.client_id = @client.id
+    @client_log.user_id = current_user.id # add this logic to model?
+    @client_log.client_id = @client.id # add this logic to model?
     respond_to do |format|
       if @client_log.save
         format.html { redirect_to client_client_logs_path(@client, location: @location_param), notice:  "Client Log for #{@client.full_name} successfully created"}
@@ -33,7 +33,7 @@ class ClientLogsController < ApplicationController
   end
 
   def update
-    @client_log.user_id = current_user.id
+    @client_log.user_id = current_user.id # add this logic to model?
     respond_to do |format|
       if @client_log.update(client_log_params)
         format.html { redirect_to client_client_logs_path(@client, location: @location_param), notice:  "Client Log for #{@client.full_name} successfully updated"}
