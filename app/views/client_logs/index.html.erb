@@ -1,23 +1,30 @@
 <div class='client-logs-page'>
   <div class='center'>
     <h4 class="mb-3"><%= @client.full_name %>Client Logs</h4>
-    <% @client_log.each do |client_log|%>
-      <div class='card mb-3' >
-        <div class= 'card-body'>
-          <div>
-            <%= client_log.nurse_log %>
-          </div>
-          <div>
-            <%= format_date(client_log.updated_at) %>
-          </div>
-          <div>
-            Created by <%= client_log.user.full_name %>
-          </div>
-          <div class= 'card-link'>
-            <%= link_to "edit", edit_client_client_log_path(@client, client_log, location: @location_param) %>
+  </div>
+  <div class='details'>
+    <div class="center">
+      <% @client_logs.each do |client_log|%>
+        <div class='card mb-3' >
+          <div class= 'card-body'>
+            <div>
+              <%= client_log.nurse_log %>
+            </div>
+            <div>
+              <%= format_date(client_log.updated_at) %>
+            </div>
+            <div>
+              Created by <%= client_log.user.full_name %>
+            </div>
+            <div class= 'card-link'>
+              <%= link_to "edit", edit_client_client_log_path(@client, client_log, location: @location_param) %>
+            </div>
           </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div class='center pagination'>
+    <%= will_paginate @client_logs, previous_label: 'Prev', next_label: 'Next' %>
   </div>
 </div>
