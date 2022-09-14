@@ -49,11 +49,15 @@
           </br> 
           <%= @client.general_info %>
         </p>
-        <%= link_to 'Edit Client', edit_client_path(@client, location: @location_param), class: 'card-link' %>
-        <%= link_to 'Back', clients_path(location: @location_param), class: 'card-link'%>
+        <div>
+          <%= link_to 'Edit Client', edit_client_path(@client, location: @location_param), class: 'card-link' %>
+          <%= link_to 'Back', clients_path(location: @location_param), class: 'card-link'%>
+        </div>
+        <div>
+          <%= link_to 'Client Logs', client_client_logs_path(@client, location: @location_param), class: 'card-link'%>
+          <%= link_to 'New Client Log', new_client_client_log_path(@client, location: @location_param), class: 'card-link' %>
+        </div>
       </div>
-      <%= link_to 'Client Logs', client_client_logs_path(@client, location: @location_param) %>
-      <%= link_to 'New Client Log', new_client_client_log_path(@client, location: @location_param) %>
     </div>
   </div>
 </div>
