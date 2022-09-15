@@ -1,9 +1,11 @@
 <%= form_with model: [@client, @client_log] do |f| %>
 
-  Nurse Log: <%= f.text_field :nurse_log, class: 'form-control' %>
+  <%= f.text_area :nurse_log, class: 'form-control' %>
 
-  <%= f.submit 'Save', class: 'btn-primary' %>
-
+  <div class='center'>
+    <%= f.submit 'Save', class: 'btn-primary' %>
+  </div>
+  
   <%= hidden_field_tag(:location, @location_param) %>
 
 <% end %>

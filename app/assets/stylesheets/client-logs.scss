@@ -10,8 +10,15 @@
       height: auto;
     }
   }
+  .btn-primary:not(.hover) {
+    width: 50%;
+  }
   .btn-secondary {
     font-size: x-small;
+  }
+  .form-control {
+    height: 10em;
+    width: 18em;
   }
 }
 
@@ -22,6 +29,10 @@
     }
     .btn-secondary {
       font-size: medium;
+    }
+    .form-control {
+      height: 10em;
+      width: 40em;
     }
   }
 }
