@@ -17,10 +17,15 @@ end
 
   resources :clients do
     resources :client_logs do
-      member do
-        get :nurse_log_index
+      collection do
         get :new_nurse_log
+        get :new_doctor_log
+        get :nurse_log_index
+        get :doctor_log_index
+        end
+      member do
         get :edit_nurse_log
+        get :edit_doctor_log
       end
     end
   end

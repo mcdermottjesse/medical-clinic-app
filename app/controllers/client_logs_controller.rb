@@ -1,16 +1,23 @@
 class ClientLogsController < ApplicationController
   before_action :set_client
   before_action :set_client_log, only: [:edit_nurse_log, :update]
+  before_action :client_log_index, only: [:nurse_log_index, :doctor_log_index]
+  before_action :client_log_new, only: [:new_nurse_log, :new_doctor_log]
 
   def nurse_log_index
-    @client_logs = ClientLog.where(client_id: @client).order('updated_at DESC').paginate(page: params[:page], per_page: 6)
+  end
+
+  def doctor_log_index
   end
 
   def show
   end
 
   def new_nurse_log
-    @client_log = ClientLog.new
+  end
+
+  def new_doctor_log
+
   end
 
   def create
@@ -19,7 +26,7 @@ class ClientLogsController < ApplicationController
     @client_log.client_id = @client.id # add this logic to model?
     respond_to do |format|
       if @client_log.save
-        format.html { redirect_to nurse_log_index_client_client_log_path(@client, location: @location_param), notice:  "Client Log for #{@client.full_name} successfully created"}
+        format.html { redirect_to nurse_log_index_client_client_logs_path(@client, location: @location_param), notice:  "Client Log for #{@client.full_name} successfully created"}
         format.json {render :nurse_log_index, status: :ok, location: @client_log }
       else
         flash.now[:alert] = "There was an error creating the Client Log"
@@ -36,7 +43,7 @@ class ClientLogsController < ApplicationController
     @client_log.user_id = current_user.id # add this logic to model?
     respond_to do |format|
       if @client_log.update(client_log_params)
-        format.html { redirect_to nurse_log_index_client_client_log_path(@client, location: @location_param), notice:  "Client Log for #{@client.full_name} successfully updated"}
+        format.html { redirect_to nurse_log_index_client_client_logs_path(@client, location: @location_param), notice:  "Client Log for #{@client.full_name} successfully updated"}
         format.json {render :nurse_log_index, status: :ok, location: @client_log }
       else
         flash.now[:alert] = "There was an error updating the Client Log"
@@ -65,5 +72,13 @@ class ClientLogsController < ApplicationController
 
   def set_client_log
     @client_log = ClientLog.find(params[:id])
+  end
+
+  def client_log_index
+    @client_logs = ClientLog.where(client_id: @client).order('updated_at DESC').paginate(page: params[:page], per_page: 6)
+  end
+
+  def client_log_new
+    @client_log = ClientLog.new
   end
 end
