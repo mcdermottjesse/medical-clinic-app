@@ -1,11 +1,27 @@
+@import "variables";
+
 .client-logs-page {
   .card {
     width: 75%;
   }
   .details {
-    height: 70vh;
+    height: 65vh;
     .center {
       height: auto;
+    }
+  }
+  .btn-secondary {
+    font-size: x-small;
+  }
+}
+
+@include md-up {
+  .client-logs-page {
+    .details {
+      height: 70vh;
+    }
+    .btn-secondary {
+      font-size: medium;
     }
   }
 }

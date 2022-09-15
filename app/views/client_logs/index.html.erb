@@ -1,6 +1,9 @@
 <div class='client-logs-page'>
+  <div class="mb-3 btn-margin">
+    <%= link_to 'Back', client_path(@client, location: @location_param), class: 'btn-secondary' %>
+  </div>
   <div class='center'>
-    <h4 class="mb-3"><%= @client.full_name %>Client Logs</h4>
+    <h4 class="mb-3">Client Logs:  <%= link_to @client.full_name, client_path(@client, location: @location_param) %></h4>
   </div>
   <div class='details'>
     <div class="center">
