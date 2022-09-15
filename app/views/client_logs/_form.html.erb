@@ -4,6 +4,8 @@
 
   <div class='center'>
     <%= f.submit 'Save', class: 'btn-primary' %>
+    <br>
+    <%= link_to 'Back', client_path(@client, location: @location_param) %>
   </div>
   
   <%= hidden_field_tag(:location, @location_param) %>

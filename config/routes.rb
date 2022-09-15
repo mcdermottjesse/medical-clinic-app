@@ -16,7 +16,13 @@ end
   end
 
   resources :clients do
-    resources :client_logs
+    resources :client_logs do
+      member do
+        get :nurse_log_index
+        get :new_nurse_log
+        get :edit_nurse_log
+      end
+    end
   end
 
   match "/404", :to => "errors#not_found", :via => :all

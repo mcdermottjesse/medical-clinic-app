@@ -1,15 +1,15 @@
 class ClientLogsController < ApplicationController
   before_action :set_client
-  before_action :set_client_log, only: [:edit, :update]
+  before_action :set_client_log, only: [:edit_nurse_log, :update]
 
-  def index
+  def nurse_log_index
     @client_logs = ClientLog.where(client_id: @client).order('updated_at DESC').paginate(page: params[:page], per_page: 6)
   end
 
   def show
   end
 
-  def new
+  def new_nurse_log
     @client_log = ClientLog.new
   end
 
@@ -19,28 +19,28 @@ class ClientLogsController < ApplicationController
     @client_log.client_id = @client.id # add this logic to model?
     respond_to do |format|
       if @client_log.save
-        format.html { redirect_to client_client_logs_path(@client, location: @location_param), notice:  "Client Log for #{@client.full_name} successfully created"}
-        format.json {render :index, status: :ok, location: @client_log }
+        format.html { redirect_to nurse_log_index_client_client_log_path(@client, location: @location_param), notice:  "Client Log for #{@client.full_name} successfully created"}
+        format.json {render :nurse_log_index, status: :ok, location: @client_log }
       else
         flash.now[:alert] = "There was an error creating the Client Log"
-        format.html { render :new }
+        format.html { render :new_nurse_log}
         format.json { render json: @client_log.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  def edit
+  def edit_nurse_log
   end
 
   def update
     @client_log.user_id = current_user.id # add this logic to model?
     respond_to do |format|
       if @client_log.update(client_log_params)
-        format.html { redirect_to client_client_logs_path(@client, location: @location_param), notice:  "Client Log for #{@client.full_name} successfully updated"}
-        format.json {render :index, status: :ok, location: @client_log }
+        format.html { redirect_to nurse_log_index_client_client_log_path(@client, location: @location_param), notice:  "Client Log for #{@client.full_name} successfully updated"}
+        format.json {render :nurse_log_index, status: :ok, location: @client_log }
       else
         flash.now[:alert] = "There was an error updating the Client Log"
-        format.html { render :edit }
+        format.html { render :edit_nurse_log }
         format.json { render json: @client_log.errors, status: :unprocessable_entity }
       end
     end
