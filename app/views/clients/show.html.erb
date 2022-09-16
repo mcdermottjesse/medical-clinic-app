@@ -16,16 +16,16 @@
                 <div class='center'>
                   <div class='client-dropdown'>
                     <div class='client-link'>
-                      <%= link_to 'Nurse Logs', client_client_logs_path(@client, location: @location_param, client_log: 'nurse log')%>
+                      <%= link_to 'Nurse Logs', client_client_logs_path(@client, location: @location_param, log_type: 'nurse log')%>
                     </div>
                     <div class='client-link mb-2'>
-                      <%= link_to 'New Nurse Log', new_client_client_log_path(@client, location: @location_param, client_log: 'nurse log') %>
+                      <%= link_to 'New Nurse Log', new_client_client_log_path(@client, location: @location_param, log_type: 'nurse log') %>
                     </div>
                     <div class='client-link'>
-                    <%= link_to 'Doctor Logs', client_client_logs_path(@client, location: @location_param, client_log: 'doctor log')%>
+                    <%= link_to 'Doctor Logs', client_client_logs_path(@client, location: @location_param, log_type: 'doctor log')%>
                   </div>
                   <div class='client-link mb-2'>
-                    <%= link_to 'New Doctor Log', new_client_client_log_path(@client, location: @location_param, client_log: 'doctor log') %>
+                    <%= link_to 'New Doctor Log', new_client_client_log_path(@client, location: @location_param, log_type: 'doctor log') %>
                   </div>
                   </div>
                 </div>

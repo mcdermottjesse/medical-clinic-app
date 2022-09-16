@@ -6,9 +6,10 @@
   <div class='center'>
     <%= f.submit 'Save', class: 'btn-primary' %>
     <br>
-    <%= link_to 'Back', client_client_logs_path(@client, location: @location_param, client_log: @client_log_param) %>
+    <%= link_to 'Back', client_client_logs_path(@client, location: @location_param, log_type: @client_log_param) %>
   </div>
   
   <%= hidden_field_tag(:location, @location_param) %>
+  <%= hidden_field_tag(:log_type, @client_log_param) %>
 
 <% end %>

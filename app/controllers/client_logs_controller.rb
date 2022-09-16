@@ -20,11 +20,11 @@ class ClientLogsController < ApplicationController
     @client_log.client_id = @client.id # add this logic to model?
     respond_to do |format|
       if @client_log.save
-        format.html { redirect_to client_client_logs_path(@client, location: @location_param), notice:  "Client Log for #{@client.full_name} successfully created"}
-        format.json {render :nurse_log_index, status: :ok, location: @client_log }
+        format.html { redirect_to client_client_logs_path(@client, location: @location_param, log_type: @client_log_param), notice:  "Client Log for #{@client.full_name} successfully created"}
+        format.json {render :index, status: :ok, location: @client_log }
       else
         flash.now[:alert] = "There was an error creating the Client Log"
-        format.html { render :new_nurse_log}
+        format.html { render :new}
         format.json { render json: @client_log.errors, status: :unprocessable_entity }
       end
     end
@@ -34,11 +34,11 @@ class ClientLogsController < ApplicationController
     @client_log.user_id = current_user.id # add this logic to model?
     respond_to do |format|
       if @client_log.update(client_log_params)
-        format.html { redirect_to client_client_logs_path(@client, location: @location_param), notice:  "Client Log for #{@client.full_name} successfully updated"}
-        format.json {render :nurse_log_index, status: :ok, location: @client_log }
+        format.html { redirect_to client_client_logs_path(@client, location: @location_param, log_type: @client_log_param), notice:  "Client Log for #{@client.full_name} successfully updated"}
+        format.json {render :index, status: :ok, location: @client_log }
       else
         flash.now[:alert] = "There was an error updating the Client Log"
-        format.html { render :edit_nurse_log }
+        format.html { render :edit }
         format.json { render json: @client_log.errors, status: :unprocessable_entity }
       end
     end
@@ -54,7 +54,6 @@ class ClientLogsController < ApplicationController
       :doctor_log,
       :nurse_log
     )
-
   end
 
   def set_client
