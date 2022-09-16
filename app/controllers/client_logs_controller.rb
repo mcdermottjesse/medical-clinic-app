@@ -3,7 +3,8 @@ class ClientLogsController < ApplicationController
   before_action :set_client_log, only: [:edit, :update]
 
   def index
-    @client_logs = ClientLog.where(client_id: @client).order('updated_at DESC').paginate(page: params[:page], per_page: 6)
+    @nurse_log ? client_log = ClientLog.where.not(nurse_log: nil) : client_log = ClientLog.where.not(doctor_log: nil)
+    @client_logs = client_log.where(client_id: @client).order('updated_at DESC').paginate(page: params[:page], per_page: 1)
   end
 
   def show
