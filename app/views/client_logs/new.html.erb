@@ -1,7 +1,7 @@
 <div class='client-logs-page'>
   <div class='center'>
     <h2>
-      New Nurse Log: <%= link_to @client.full_name, client_path(@client, location: @location_param) %>
+      New <%= @client_log_param.titleize %>: <%= link_to @client.full_name, client_path(@client, location: @location_param) %>
     </h2>
     <br>
     <%= render 'form' %>

@@ -1,5 +1,5 @@
 class ClientLogsController < ApplicationController
-  before_action :set_client
+  before_action :set_client, :client_log_type
   before_action :set_client_log, only: [:edit, :update]
 
   def index
@@ -63,5 +63,9 @@ class ClientLogsController < ApplicationController
 
   def set_client_log
     @client_log = ClientLog.find(params[:id])
+  end
+
+  def client_log_type
+    @client_log_param == 'nurse log' ? @nurse_log = 'nurse log' : @doctor_log = 'doctor log' 
   end
 end

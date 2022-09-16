@@ -1,11 +1,12 @@
 <%= form_with model: [@client, @client_log] do |f| %>
 
-  <%= f.text_area :nurse_log, class: 'form-control' %>
+  <%= f.text_area :nurse_log, class: 'form-control' if @nurse_log %>
+  <%= f.text_area :doctor_log, class: 'form-control' if @doctor_log %>
 
   <div class='center'>
     <%= f.submit 'Save', class: 'btn-primary' %>
     <br>
-    <%= link_to 'Back', client_client_logs_path(@client, location: @location_param) %>
+    <%= link_to 'Back', client_client_logs_path(@client, location: @location_param, client_log: @client_log_param) %>
   </div>
   
   <%= hidden_field_tag(:location, @location_param) %>
