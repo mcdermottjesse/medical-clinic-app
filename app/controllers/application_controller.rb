@@ -13,8 +13,9 @@ class ApplicationController < ActionController::Base
   protected
 
   def filter_params
-    @location_param = params[:location]
-    @search_param   = params[:search]
+    @location_param   = params[:location]
+    @search_param     = params[:search]
+    @client_log_param = params[:log_type]
   end
 
   def user_not_authorized

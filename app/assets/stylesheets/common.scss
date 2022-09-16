@@ -23,6 +23,10 @@
   outline: none;
 }
 
+.btn-margin {
+  margin-left: 1em;
+}
+
 .logo {
   background-image: url("home-logo.png");
   background-size: 100% 100%;
@@ -161,13 +165,16 @@
   color: #aaaaaa;
   padding-top: 0.8em;
 }
+
 .previous_page,
 .next_page {
   border-width: 2px;
 }
+
 .previous_page {
   margin-right: 1em;
 }
+
 .next_page {
   margin-left: 1em;
 }
@@ -185,6 +192,7 @@
     font-size: medium;
     width: 15em;
   }
+
   .search-bar {
     .input {
       height: 2.25em;
@@ -203,5 +211,9 @@
 
   .card-body {
     line-height: 2;
+  }
+
+  .btn-margin {
+    margin-left: 12.5vw;
   }
 }

@@ -1,0 +1,13 @@
+<div class='client-logs-page'>
+  <div class='center'>
+    <h2>
+      Edit <%= @client_log_param.titleize %>: <%= link_to @client.full_name, client_path(@client, location: @location_param) %>
+    </h2>
+    <br>
+    <h5>
+      Last updated <%= format_date(@client_log.updated_at) %>
+    </h5>
+    <br>
+    <%= render 'form' %>
+  </div>
+</div>

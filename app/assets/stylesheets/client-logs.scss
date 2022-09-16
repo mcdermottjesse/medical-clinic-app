@@ -1,0 +1,38 @@
+@import "variables";
+
+.client-logs-page {
+  .card {
+    width: 75%;
+  }
+  .details {
+    height: 65vh;
+    .center {
+      height: auto;
+    }
+  }
+  .btn-primary:not(.hover) {
+    width: 50%;
+  }
+  .btn-secondary {
+    font-size: x-small;
+  }
+  .form-control {
+    height: 10em;
+    width: 18em;
+  }
+}
+
+@include md-up {
+  .client-logs-page {
+    .details {
+      height: 70vh;
+    }
+    .btn-secondary {
+      font-size: medium;
+    }
+    .form-control {
+      height: 10em;
+      width: 40em;
+    }
+  }
+}
