@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_12_191726) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_19_163022) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -49,6 +49,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_12_191726) do
     t.text "nurse_log"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "log_date"
     t.index ["client_id"], name: "index_client_logs_on_client_id"
     t.index ["user_id"], name: "index_client_logs_on_user_id"
   end
