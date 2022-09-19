@@ -1,15 +1,18 @@
 <%= form_with model: [@client, @client_log] do |f| %>
-
+  <div class='center-item'> 
+    Log Date: <%= @log_date_param %>
+  </div>
+  <br>
   <%= f.text_area :nurse_log, class: 'form-control' if @nurse_log %>
   <%= f.text_area :doctor_log, class: 'form-control' if @doctor_log %>
 
   <div class='center'>
     <%= f.submit 'Save', class: 'btn-primary' %>
     <br>
-    <%= link_to 'Back', client_client_logs_path(@client, location: @location_param, log_type: @client_log_param) %>
+    <%= link_to 'Back', client_client_logs_path(@client, location: @location_param, log_type: @client_log_param, log_date: @log_date_param) %>
   </div>
   
   <%= hidden_field_tag(:location, @location_param) %>
   <%= hidden_field_tag(:log_type, @client_log_param) %>
-
+  <%= hidden_field_tag(:log_date, @log_date_param) %>
 <% end %>

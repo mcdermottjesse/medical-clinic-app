@@ -1,10 +1,11 @@
 class ClientLogsController < ApplicationController
   before_action :set_client, :client_log_type
   before_action :set_client_log, only: [:edit, :update]
+  before_action :set_log_date, :user_association, only: [:update]
 
   def index
     @nurse_log ? client_log = ClientLog.where.not(nurse_log: nil) : client_log = ClientLog.where.not(doctor_log: nil)
-    @client_logs = client_log.where(client_id: @client).order('updated_at DESC').paginate(page: params[:page], per_page: 1)
+    @client_logs = client_log.where(client_id: @client, log_date: @log_date_param).order('updated_at DESC').paginate(page: params[:page], per_page: 1)
   end
 
   def show
@@ -17,11 +18,12 @@ class ClientLogsController < ApplicationController
 
   def create
     @client_log = ClientLog.new(client_log_params)
-    @client_log.user_id = current_user.id # add this logic to model?
-    @client_log.client_id = @client.id # add this logic to model?
+    user_association
+    client_association
+    set_log_date
     respond_to do |format|
-      if @client_log.save
-        format.html { redirect_to client_client_logs_path(@client, location: @location_param, log_type: @client_log_param), notice:  "Client Log for #{@client.full_name} successfully created"}
+      if @client_log.save!
+        format.html { redirect_to client_client_logs_path(@client, location: @location_param, log_type: @client_log_param, log_date: @log_date_param), notice:  "Client Log for #{@client.full_name} successfully created"}
         format.json {render :index, status: :ok, location: @client_log }
       else
         flash.now[:alert] = "There was an error creating the Client Log"
@@ -32,10 +34,9 @@ class ClientLogsController < ApplicationController
   end
 
   def update
-    @client_log.user_id = current_user.id # add this logic to model?
     respond_to do |format|
       if @client_log.update(client_log_params)
-        format.html { redirect_to client_client_logs_path(@client, location: @location_param, log_type: @client_log_param), notice:  "Client Log for #{@client.full_name} successfully updated"}
+        format.html { redirect_to client_client_logs_path(@client, location: @location_param, log_type: @client_log_param, log_date: @log_date_param), notice:  "Client Log for #{@client.full_name} successfully updated"}
         format.json {render :index, status: :ok, location: @client_log }
       else
         flash.now[:alert] = "There was an error updating the Client Log"
@@ -63,6 +64,18 @@ class ClientLogsController < ApplicationController
 
   def set_client_log
     @client_log = ClientLog.find(params[:id])
+  end
+
+  def set_log_date
+    @client_log.log_date = @log_date_param
+  end
+
+  def user_association
+    @client_log.user_id = current_user.id 
+  end
+
+  def client_association
+    @client_log.client_id = @client.id
   end
 
   def client_log_type

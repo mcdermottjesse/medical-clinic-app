@@ -90,6 +90,16 @@
   }
 }
 
+.calendar {
+  border-radius: 8px;
+  border-width: 2px;
+  border-color: $black;
+  background-color: $white;
+  padding: 5px;
+  height: 2.5em;
+  width: 11em;
+}
+
 .details {
   height: 60vh;
   overflow-y: auto;
@@ -198,6 +208,10 @@
       height: 2.25em;
       width: 15em;
     }
+  }
+
+  .calendar {
+    border-width: medium;
   }
 }
 
