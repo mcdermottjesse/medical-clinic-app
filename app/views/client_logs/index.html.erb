@@ -2,15 +2,16 @@
   <div class='container mb-3'>
     <div class="space-between">
       <%= link_to 'Back', client_path(@client, location: @location_param), class: 'btn-secondary' %>
-      <%= form_tag(client_client_logs_path(location: @location_param), method: :get) do %>
-        <%= date_field_tag :log_date,  @log_date_param, onchange: 'this.form.submit();' %>
-        <%= hidden_field_tag(:location, @location_param) %>
-        <%= hidden_field_tag(:log_type, @client_log_param) %>
-      <% end %>
       <%= link_to "New #{@client_log_param.titleize}", new_client_client_log_path(@client, location: @location_param, log_type: @client_log_param, log_date: @log_date_param), class: 'btn-secondary' %>
     </div>
   </div>
   <div class='center'>
+    <%= form_tag(client_client_logs_path(location: @location_param), method: :get) do %>
+      Filter by Date: <%= date_field_tag :log_date,  @log_date_param, onchange: 'this.form.submit();', class: 'calendar' %>
+      <%= hidden_field_tag(:location, @location_param) %>
+      <%= hidden_field_tag(:log_type, @client_log_param) %>
+    <% end %>
+    <br>
     <h4 class="mb-3"><%= @client_log_param.titleize %>s:  
     <%= link_to @client.full_name, client_path(@client, location: @location_param, log_type: @client_log_param) %></h4>
   </div>
