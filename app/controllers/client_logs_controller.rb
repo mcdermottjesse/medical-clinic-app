@@ -13,6 +13,7 @@ class ClientLogsController < ApplicationController
 
   def new
     @client_log = ClientLog.new
+    3.times {@client_log.medications.build}
   end
 
 
@@ -54,7 +55,8 @@ class ClientLogsController < ApplicationController
   def client_log_params
     params.require(:client_log).permit(
       :doctor_log,
-      :nurse_log
+      :nurse_log,
+      medications_attributes: [:name]
     )
   end
 

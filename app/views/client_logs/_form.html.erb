@@ -3,6 +3,11 @@
     Log Date: <%= @log_date_param %>
   </div>
   <br>
+
+  <%= f.fields_for :medications do |p| %>
+    <%= p.text_field :name, class: 'form-control' %>
+  <% end %>
+  
   <%= f.text_area :nurse_log, class: 'form-control' if @nurse_log %>
   <%= f.text_area :doctor_log, class: 'form-control' if @doctor_log %>
 
