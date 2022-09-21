@@ -5,11 +5,26 @@
   <br>
 
   <%= f.fields_for :medications do |p| %>
-    <%= p.text_field :name, class: 'form-control' %>
+    <div class="space-between">
+      <div>
+        Medication:
+        <%= p.text_field :name, class: 'form-control' %>
+      </div>
+      <div class='dosage space-between'>
+        <div class='me-5'>
+          Dosage:
+          <%= p.number_field :dosage_amount, min: 0, step: 0.1, class: 'form-control' %>
+        </div>
+        <div>
+          Unit:
+          <%= p.text_field :dosage_unit, class: 'form-control' %>
+        </div>
+      </div>
+    </div>
   <% end %>
   
-  <%= f.text_area :nurse_log, class: 'form-control' if @nurse_log %>
-  <%= f.text_area :doctor_log, class: 'form-control' if @doctor_log %>
+  <%= f.text_area :nurse_log, class: 'form-control log-form-control' if @nurse_log %>
+  <%= f.text_area :doctor_log, class: 'form-control log-form-control' if @doctor_log %>
 
   <div class='center'>
     <%= f.submit 'Save', class: 'btn-primary' %>

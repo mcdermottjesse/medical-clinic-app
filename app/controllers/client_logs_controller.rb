@@ -56,7 +56,7 @@ class ClientLogsController < ApplicationController
     params.require(:client_log).permit(
       :doctor_log,
       :nurse_log,
-      medications_attributes: [:name]
+      medications_attributes: [:name, :dosage_amount, :dosage_unit]
     )
   end
 

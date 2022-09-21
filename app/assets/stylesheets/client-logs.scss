@@ -16,9 +16,20 @@
   .btn-secondary {
     font-size: x-small;
   }
-  .form-control {
+  .log-form-control {
     height: 10em;
     width: 18em;
+  }
+  .space-between {
+    display: block;
+  }
+  .medication {
+    display: inline-flex;
+  }
+  .dosage{
+    .form-control {
+      width: 5em;
+    }
   }
 }
 
@@ -30,9 +41,17 @@
     .btn-secondary {
       font-size: medium;
     }
-    .form-control {
+    .log-form-control {
       height: 10em;
       width: 40em;
+    }
+  }
+}
+
+@include lg-up {
+  .client-logs-page {
+    .space-between {
+      display: flex;
     }
   }
 }
