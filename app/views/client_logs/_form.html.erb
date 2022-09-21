@@ -5,19 +5,21 @@
   <br>
 
   <%= f.fields_for :medications do |p| %>
-    <div class="space-between">
-      <div>
-        Medication:
-        <%= p.text_field :name, class: 'form-control' %>
-      </div>
-      <div class='dosage space-between'>
-        <div class='me-5'>
-          Dosage:
-          <%= p.number_field :dosage_amount, min: 0, step: 0.1, class: 'form-control' %>
-        </div>
+    <div class='med-name-container'>
+      <div class="space-between">
         <div>
-          Unit:
-          <%= p.text_field :dosage_unit, class: 'form-control' %>
+          Medication:
+          <%= p.text_field :name, class: 'form-control' %>
+        </div>
+        <div class='dosage'>
+          <div class='me-5'>
+            Dosage:
+            <%= p.number_field :dosage_amount, min: 0, step: 0.1, class: 'form-control' %>
+          </div>
+          <div>
+            Unit:
+            <%= p.text_field :dosage_unit, class: 'form-control' %>
+          </div>
         </div>
       </div>
     </div>
@@ -29,7 +31,7 @@
   <div class='center'>
     <%= f.submit 'Save', class: 'btn-primary' %>
     <br>
-    <%= link_to 'Back', client_client_logs_path(@client, location: @location_param, log_type: @client_log_param, log_date: @log_date_param) %>
+    <%= link_to 'Back', client_client_logs_path(@client, location: @location_param, log_type: @client_log_param, log_date: @log_date_param), class: 'mb-5' %>
   </div>
   
   <%= hidden_field_tag(:location, @location_param) %>

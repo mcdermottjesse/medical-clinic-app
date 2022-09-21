@@ -1,3 +1,9 @@
+<% if @log_present %>
+  <div>
+    Attention: Doctor Logs have already been created for this client on this date. Please review 
+    <%= link_to 'Doctor Logs Here.', client_client_logs_path(@client, location: @location_param, log_type: 'doctor log', log_date: @log_date_param )%>
+  </div>
+<% end %>
 <% @client_logs.each do |client_log|%>
   <div class='card mb-3' >
     <div class='card-body'>

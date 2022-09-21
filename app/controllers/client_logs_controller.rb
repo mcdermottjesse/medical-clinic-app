@@ -4,8 +4,13 @@ class ClientLogsController < ApplicationController
   before_action :set_log_date, :user_association, only: [:update]
 
   def index
+    # displays log type based on log type param
     @nurse_log ? client_log = ClientLog.where.not(nurse_log: nil) : client_log = ClientLog.where.not(doctor_log: nil)
     @client_logs = client_log.where(client_id: @client, log_date: @log_date_param).order('updated_at DESC').paginate(page: params[:page], per_page: 1)
+    
+    # conditional based on if other log type has already been created for client
+    @nurse_log ? client_log_link = ClientLog.where.not(doctor_log: nil) : client_log_link = ClientLog.where.not(nurse_log: nil)
+    @log_present = client_log_link.where(log_date: @log_date_param).present?
   end
 
   def show
@@ -56,7 +61,8 @@ class ClientLogsController < ApplicationController
     params.require(:client_log).permit(
       :doctor_log,
       :nurse_log,
-      medications_attributes: [:name, :dosage_amount, :dosage_unit]
+      # need to include :id in array so new record is not created on update
+      medications_attributes: [:id, :name, :dosage_amount, :dosage_unit]
     )
   end
 

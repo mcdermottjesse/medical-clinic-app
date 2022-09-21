@@ -20,13 +20,17 @@
     height: 10em;
     width: 18em;
   }
-  .space-between {
-    display: block;
+  .med-name-container {
+    .space-between {
+      display: block;
+    }
   }
   .medication {
     display: inline-flex;
   }
-  .dosage{
+  .dosage {
+    display: flex;
+    justify-content: center;
     .form-control {
       width: 5em;
     }
@@ -50,8 +54,10 @@
 
 @include lg-up {
   .client-logs-page {
-    .space-between {
-      display: flex;
+    .med-name-container {
+      .space-between {
+        display: flex;
+      }
     }
   }
 }
