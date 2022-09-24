@@ -1,7 +1,10 @@
 class ClientLogsController < ApplicationController
+  include MedicationListApiHelper
+
   before_action :set_client, :client_log_type
   before_action :set_client_log, only: [:edit, :update]
   before_action :set_log_date, :user_association, only: [:update]
+  before_action :med_query_one, :med_query_two, only: [:edit, :new]
 
   def index
     # displays log type based on log type param
@@ -18,9 +21,8 @@ class ClientLogsController < ApplicationController
 
   def new
     @client_log = ClientLog.new
-    3.times {@client_log.medications.build}
+    @client_log.medications.build
   end
-
 
   def create
     @client_log = ClientLog.new(client_log_params)
@@ -62,7 +64,7 @@ class ClientLogsController < ApplicationController
       :doctor_log,
       :nurse_log,
       # need to include :id in array so new record is not created on update
-      medications_attributes: [:id, :name, :dosage_amount, :dosage_unit]
+      medications_attributes: [:id, :med_one, :med_two, :med_three, :med_four, :med_five]
     )
   end
 

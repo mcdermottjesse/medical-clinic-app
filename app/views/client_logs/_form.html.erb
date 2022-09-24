@@ -1,26 +1,19 @@
+<div class='center-item'> 
+  Log Date: <%= @log_date_param %>
+</div>
+<br>
+<%= render 'med_one_filter' %>
+<%= render 'med_two_filter' %>
 <%= form_with model: [@client, @client_log] do |f| %>
-  <div class='center-item'> 
-    Log Date: <%= @log_date_param %>
-  </div>
-  <br>
-
   <%= f.fields_for :medications do |p| %>
     <div class='med-name-container'>
-      <div class="space-between">
-        <div>
-          Medication:
-          <%= p.text_field :name, class: 'form-control' %>
-        </div>
-        <div class='dosage'>
-          <div class='me-5'>
-            Dosage:
-            <%= p.number_field :dosage_amount, min: 0, step: 0.1, class: 'form-control' %>
-          </div>
-          <div>
-            Unit:
-            <%= p.text_field :dosage_unit, class: 'form-control' %>
-          </div>
-        </div>
+      <div>
+        Medication:
+        <%= p.select :med_one, options_for_select(@med_option_one.map { |drug| drug["name"].titleize }), {}, { class: 'form-select' } if params[:med_one].present? %>
+      </div>
+      <div>
+        Medication:
+        <%= p.select :med_two, options_for_select(@med_option_two.map { |drug| drug["name"].titleize }), {}, { class: 'form-select' } if params[:med_two].present? %>
       </div>
     </div>
   <% end %>

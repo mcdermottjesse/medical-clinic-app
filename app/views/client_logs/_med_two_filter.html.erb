@@ -1,0 +1,17 @@
+<%= 
+  form_with url: new_client_client_log_path(
+  location: @location_param,
+  log_type: @client_log_param,
+  log_date: @log_date_param,
+  med_one: params[:med_one]
+  ),
+  method: :get do |s| 
+  %>
+  <%= s.text_field :med_two, class: 'form-control' %>
+  <%= s.submit 'Search', class: 'btn-primary' %>
+  
+  <%= hidden_field_tag(:location, @location_param) %>
+  <%= hidden_field_tag(:log_type, @client_log_param) %>
+  <%= hidden_field_tag(:log_date, @log_date_param) %>
+  <%= hidden_field_tag(:med_one, params[:med_one]) %>
+<% end %>
