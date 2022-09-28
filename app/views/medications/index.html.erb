@@ -1,7 +1,17 @@
-MED INDEX
+<div>
+  <div class="center">
+    <div>
+      MED INDEX
+    </div>
+    <br>
+    <% @medications.each do |medication| %>
+      <% medication.medication_names.each do |medication_name| %>
+      <div>
+        <%= medication_name.name %>
+      </div>
+      <% end %>
+    <% end %>
 
-<% @medications.each do |med| %>
-  <%= med.name %>
-<% end %>
-
-<%=link_to 'Add Medication', new_medication_path(location: @location_param) %>
+    <%=link_to 'Add Medication', new_medication_path(location: @location_param) %>
+  </div>
+</div>

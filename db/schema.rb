@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_28_192834) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_28_223231) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -75,8 +75,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_28_192834) do
     t.string "other_pronoun"
   end
 
-  create_table "medications", force: :cascade do |t|
+  create_table "medication_names", force: :cascade do |t|
+    t.bigint "medication_id"
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["medication_id"], name: "index_medication_names_on_medication_id"
+  end
+
+  create_table "medications", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "location"

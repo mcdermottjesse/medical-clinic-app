@@ -1,20 +1,22 @@
 <div>
-  <div>
-    <%=
-    form_with url: new_medication_path(
-    location: @location_param,
-    ),
-    method: :get do |s|
-    %>
-    <%= s.text_field :med_one, class: 'form-control' %>
-    <%= s.submit 'Search', class: 'btn-primary' %>
-      <%= hidden_field_tag(:location, @location_param) %>
+  <%=
+  form_with url: new_medication_path(location: @location_param,), method: :get do |s| %>
+  <%= s.text_field :med_one, class: 'form-control' %>
+  <%= s.submit 'Search', class: 'btn-primary' %>
+    <%= hidden_field_tag(:location, @location_param) %>
+  <% end %>
+</div>
+<br>
+<div>
+  <%= form_with model: @medication do |f| %>
+    <%= f.fields_for :medication_names do |ff| %>
+      <%= ff.select :name, options_for_select(@med_option_one.map { |drug| drug["name"].titleize }), {}, {class: 'form-select' } if params[:med_one].present? %>
     <% end %>
-  </div>
-
-  <div>
-    <%= form_with model: @medication do |f| %>
-      <%= f.select :name, options_for_select(@med_option_one.map { |drug| drug["name"].titleize }), {}, { class: 'form-select' } if params[:med_one].present? %>
-    <% end %>
-  </div>
+    <div class='center'>
+      <%= f.submit 'Save', class: 'btn-primary' %>
+      <br>
+      <%= link_to 'Back', medications_path(location: @location_param), class: 'mb-5' %>
+    </div>
+    <%= hidden_field_tag(:location, @location_param) %>
+  <% end %>
 </div>
