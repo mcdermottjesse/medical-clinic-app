@@ -8,15 +8,6 @@
   <div class='card mb-3' >
     <div class='card-body'>
       <div>
-        <% client_log.medications.each do |medication| %>
-          <div>
-            <%= medication.name %>
-            <%= medication.dosage_amount %>
-            <%= medication.dosage_unit %>
-          </div>
-        <% end %>
-      </div>
-      <div>
         <%= client_log.doctor_log %>
       </div>
       <div>

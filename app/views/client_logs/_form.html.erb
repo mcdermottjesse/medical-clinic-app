@@ -2,31 +2,14 @@
   Log Date: <%= @log_date_param %>
 </div>
 <br>
-<%= render 'med_one_filter' %>
-<%= render 'med_two_filter' %>
 <%= form_with model: [@client, @client_log] do |f| %>
-  <%= f.fields_for :medications do |p| %>
-    <div class='med-name-container'>
-      <div>
-        Medication:
-        <%= p.select :med_one, options_for_select(@med_option_one.map { |drug| drug["name"].titleize }), {}, { class: 'form-select' } if params[:med_one].present? %>
-      </div>
-      <div>
-        Medication:
-        <%= p.select :med_two, options_for_select(@med_option_two.map { |drug| drug["name"].titleize }), {}, { class: 'form-select' } if params[:med_two].present? %>
-      </div>
-    </div>
-  <% end %>
-  
   <%= f.text_area :nurse_log, class: 'form-control log-form-control' if @nurse_log %>
   <%= f.text_area :doctor_log, class: 'form-control log-form-control' if @doctor_log %>
-
   <div class='center'>
     <%= f.submit 'Save', class: 'btn-primary' %>
     <br>
     <%= link_to 'Back', client_client_logs_path(@client, location: @location_param, log_type: @client_log_param, log_date: @log_date_param), class: 'mb-5' %>
   </div>
-  
   <%= hidden_field_tag(:location, @location_param) %>
   <%= hidden_field_tag(:log_type, @client_log_param) %>
   <%= hidden_field_tag(:log_date, @log_date_param) %>
