@@ -20,21 +20,6 @@
     height: 10em;
     width: 18em;
   }
-  .med-name-container {
-    .space-between {
-      display: block;
-    }
-  }
-  .medication {
-    display: inline-flex;
-  }
-  .dosage {
-    display: flex;
-    justify-content: center;
-    .form-control {
-      width: 5em;
-    }
-  }
 }
 
 @include md-up {
@@ -48,16 +33,6 @@
     .log-form-control {
       height: 10em;
       width: 40em;
-    }
-  }
-}
-
-@include lg-up {
-  .client-logs-page {
-    .med-name-container {
-      .space-between {
-        display: flex;
-      }
     }
   }
 }

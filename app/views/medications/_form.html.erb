@@ -1,0 +1,20 @@
+<div>
+  <div>
+    <%=
+    form_with url: new_medication_path(
+    location: @location_param,
+    ),
+    method: :get do |s|
+    %>
+    <%= s.text_field :med_one, class: 'form-control' %>
+    <%= s.submit 'Search', class: 'btn-primary' %>
+      <%= hidden_field_tag(:location, @location_param) %>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form_with model: @medication do |f| %>
+      <%= f.select :name, options_for_select(@med_option_one.map { |drug| drug["name"].titleize }), {}, { class: 'form-select' } if params[:med_one].present? %>
+    <% end %>
+  </div>
+</div>

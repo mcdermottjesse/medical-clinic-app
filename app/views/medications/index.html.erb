@@ -1,0 +1,7 @@
+MED INDEX
+
+<% @medications.each do |med| %>
+  <%= med.name %>
+<% end %>
+
+<%=link_to 'Add Medication', new_medication_path(location: @location_param) %>
