@@ -1,7 +1,7 @@
 class MedicationsController < ApplicationController
   include MedicationListApiHelper
 
-  before_action :med_query_one, only: [:new]
+  before_action :med_query, only: [:new]
 
   def index
     @medications = Medication.where(location: @location_param)
@@ -9,17 +9,19 @@ class MedicationsController < ApplicationController
 
   def new
     @medication = Medication.new
-    4.times { @medication.medication_names.build }
+    5.times { @medication.medication_names.build }
   end
 
   def create
+    medication_name_param = params[:medication]["medication_names_attributes"].values # values of medication_name params
     @medication = Medication.new(medication_params)
+
     respond_to do |format|
-      if @medication.save
+      if medication_name_param.uniq.length == medication_name_param.length && @medication.save
         format.html { redirect_to medications_path(location: @medication.location), notice: "Medication successfully created" }
         format.json { render :index, status: :created, location: @medication }
       else
-        flash.now[:alert] = "There was an error creating the medication"
+        flash.now[:alert] = "There was an error creating the medication. Medication may already be added. Medication cannot be duplicated"
         format.html { render :new }
         format.json { render json: @medication.errors, status: :unprocessable_entity }
       end
@@ -29,6 +31,9 @@ class MedicationsController < ApplicationController
   private
 
   def medication_params
-    params.require(:medication).permit(medication_names_attributes: [:id, :name]).merge(location: @location_param)
+    medication_param = params[:medication]["medication_names_attributes"].values
+    if medication_param.uniq
+      params.require(:medication).permit(medication_names_attributes: [:id, :name]).merge(location: @location_param)
+    end
   end
 end

@@ -17,6 +17,7 @@ class ApplicationController < ActionController::Base
     @search_param     = params[:search]
     @client_log_param = params[:log_type]
     @log_date_param   = params[:log_date]
+    @medication_param = params[:medication_query]
   end
 
   def user_not_authorized
