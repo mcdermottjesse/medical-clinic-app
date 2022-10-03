@@ -13,9 +13,9 @@ class MedicationsController < ApplicationController
   end
 
   def create
-    medication_name_param = params[:medication]["medication_names_attributes"].values # values of medication_name params
+    # medication_name_param returns all the medication_name.name values that are NOT blank.
+    medication_name_param = params[:medication]["medication_names_attributes"].values.map{ |med| med["name"] }.compact_blank
     @medication = Medication.new(medication_params)
-
     respond_to do |format|
       if medication_name_param.uniq.length == medication_name_param.length && @medication.save
         format.html { redirect_to medications_path(location: @medication.location), notice: "Medication successfully created" }
@@ -31,9 +31,6 @@ class MedicationsController < ApplicationController
   private
 
   def medication_params
-    medication_param = params[:medication]["medication_names_attributes"].values
-    if medication_param.uniq
-      params.require(:medication).permit(medication_names_attributes: [:id, :name]).merge(location: @location_param)
-    end
+    params.require(:medication).permit(medication_names_attributes: [:id, :name]).merge(location: @location_param)
   end
 end
