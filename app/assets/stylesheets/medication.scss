@@ -1,0 +1,9 @@
+.medications-page {
+  #med-btn {
+    cursor: pointer;
+    width: fit-content;
+  }
+  .btn-primary:not(.hover) {
+    width: 50%;
+  }
+}

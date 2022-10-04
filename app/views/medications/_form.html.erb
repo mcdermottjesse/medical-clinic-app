@@ -1,32 +1,32 @@
 <div class='medication-form'>
-  <%=
-  form_with url: new_medication_path(location: @location_param,), method: :get do |s| %>
-    <%= s.text_field :medication_query, class: 'form-control' %>
-    <%= s.submit 'Search', class: 'btn-primary filter-med' %>
-    <%= hidden_field_tag(:location, @location_param) %>
+  <%=form_with url: new_medication_path(location: @location_param,), method: :get do |s| %>
+    <% if @medication_param.blank? %>
+      <%= s.text_field :medication_query, class: 'form-control' %>
+      <div class='center'>
+        <%= s.submit 'Search', class: 'btn-primary filter-med' %>
+      </div>
+      <%= hidden_field_tag(:location, @location_param) %>
+    <% end %>
   <% end %>
 </div>
 <br>
-<div>
-  <%= form_with model: @medication do |f| %>
-    <%= f.fields_for :medication_names do |ff| %>
-      <%= ff.select :name, options_for_select(@med_options.map { |drug| drug["name"].titleize }), {prompt: 'Please choose...'}, {class: 'form-select' } if @medication_param.present? %>
-    <% end %>
-  </div>
-<div>
-    <br>
-    <div class='center'>
-      <%= f.submit 'Save', class: 'btn-primary save-btn' %>
-      <br>
-      <%= link_to 'Back', medications_path(location: @location_param), class: 'mb-5' %>
-    </div>
-    <%= hidden_field_tag(:location, @location_param) %>
+<%= form_with model: @medication do |f| %>
+  <%= f.fields_for :medication_names do |ff| %>
+    <%= ff.select :name, options_for_select(@med_options.map { |drug| drug["name"].titleize }), {prompt: 'Please choose...'}, {class: 'form-select' } if @medication_param.present? %>
   <% end %>
   <% if @medication_param.present? %>
-    <% 4.times do |num| %>
-      <button class='<%="add-med-#{num}"%>'>
-        Add Medication
-      </button>
-    <% end %>
+    <div class='center'>
+      <div class='add-med' id='med-btn'>
+        Add 
+      </div>
+    </div>
   <% end %>
-</div>
+  <br>
+  <div class='center'>
+  <%= f.submit 'Save', class: 'btn-primary save-btn'  if @medication_param.present? %>
+  <br>
+    <%= link_to 'Back', medications_path(location: @location_param), class: 'mb-5' %>
+  </div>
+  <%= hidden_field_tag(:location, @location_param) %>
+<% end %>
+
