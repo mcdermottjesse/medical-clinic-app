@@ -1,12 +1,10 @@
-<div class='medication-form'>
+<div class='medication-form mt-2'>
   <%=form_with url: new_medication_path(location: @location_param,), method: :get do |s| %>
-    <% if @medication_param.blank? %>
-      <%= s.text_field :medication_query, placeholder: 'Input Medication Name', class: 'form-control' %>
-      <div class='center'>
-        <%= s.submit 'Search', class: 'btn-primary filter-med' %>
-      </div>
-      <%= hidden_field_tag(:location, @location_param) %>
-    <% end %>
+    <%= s.text_field :medication_query, placeholder: 'Input Medication Name', class: 'form-control' %>
+    <div class='center'>
+      <%= s.submit 'Search', class: 'btn-primary filter-med' %>
+    </div>
+    <%= hidden_field_tag(:location, @location_param) %>
   <% end %>
 </div>
 <br>
@@ -14,19 +12,22 @@
   <%= f.fields_for :medication_names do |ff| %>
     <%= ff.select :name, options_for_select(@med_options.map { |drug| drug["name"].titleize }), {prompt: 'Please choose...'}, {class: 'form-select' } if @medication_param.present? %>
   <% end %>
-  <% if @medication_param.present? %>
-    <div class='center'>
-      <div class='add-med' id='med-btn'>
-        Add more <%= @medication_param %>
+  <div class='center'>
+    <% if @medication_param.present? %>
+      <div class='inline'>
+        <div class='add-med'>
+          <i class="bi bi-plus-circle-fill"></i>
+        </div>
+        <div class='remove-med'>
+          <i class="bi bi-dash-circle-fill"></i>
+        </div>
       </div>
       <br>
-      <%= f.submit 'Save and Add New Medication', class: 'btn-secondary' %>
-    </div>
-  <% end %>
-  <br>
-  <div class='center'>
-  <%= f.submit 'Save', class: 'btn-primary'  if @medication_param.present? %>
-  <br>
+      <%= f.submit 'Save and Add New Medication', class: 'btn-secondary new-med' %>
+    <% end %>
+    <br>
+    <%= f.submit 'Save', class: 'btn-primary save-med'  if @medication_param.present? %>
+    <br>
     <%= link_to 'Back', medications_path(location: @location_param), class: 'mb-5' %>
   </div>
   <%= hidden_field_tag(:location, @location_param) %>

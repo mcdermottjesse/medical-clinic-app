@@ -1,9 +1,19 @@
+@import "variables";
+
 .medications-page {
-  #med-btn {
+  .add-med,
+  .remove-med {
     cursor: pointer;
-    width: fit-content;
+    font-size: 30px;
   }
   .btn-primary:not(.hover) {
     width: 50%;
+  }
+  .add-med {
+    color: $purple;
+    margin-right: 2em;
+  }
+  .remove-med {
+    color: $warning;
   }
 }

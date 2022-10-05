@@ -10,6 +10,7 @@ class MedicationsController < ApplicationController
   def new
     @medication = Medication.new
     5.times { @medication.medication_names.build }
+    @current_search = "Current search:" if @medication_param.present?
   end
 
   def create

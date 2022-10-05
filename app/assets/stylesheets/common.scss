@@ -61,6 +61,10 @@
   padding: 0.25em;
 }
 
+.inline {
+  display: inline-flex;
+}
+
 .end-position {
   display: flex;
   justify-content: flex-end;
