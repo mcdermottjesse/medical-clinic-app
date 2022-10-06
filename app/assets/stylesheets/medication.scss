@@ -17,6 +17,9 @@
     color: $warning;
   }
   .search-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-left: 8px;
     margin-top: 1.9px;
     width: 2em;
@@ -25,16 +28,30 @@
     background: $purple;
     height: 1.75em;
     border-radius: 5px;
-
-    text-align: center;
   }
   .form-control {
     margin-bottom: 0em;
   }
   .form-select {
-    max-width: 30em;
+    max-width: 19em;
   }
   .filter-med {
     margin-top: 1em;
+  }
+}
+
+@include xxs {
+  .medications-page {
+    .med-index {
+      width: 16em;
+    }
+  }
+}
+
+@include md-up {
+  .medications-page {
+    .form-select {
+      max-width: 30em;
+    }
   }
 }
