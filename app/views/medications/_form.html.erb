@@ -1,5 +1,5 @@
 <div class='medication-form mt-2'>
-  <%=form_with url: new_medication_path(location: @location_param,), method: :get do |s| %>
+  <%= form_with url: new_medication_path(location: @location_param,), method: :get do |s| %>
     <%= s.text_field :medication_query, placeholder: 'Input Medication Name', class: 'form-control' %>
     <div class='center'>
       <%= s.submit 'Search', class: 'btn-primary filter-med' %>

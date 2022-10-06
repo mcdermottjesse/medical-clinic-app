@@ -4,7 +4,9 @@ class MedicationsController < ApplicationController
   before_action :med_query, only: [:new]
 
   def index
-    @medications = Medication.where(location: @location_param)
+    if search_params
+      @medications = Medication.where(location: @location_param).search_medication(search_params).distinct
+    end
   end
 
   def new
@@ -38,5 +40,9 @@ class MedicationsController < ApplicationController
 
   def medication_params
     params.require(:medication).permit(medication_names_attributes: [:id, :name]).merge(location: @location_param)
+  end
+
+  def search_params
+    params.require(:search) if @search_param.present?
   end
 end
