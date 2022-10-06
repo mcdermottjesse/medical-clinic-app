@@ -11,6 +11,7 @@
         </button>
       </div>
     <% end %>
+    <h5><%=@no_results%></h5>
     <% if @search_param.present? %>
       <% @medications.each do |medication| %>
         <% medication.medication_names.each do |medication_name| %>

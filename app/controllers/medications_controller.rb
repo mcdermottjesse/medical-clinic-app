@@ -6,6 +6,7 @@ class MedicationsController < ApplicationController
   def index
     if search_params
       @medications = Medication.where(location: @location_param).search_medication(search_params).distinct
+      @no_results = "No medication found" if @medications.blank?
     end
   end
 

@@ -8,12 +8,13 @@
   <% end %>
 </div>
 <br>
+<h5><%= @no_results %></h5>
 <%= form_with model: @medication do |f| %>
-  <%= f.fields_for :medication_names do |ff| %>
-    <%= ff.select :name, options_for_select(@med_options.map { |drug| drug["name"].titleize }), {prompt: 'Please choose...'}, {class: 'form-select' } if @medication_param.present? %>
-  <% end %>
-  <div class='center'>
-    <% if @medication_param.present? %>
+  <% if @med_options.present? %>
+    <%= f.fields_for :medication_names do |ff| %>
+      <%= ff.select :name, options_for_select(@med_options.map { |drug| drug["name"].titleize }), {prompt: 'Select...'}, {class: 'form-select' } %>
+    <% end %>
+    <div class='center'>
       <div class='inline'>
         <div class='add-med'>
           <i class="bi bi-plus-circle-fill"></i>
@@ -24,9 +25,9 @@
       </div>
       <br>
       <%= f.submit 'Save and Add New Medication', class: 'btn-secondary new-med' %>
-    <% end %>
     <br>
-    <%= f.submit 'Save and Return to Index', class: 'btn-primary save-med'  if @medication_param.present? %>
+    <%= f.submit 'Save and Return to Index', class: 'btn-primary save-med' %>
+    <% end %>
     <br>
     <%= link_to 'Back', medications_path(location: @location_param), class: 'mb-5' %>
   </div>

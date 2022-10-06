@@ -12,7 +12,13 @@ module MedicationListApiHelper
 
       response = JSON.parse(http.request(req).body)
 
-      response["drugGroup"]["conceptGroup"].map { |drug| @med_options = drug["conceptProperties"] }
+      drug_group = response["drugGroup"]["conceptGroup"]
+
+      if drug_group.nil?
+        @no_results = "No medication found"
+      else
+        drug_group.map { |drug| @med_options = drug["conceptProperties"] }
+      end
     end
   end
 end
