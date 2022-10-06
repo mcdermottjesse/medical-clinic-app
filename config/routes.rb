@@ -19,7 +19,7 @@ end
     resources :client_logs
   end
 
-  resources :medications
+  resources :medications, only: [:index, :new, :create]
 
   match "/404", :to => "errors#not_found", :via => :all
 

@@ -2,6 +2,7 @@ class MedicationsController < ApplicationController
   include MedicationListApiHelper
 
   before_action :med_query, only: [:new]
+  before_action :unauthorized_location
 
   def index
     if search_params
