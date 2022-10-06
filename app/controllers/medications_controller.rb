@@ -21,11 +21,11 @@ class MedicationsController < ApplicationController
     @medication = Medication.new(medication_params)
     respond_to do |format|
       if medication_name_param.uniq.length == medication_name_param.length && @medication.save
-        if params[:commit] == "Save"
-          format.html { redirect_to medications_path(location: @medication.location), notice: "Medication successfully created" }
+        if params[:commit] == "Save and Return to Index"
+          format.html { redirect_to medications_path(location: @medication.location), notice: "Medication/s successfully added" }
           format.json { render :index, status: :created, location: @medication }
         else
-          format.html { redirect_to new_medication_path(location: @medication.location), notice: "Medication successfully created" }
+          format.html { redirect_to new_medication_path(location: @medication.location), notice: "Medication/s successfully added" }
           format.json { render :new, status: :created, location: @medication }
         end
       else

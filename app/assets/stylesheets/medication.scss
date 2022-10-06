@@ -7,7 +7,7 @@
     font-size: 30px;
   }
   .btn-primary:not(.hover) {
-    width: 50%;
+    width: fit-content;
   }
   .add-med {
     color: $purple;
@@ -15,5 +15,23 @@
   }
   .remove-med {
     color: $warning;
+  }
+  .search-icon {
+    margin-left: 8px;
+    margin-top: 1.9px;
+    width: 2em;
+    color: $white;
+    font-size: 20px;
+    background: $purple;
+    height: 1.75em;
+    border-radius: 5px;
+
+    text-align: center;
+  }
+  .form-control {
+    margin-bottom: 0em;
+  }
+  .filter-med {
+    margin-top: 1em;
   }
 }

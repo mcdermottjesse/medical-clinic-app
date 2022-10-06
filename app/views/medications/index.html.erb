@@ -1,22 +1,30 @@
-<div>
+<div class="medications-page">
   <div class="center">
-    <h2>Med Index</h2>
+    <h2>Medication Index</h2>
     <br>
     <%= form_tag medications_path, method: :get do %>
       <%= hidden_field_tag(:location, @location_param) %>
-      <%= text_field_tag :search, @search_param, placeholder: 'Search Medication Index', class: 'form-control' %>
+      <div class='inline mb-4'>
+        <%= text_field_tag :search, @search_param, placeholder: 'Search Medication Index', class: 'form-control' %>
+        <button class='search-icon'>
+          <i class="bi bi-search"></i>
+        </button>
+      </div>
     <% end %>
     <% if @search_param.present? %>
       <% @medications.each do |medication| %>
         <% medication.medication_names.each do |medication_name| %>
-        <div>
-          <%= medication_name.name.gsub("[", "(").gsub("]", ")") %>
-        </div>
-        <br>
+          <div>
+            <%= medication_name.name.gsub("[", "(").gsub("]", ")") %>
+          </div>
+          <br>
         <% end %>
       <% end %>
     <% end %>
     <br>
-    <%=link_to 'Add Medication', new_medication_path(location: @location_param) %>
+    <div>
+      Can't find specific medication?
+    </div>
+    <%=link_to 'Add Medication Here', new_medication_path(location: @location_param) %>
   </div>
 </div>

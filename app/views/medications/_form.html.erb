@@ -26,7 +26,7 @@
       <%= f.submit 'Save and Add New Medication', class: 'btn-secondary new-med' %>
     <% end %>
     <br>
-    <%= f.submit 'Save', class: 'btn-primary save-med'  if @medication_param.present? %>
+    <%= f.submit 'Save and Return to Index', class: 'btn-primary save-med'  if @medication_param.present? %>
     <br>
     <%= link_to 'Back', medications_path(location: @location_param), class: 'mb-5' %>
   </div>
