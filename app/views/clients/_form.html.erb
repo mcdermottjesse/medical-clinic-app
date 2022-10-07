@@ -83,11 +83,11 @@
     <div class='col'>
       Location
       <% if @client.location.blank? %>
-        <%= f.select :location, options_for_select(Client::LOCATIONS.drop(1), @location_param), {}, { class: 'form-control form-select' } if @authorized_users.present? %>
-        <%= f.text_field :location, value: @location_param, readonly: true, class: 'form-control' if !@authorized_users.present? %>
+        <%= f.select :location, options_for_select(Client::LOCATIONS.drop(1), @location_param), {}, { class: 'form-control form-select' } if @authorized_users %>
+        <%= f.text_field :location, value: @location_param, readonly: true, class: 'form-control' if !@authorized_users %>
       <% else %>
-        <%= f.select :location, options_for_select(Client::LOCATIONS.drop(1), @client.location), {}, { class: 'form-control form-select' } if @authorized_users.present? %>
-        <%= f.text_field :location, value: @client.location, readonly: true, class: 'form-control' if !@authorized_users.present? %>
+        <%= f.select :location, options_for_select(Client::LOCATIONS.drop(1), @client.location), {}, { class: 'form-control form-select' } if @authorized_users %>
+        <%= f.text_field :location, value: @client.location, readonly: true, class: 'form-control' if !@authorized_users %>
       <% end %>
       <p class='is-invalid text-danger form-error'> <%= @client.location_validation %> </p>
     </div>

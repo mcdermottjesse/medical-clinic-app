@@ -2,6 +2,10 @@
   <div class='center'> 
     <h2>Add Medication</h2>
     <br>
+    <%= form_tag(new_medication_path, method: :get) do %>
+      <%= select_tag :location, options_for_select(Medication::LOCATIONS, @location_param), onchange: 'this.form.submit();', class: 'filter btn-primary' if @authorized_users %>
+    <% end %>
+    <br>
     <em><%= @current_search %></em>
     <h5><%= @medication_param %></h5>
     <%= render 'form' %>
