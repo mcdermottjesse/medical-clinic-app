@@ -17,13 +17,11 @@
     <% end %>
     <h5><%=@no_results%></h5>
     <% if @search_param.present? %>
-      <% @medications.each do |medication| %>
-        <% medication.medication_names.each do |medication_name| %>
-          <div>
-            <%= medication_name.name.gsub("[", "(").gsub("]", ")") %>
-          </div>
-          <br>
-        <% end %>
+      <% @medication_names.each do |medication| %>
+        <div>
+          <%= medication.name.gsub("[", "(").gsub("]", ")") %>
+        </div>
+        <br>
       <% end %>
     <% end %>
     <br>

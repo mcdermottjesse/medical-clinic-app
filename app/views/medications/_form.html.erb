@@ -25,10 +25,12 @@
       </div>
       <br>
       <%= f.submit 'Save and Add New Medication', class: 'btn-secondary new-med' %>
-    <br>
-    <%= f.submit 'Save and Return to Index', class: 'btn-primary save-med' %>
-    <% end %>
-    <br>
+      <br>
+      <%= f.submit 'Save and Return to Index', class: 'btn-primary save-med' %>
+    </div>
+  <% end %>
+  <br>
+  <div class='center'>
     <%= link_to 'Back', medications_path(location: @location_param), class: 'mb-5' %>
   </div>
   <%= hidden_field_tag(:location, @location_param) %>

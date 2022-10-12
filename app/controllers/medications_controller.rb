@@ -6,8 +6,8 @@ class MedicationsController < ApplicationController
 
   def index
     if search_params
-      @medications = Medication.where(location: @location_param).search_medication(search_params).distinct
-      @no_results = "No medication found" if @medications.blank?
+      @medication_names = MedicationName.where(location: @location_param).search_medication(search_params)
+      @no_results = "No medication found" if @medication_names.blank?
     end
   end
 
@@ -21,13 +21,14 @@ class MedicationsController < ApplicationController
     # medication_name_param returns all the medication_name.name values that are NOT blank.
     medication_name_param = params[:medication]["medication_names_attributes"].values.map{ |med| med["name"] }.compact_blank
     @medication = Medication.new(medication_params)
+    @medication.medication_names.each {|med| med.location = @location_param }
     respond_to do |format|
       if medication_name_param.uniq.length == medication_name_param.length && @medication.save
         if params[:commit] == "Save and Return to Index"
-          format.html { redirect_to medications_path(location: @medication.location), notice: "Medication/s successfully added" }
+          format.html { redirect_to medications_path(location: @location_param), notice: "Medication/s successfully added" }
           format.json { render :index, status: :created, location: @medication }
         else
-          format.html { redirect_to new_medication_path(location: @medication.location), notice: "Medication/s successfully added" }
+          format.html { redirect_to new_medication_path(location: @location_param), notice: "Medication/s successfully added" }
           format.json { render :new, status: :created, location: @medication }
         end
       else
@@ -41,7 +42,7 @@ class MedicationsController < ApplicationController
   private
 
   def medication_params
-    params.require(:medication).permit(medication_names_attributes: [:id, :name]).merge(location: @location_param)
+    params.require(:medication).permit(medication_names_attributes: [:id, :name])
   end
 
   def search_params
