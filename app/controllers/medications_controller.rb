@@ -21,7 +21,7 @@ class MedicationsController < ApplicationController
     # medication_name_param returns all the medication_name.name values that are NOT blank.
     medication_name_param = params[:medication]["medication_names_attributes"].values.map{ |med| med["name"] }.compact_blank
     @medication = Medication.new(medication_params)
-    @medication.medication_names.each {|med| med.location = @location_param }
+    @medication.medication_names.each { |med| med.location = @location_param }
     respond_to do |format|
       if medication_name_param.uniq.length == medication_name_param.length && @medication.save
         if params[:commit] == "Save and Return to Index"

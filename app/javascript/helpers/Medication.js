@@ -1,6 +1,6 @@
 const addMed = document.querySelector('.add-med');
 const removeMed = document.querySelector('.remove-med');
-const filterMed = document.querySelector('.filter-med');
+const searchMed = document.querySelector('.search-icon');
 
 const urlParams = window.location.search;
 const searchParams = new URLSearchParams(urlParams);
@@ -26,9 +26,9 @@ if (addMed) {
 		}
 
 		if (searchParams.has('medication_query')) {
-			// hide medication search and filter button when medication_query param is present
+			// hide medication search and search button when medication_query param is present
 			hideId([ 'medication_query' ]);
-			hideClass([ '.filter-med' ]);
+			hideClass([ '.search-icon' ]);
 		}
 
 		hideId([
@@ -51,7 +51,7 @@ if (addMed) {
 				hideClass([ '.add-med', '.remove-med', '.new-med', '.save-med' ]);
 				hideId([ `medication_medication_names_attributes_0_name` ]);
 				showId([ 'medication_query' ]);
-				filterMed.style.display = 'block';
+				searchMed.style.display = 'block';
 			} else {
 				hideId([ `medication_medication_names_attributes_${counter + 1}_name` ]);
 			}
