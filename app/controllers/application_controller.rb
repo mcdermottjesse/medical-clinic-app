@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   include Pundit::Authorization
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
-  include Authorizations::UserAuthorization, Authorizations::ClientAuthorization
+  include Authorizations::UserAuthorization, Authorizations::ClientAuthorization, Authorizations::MedicationAuthorization
 
   include Errors::ErrorResponse
 
@@ -17,6 +17,7 @@ class ApplicationController < ActionController::Base
     @search_param     = params[:search]
     @client_log_param = params[:log_type]
     @log_date_param   = params[:log_date]
+    @medication_param = params[:medication_query]
   end
 
   def user_not_authorized

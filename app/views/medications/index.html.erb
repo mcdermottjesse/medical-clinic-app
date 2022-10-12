@@ -1,0 +1,33 @@
+<div class="medications-page">
+  <div class="center">
+    <h2>Medication Index</h2>
+    <br>
+    <%= form_tag(medications_path, method: :get) do %>
+      <%= select_tag :location, options_for_select(Medication::LOCATIONS, @location_param), onchange: 'this.form.submit();', class: 'filter btn-primary' if @authorized_users %>
+    <% end %>
+    <br>
+    <%= form_tag medications_path, method: :get do %>
+      <%= hidden_field_tag(:location, @location_param) %>
+      <div class='inline mb-4'>
+        <%= text_field_tag :search, @search_param, placeholder: 'Search Medication Index', class: 'form-control med-index' %>
+        <button class='search-icon'>
+          <i class="bi bi-search"></i>
+        </button>
+      </div>
+    <% end %>
+    <h5><%=@no_results%></h5>
+    <% if @search_param.present? %>
+      <% @medication_names.each do |medication| %>
+        <div>
+          <%= medication.name.gsub("[", "(").gsub("]", ")") %>
+        </div>
+        <br>
+      <% end %>
+    <% end %>
+    <br>
+    <div>
+      Can't find specific medication?
+    </div>
+    <%=link_to 'Add Medication Here', new_medication_path(location: @location_param) %>
+  </div>
+</div>

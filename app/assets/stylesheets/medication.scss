@@ -1,0 +1,57 @@
+@import "variables";
+
+.medications-page {
+  .add-med,
+  .remove-med {
+    cursor: pointer;
+    font-size: 30px;
+  }
+  .btn-primary:not(.hover) {
+    width: fit-content;
+  }
+  .add-med {
+    color: $purple;
+    margin-right: 2em;
+  }
+  .remove-med {
+    color: $warning;
+  }
+  .search-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 8px;
+    margin-top: 1.9px;
+    width: 2em;
+    color: $white;
+    font-size: 20px;
+    background: $purple;
+    height: 1.75em;
+    border-radius: 5px;
+  }
+  .form-control {
+    margin-bottom: 0em;
+  }
+  .form-select {
+    max-width: 19em;
+  }
+  .filter-med {
+    margin-top: 1em;
+  }
+}
+
+@include xxs {
+  .medications-page {
+    .med-index {
+      width: 16em;
+    }
+  }
+}
+
+@include md-up {
+  .medications-page {
+    .form-select {
+      max-width: 30em;
+    }
+  }
+}
