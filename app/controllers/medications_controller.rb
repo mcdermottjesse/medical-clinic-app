@@ -23,6 +23,7 @@ class MedicationsController < ApplicationController
     @medication = Medication.new(medication_params)
     @medication.medication_names.each { |med| med.location = @location_param }
     respond_to do |format|
+      # confirming there are NO duplicate med_names on create
       if medication_name_param.uniq.length == medication_name_param.length && @medication.save
         if params[:commit] == "Save and Return to Index"
           format.html { redirect_to medications_path(location: @location_param), notice: "Medication/s successfully added" }
