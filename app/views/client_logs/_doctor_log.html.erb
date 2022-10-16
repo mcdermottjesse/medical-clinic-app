@@ -1,7 +1,13 @@
 <% if @log_present %>
-  <div>
-    Attention: Nurse Logs have already been created for this client on this date. Please review 
-    <%= link_to 'Nurse Logs Here.', client_client_logs_path(@client, location: @location_param, log_type: 'nurse log', log_date: @log_date_param )%>
+  <div class='max-text-width'>
+    <div class='center-item mt-3 mb-3'>
+      <div class='alert-danger'>Attention</div>
+    </div>
+    <div class='log-warning'>
+      <p>
+        Check selected date <%= link_to 'Nurse Logs Here.', client_client_logs_path(@client, location: @location_param, log_type: 'nurse log', log_date: @log_date_param )%>
+      </p>
+    </div>
   </div>
 <% end %>
 <% @client_logs.each do |client_log|%>

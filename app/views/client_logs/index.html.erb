@@ -1,5 +1,9 @@
 <div class='client-logs-page'>
   <div class='container mb-3'>
+  <h4 class='center-item'>
+    <%= @client_log_param.titleize %>s:&nbsp 
+    <%= link_to @client.full_name, client_path(@client, location: @location_param, log_type: @client_log_param) %>
+  </h4>
     <div class="space-between">
       <%= link_to 'Back', client_path(@client, location: @location_param), class: 'btn-secondary' %>
       <%= link_to "New #{@client_log_param.titleize}", new_client_client_log_path(@client, location: @location_param, log_type: @client_log_param, log_date: @log_date_param), class: 'btn-secondary' %>
@@ -12,8 +16,6 @@
       <%= hidden_field_tag(:log_type, @client_log_param) %>
     <% end %>
     <br>
-    <h4 class="mb-3"><%= @client_log_param.titleize %>s:  
-    <%= link_to @client.full_name, client_path(@client, location: @location_param, log_type: @client_log_param) %></h4>
   </div>
   <div class='details'>
     <div class="center">
@@ -21,7 +23,9 @@
       <%= render 'doctor_log' if @doctor_log %>
     </div>
   </div>
-  <div class='center pagination'>
-    <%= will_paginate @client_logs, previous_label: 'Prev', next_label: 'Next' %>
+  <div class='center-item'>
+    <div class='pagination mb-5'>
+      <%= will_paginate @client_logs, previous_label: 'Prev', next_label: 'Next' %>
+    </div>
   </div>
 </div>
