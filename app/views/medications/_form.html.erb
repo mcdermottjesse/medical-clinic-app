@@ -1,7 +1,7 @@
 <div class='medication-form mt-2'>
   <%= form_with url: new_medication_path(location: @location_param,), method: :get do |s| %>
     <div class='inline'>
-      <%= s.text_field :medication_query, placeholder: 'Input Medication Name', class: 'form-control' %>
+      <%= s.text_field :medication_query, placeholder: 'Input Medication Name', class: 'form-control med-search' %>
       <button class='search-icon'>
         <i class="bi bi-search"></i>
       </button>

@@ -9,7 +9,7 @@
     <%= form_tag medications_path, method: :get do %>
       <%= hidden_field_tag(:location, @location_param) %>
       <div class='inline mb-4'>
-        <%= text_field_tag :search, @search_param, placeholder: 'Search Medication Index', class: 'form-control med-index' %>
+        <%= text_field_tag :search, @search_param, placeholder: 'Search Medication Index', class: 'form-control med-search' %> 
         <button class='search-icon'>
           <i class="bi bi-search"></i>
         </button>
