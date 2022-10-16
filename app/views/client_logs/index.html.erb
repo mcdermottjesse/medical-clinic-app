@@ -6,7 +6,7 @@
     </div>
   </div>
   <div class='center'>
-    <%= form_tag(client_client_logs_path(location: @location_param), method: :get) do %>
+    <%= form_tag(client_client_logs_path, method: :get) do %>
       Filter by Date: <%= date_field_tag :log_date,  @log_date_param, onchange: 'this.form.submit();', class: 'calendar' %>
       <%= hidden_field_tag(:location, @location_param) %>
       <%= hidden_field_tag(:log_type, @client_log_param) %>

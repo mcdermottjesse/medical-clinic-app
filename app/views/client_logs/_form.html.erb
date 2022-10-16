@@ -1,6 +1,8 @@
-<div class='center-item'> 
-  Log Date: <%= @log_date_param %>
-</div>
+<%= form_tag(new_client_client_log_path, method: :get) do %>
+  Log Date: <%= date_field_tag :log_date,  @log_date_param, onchange: 'this.form.submit();', class: 'calendar' %>
+  <%= hidden_field_tag(:location, @location_param) %>
+  <%= hidden_field_tag(:log_type, @client_log_param) %>
+<% end %>
 <br>
 <%= form_with model: [@client, @client_log] do |f| %>
   <%= f.text_area :nurse_log, class: 'form-control log-form-control' if @nurse_log %>
