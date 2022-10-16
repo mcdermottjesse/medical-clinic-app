@@ -1,6 +1,7 @@
 class MedicationName < ApplicationRecord
   belongs_to :medication
   
+  validates_presence_of :location
   validates_uniqueness_of :name, scope: :location # only validates if same location
 
   def self.search_medication(search)
