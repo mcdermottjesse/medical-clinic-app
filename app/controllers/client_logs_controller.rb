@@ -19,6 +19,8 @@ class ClientLogsController < ApplicationController
 
   def new
     @client_log = ClientLog.new
+    @medication_name_array = MedicationName.where(location: @location_param).pluck(:name)
+    5.times { @client_log.client_medications.build }
   end
 
   def create
@@ -59,7 +61,8 @@ class ClientLogsController < ApplicationController
   def client_log_params
     params.require(:client_log).permit(
       :doctor_log,
-      :nurse_log
+      :nurse_log,
+      client_medications_attributes: [:id, :medication_name]
     )
   end
 
