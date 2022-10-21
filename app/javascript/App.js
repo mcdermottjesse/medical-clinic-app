@@ -4,7 +4,6 @@ import './components/ClientAutocompleteMounter';
 
 //helpers
 import './helpers/ClearDate'
-import './helpers/ClientDropdown';
 import './helpers/HidePronoun';
 import './helpers/Medication';
 import './helpers/NavbarDropdown';
