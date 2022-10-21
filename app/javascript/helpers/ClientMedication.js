@@ -47,6 +47,7 @@ if (clientLogForm) {
 		counter = 0;
 		addMed.addEventListener('click', () => {
 			counter++;
+			console.log(counter);
 			showId([ `client_log_client_medications_attributes_${counter}_medication_name` ]);
 			if (counter === 4) hideClass([ '.add-med' ]);
 		});
@@ -56,8 +57,9 @@ if (clientLogForm) {
 			console.log(counter);
 			hideId([ `client_log_client_medications_attributes_${counter + 1}_medication_name` ]);
 			if (counter === -1) {
-				hideClass([ '.remove-med' ]);
+				hideClass([ '.add-med', '.remove-med' ]);
 				showClass([ '.display-med' ]);
+				counter += 1; // set counter back to 0 so addMed counter will work correctly
 			}
 		});
 	});
