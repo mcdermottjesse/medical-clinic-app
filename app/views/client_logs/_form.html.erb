@@ -8,7 +8,6 @@
   <%= f.text_area :nurse_log, class: 'form-control log-form-control' if @nurse_log %>
   <%= f.text_area :doctor_log, class: 'form-control log-form-control' if @doctor_log %>
   <%= f.fields_for :client_medications do |ff| %>
-    <%= hidden_field_tag(:location, @location_param) %>
     <%= ff.select :medication_name, options_for_select(@medication_name_array), {}, class: 'form-select' %>
   <% end %>
   <div class='center'>
