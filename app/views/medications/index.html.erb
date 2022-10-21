@@ -3,7 +3,7 @@
     <h2>Medication Index</h2>
     <br>
     <%= form_tag(medications_path, method: :get) do %>
-      <%= select_tag :location, options_for_select(Medication::LOCATIONS, @location_param), onchange: 'this.form.submit();', class: 'filter btn-primary' if @authorized_users %>
+      <%= select_tag :location, options_for_select(Medication::LOCATIONS.drop(1), @location_param), onchange: 'this.form.submit();', class: 'filter btn-primary' if @authorized_users %>
     <% end %>
     <br>
     <%= form_tag medications_path, method: :get do %>
