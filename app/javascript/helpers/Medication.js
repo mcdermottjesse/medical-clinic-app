@@ -1,3 +1,4 @@
+const medForm = document.querySelector('.medication-form')
 const addMed = document.querySelector('.add-med');
 const removeMed = document.querySelector('.remove-med');
 const searchMed = document.querySelector('.search-icon');
@@ -5,7 +6,7 @@ const searchMed = document.querySelector('.search-icon');
 const urlParams = window.location.search;
 const searchParams = new URLSearchParams(urlParams);
 
-if (addMed) {
+if (medForm) {
 	document.addEventListener('DOMContentLoaded', () => {
 		function hideId(elements) {
 			elements.forEach((id) => {
