@@ -6,7 +6,6 @@ const medicationAutocomplete = document.getElementById('auto-complete-medication
 
 document.addEventListener('DOMContentLoaded', () => {
 	if (medicationAutocomplete) {
-    console.log('med mounter')
 		createRoot(medicationAutocomplete).render(<MedicationAutocomplete />);
 	}
 });

@@ -10,11 +10,11 @@ const MedicationAutocomplete = () => {
 	useEffect(() => {
 		const loadMedications = async () => {
 			const response = await axios.get('/medications.json?medication_search=true');
-			// console.log('response', response.data)
+
 			setMedications(response.data);
 		};
 		loadMedications();
-	});
+	}, []);
 
 	const onChangeHandler = (text) => {
 		let matches = [];
@@ -44,11 +44,7 @@ const MedicationAutocomplete = () => {
 				) : (
 					suggestions &&
 					suggestions.map((suggestion, i) => (
-						<div
-							className="drop-down-element"
-							key={i}
-							// onClick={() => `${suggestion.name}`}
-						>
+						<div className="drop-down-element" key={i} onClick={() => `${suggestion.name}`}>
 							{`${suggestion.name}`}
 						</div>
 					))
