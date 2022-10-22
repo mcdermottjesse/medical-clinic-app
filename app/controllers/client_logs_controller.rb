@@ -19,7 +19,6 @@ class ClientLogsController < ApplicationController
 
   def new
     @client_log = ClientLog.new
-    @medication_name_array = MedicationName.where(location: @location_param).pluck(:name)
     5.times { @client_log.client_medications.build }
   end
 

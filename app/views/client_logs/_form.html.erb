@@ -12,7 +12,9 @@
       <p class='display-med'> Add Medication </p>
     </div>
     <%= f.fields_for :client_medications do |ff| %>
-      <%= ff.select :medication_name, options_for_select(@medication_name_array), {}, class: 'form-select' %>
+      <%= form_tag new_client_client_log_path, method: :get do %>
+        <div id='auto-complete-medication'></div>
+      <% end %>
     <% end %>
     <div class='center-item'>
       <div class='inline'>

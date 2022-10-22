@@ -1,6 +1,7 @@
 //components
-import './components/UserAutocompleteMounter';
 import './components/ClientAutocompleteMounter';
+import './components/MedicationAutocompleteMounter'
+import './components/UserAutocompleteMounter';
 
 //helpers
 import './helpers/ClearDate'

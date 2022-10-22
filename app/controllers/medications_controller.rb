@@ -9,6 +9,10 @@ class MedicationsController < ApplicationController
       @medication_names = MedicationName.where(location: @location_param).search_medication(search_params)
       @no_results = "No medication found" if @medication_names.blank?
     end
+
+    if medication_autocomplete_params
+      render json: MedicationName.all
+    end
   end
 
   def new
@@ -48,5 +52,11 @@ class MedicationsController < ApplicationController
 
   def search_params
     params.require(:search) if @search_param.present?
+  end
+
+  def medication_autocomplete_params
+    if params[:medication_search] == "true"
+      params.require(:medication_search)
+    end
   end
 end
