@@ -17,7 +17,15 @@ const MedicationAutocomplete = () => {
 
 	useEffect(() => {
 		const loadMedications = async () => {
-			const response = await axios.get('/medications.json?medication_search=true');
+			const urlParams = new URLSearchParams(location.search);
+			const findLocation = urlParams.get('location');
+			const request = {
+				params: {
+					medication_search: true,
+					medication_location: findLocation
+				}
+			};
+			const response = await axios.get('/medications.json', request);
 			setMedications(response.data);
 		};
 		loadMedications();

@@ -10,9 +10,7 @@ class MedicationsController < ApplicationController
       @no_results = "No medication found" if @medication_names.blank?
     end
 
-    if medication_autocomplete_params
-      render json: MedicationName.all
-    end
+    render json: MedicationName.where(location: client_medication_autocomplete_params) if client_medication_autocomplete_params
   end
 
   def new
@@ -23,7 +21,7 @@ class MedicationsController < ApplicationController
 
   def create
     # medication_name_param returns all the medication_name.name values that are NOT blank.
-    medication_name_param = params[:medication]["medication_names_attributes"].values.map{ |med| med["name"] }.compact_blank
+    medication_name_param = params[:medication]["medication_names_attributes"].values.map { |med| med["name"] }.compact_blank
     @medication = Medication.new(medication_params)
     @medication.medication_names.each { |med| med.location = @location_param }
     respond_to do |format|
@@ -54,9 +52,10 @@ class MedicationsController < ApplicationController
     params.require(:search) if @search_param.present?
   end
 
-  def medication_autocomplete_params
+  def client_medication_autocomplete_params
     if params[:medication_search] == "true"
       params.require(:medication_search)
+      params.require(:medication_location)
     end
   end
 end
