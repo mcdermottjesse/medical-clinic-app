@@ -8,24 +8,9 @@
   <%= form_with model: [@client, @client_log] do |f| %>
     <%= f.text_area :nurse_log, class: 'form-control log-form-control' if @nurse_log %>
     <%= f.text_area :doctor_log, class: 'form-control log-form-control' if @doctor_log %>
-    <div class='center-item'>
-      <p class='display-med'> Add Medication </p>
-    </div>
-    <%= f.fields_for :client_medications do |ff| %>
-      <%= form_tag new_client_client_log_path, method: :get do %>
-        <div id='auto-complete-medication'></div>
-      <% end %>
-    <% end %>
-    <div class='center-item'>
-      <div class='inline'>
-        <div class='add-med'>
-          <i class="bi bi-plus-circle-fill"></i>
-        </div>
-        <div class='remove-med'>
-          <i class="bi bi-dash-circle-fill"></i>
-        </div>
-      </div>
-    </div>
+    
+    <div id='auto-complete-medication'></div>
+    
     <br>
     <div class='center'>
       <%= f.submit 'Save', class: 'btn-primary' %>

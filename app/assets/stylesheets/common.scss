@@ -214,16 +214,15 @@
 
 .add-med,
 .remove-med {
-  cursor: pointer;
   font-size: 30px;
 }
 
 .add-med {
   color: $purple;
-  margin-right: 2em;
 }
 .remove-med {
   color: $warning;
+  margin-right: 1em;
 }
 
 @include md-up {

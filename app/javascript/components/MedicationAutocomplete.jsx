@@ -5,9 +5,31 @@ const inputRef = React.createRef();
 
 const MedicationAutocomplete = () => {
 	const [ medications, setMedications ] = useState([]);
-	const [ text, setText ] = useState('');
+	const [ input, setInput ] = useState([ { medicationName: '' } ]);
+	const [ showInput, setShowInput ] = useState(false);
+	const [ showButton, setShowButton ] = useState(true);
+	// const [ text, setText] = useState("");
 	const [ suggestions, setSuggestions ] = useState([]);
 	const [ open, setOpen ] = useState(false);
+
+	const showHandler = () => {
+		// shows first input when add medication button is clicked
+		setShowInput(true);
+		setInput([ input ]); //allows add medication button to keep state if all inputs are removed
+		// hide add medication button when add medication button is clicked
+		setShowButton(false);
+	};
+
+	const handleInputAdd = () => {
+		setInput([ ...input, { medicationName: '' } ]);
+	};
+
+	const handleInputRemove = (index) => {
+		const medicationInput = [ ...input ];
+		medicationInput.splice(index); // removes item from array based on current index
+		setInput(medicationInput);
+		if (input.length === 1) setShowButton(true);
+	};
 
 	const handleOuterClick = (e) => {
 		if (!inputRef.current.contains(e.target)) {
@@ -37,44 +59,89 @@ const MedicationAutocomplete = () => {
 	}, []);
 
 	const onClickHandler = (text) => {
-		setText(text);
+		setInput([ text ]);
 		setSuggestions([]);
 	};
 
-	const onChangeHandler = (text) => {
+	const onChangeHandler = (event, index) => {
+		const { name, value } = event.target;
+
+		const medicationInput = [ ...input ];
+
+		medicationInput[index][name] = value;
+
 		let matches = [];
-		if (text.length > 0) {
+		if (value.length > 0) {
 			matches = medications.filter((medication) => {
-				const regex = new RegExp(`${text}`, 'gi');
+				const regex = new RegExp(`${value}`, 'gi');
 				return `${medication.name}`.match(regex);
 			});
 		}
+
+		setInput(medicationInput);
 		setSuggestions(matches);
-		setText(text);
 		setOpen(true);
 	};
 
 	return (
 		<div>
-			<input
-				className="form-control"
-				type="text"
-				placeholder="Search"
-				value={text}
-				onChange={(e) => onChangeHandler(e.target.value)}
-			/>
-			<div className={`drop-down-list ${open ? '' : 'hidden'}`} ref={inputRef}>
-				{suggestions.length === 0 ? (
-					<div className="drop-down-element"> No Medication Found</div>
-				) : (
-					suggestions &&
-					suggestions.map((suggestion, i) => (
-						<div className="drop-down-element" key={i} onClick={() => onClickHandler(`${suggestion.name}`)}>
-							{`${suggestion.name}`}
-						</div>
-					))
-				)}
+			<div className="display-med" onClick={showHandler}>
+				{showButton && 'Add Medication'}
 			</div>
+			{showInput &&
+				input.map((singleMedication, index) => (
+					<div key={index}>
+						<input
+							className="form-control"
+							type="text"
+							placeholder="Search"
+							name={`client_log[client_medications_attributes]${index}[medication_name]`}
+							/* value={typeof input[0] === 'string' ? input : singleMedication.medicationName} */
+							onChange={(event) => onChangeHandler(event, index)}
+						/>
+            {/* if input.length === 5, index === 4 etc, therfore if input.length - 1 === index display add/remove btn */}
+						{input.length - 1 === index && (
+							<div>
+                	{input.length < 6 && (
+									<button
+										type="button"
+										className="remove-med bi bi-dash-circle-fill"
+										onClick={() => handleInputRemove(index)}
+									/>
+								)}
+								{input.length < 5 && (
+									<button
+										type="button"
+										className="add-med bi bi-plus-circle-fill"
+										onClick={handleInputAdd}
+									/>
+								)}
+							</div>
+						)}
+					</div>
+				))}
+        {/* To match dropdown with inuput - compare medication input index with dropdown index */}
+
+
+			{/* {console.log(input)}
+          {singleMedication.medicationName ? (
+					<div className={`drop-down-list ${open ? '' : 'hidden'}`} ref={inputRef}>
+						{suggestions.length === 0 ? (
+							<div className="drop-down-element"> No Medication Found</div>
+						) : (
+							suggestions &&
+							suggestions.map((suggestion, i) => (
+								<div
+									className="drop-down-element"
+									key={i}
+									onClick={() => onClickHandler(`${suggestion.name}`)}
+								>
+									{`${suggestion.name}`}
+								</div>
+							))
+						)}
+					</div>
+          ) : (null) } */}
 		</div>
 	);
 };
