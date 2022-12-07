@@ -9,6 +9,8 @@ class MedicationsController < ApplicationController
       @medication_names = MedicationName.where(location: @location_param).search_medication(search_params)
       @no_results = "No medication found" if @medication_names.blank?
     end
+
+    render json: MedicationName.where(location: client_medication_autocomplete_params) if client_medication_autocomplete_params
   end
 
   def new
@@ -19,12 +21,12 @@ class MedicationsController < ApplicationController
 
   def create
     # medication_name_param returns all the medication_name.name values that are NOT blank.
-    medication_name_param = params[:medication]["medication_names_attributes"].values.map{ |med| med["name"] }.compact_blank
+    medication_name_param = params[:medication]["medication_names_attributes"].values.map { |med| med["name"] }.compact_blank
     @medication = Medication.new(medication_params)
+    @medication.medication_names.each { |med| med.location = @location_param }
     respond_to do |format|
       # confirming there are NO duplicate med_names on create
       if medication_name_param.uniq.length == medication_name_param.length && @medication.save
-        # @medication.medication_names.each { |med| med.location = @location_param }
         if params[:commit] == "Save and Return to Index"
           format.html { redirect_to medications_path(location: @location_param), notice: "Medication/s successfully added" }
           format.json { render :index, status: :created, location: @medication }
@@ -48,5 +50,12 @@ class MedicationsController < ApplicationController
 
   def search_params
     params.require(:search) if @search_param.present?
+  end
+
+  def client_medication_autocomplete_params
+    if params[:medication_search] == "true"
+      params.require(:medication_search)
+      params.require(:medication_location)
+    end
   end
 end

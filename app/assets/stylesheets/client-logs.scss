@@ -28,6 +28,10 @@
   .log-warning {
     text-align: center;
   }
+  .display-med {
+    color: $purple;
+    cursor: pointer;
+  }
 }
 
 @include md-up {

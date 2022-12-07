@@ -2,32 +2,18 @@
   <div class='center'>
     <div class="card bg-light">
       <div class="container">
-        <div class="row justify-content-between">
+        <div class='row justify-content-between'>
           <div class="col">
             <div class='center'>
-              <h5 class="card-title mb-4"><%= @client.full_name %></h5>
+              <h5 class='card-title mb-4'><%= @client.full_name %></h5>
               <% if @client.avatar.attached? %>
-                <img src="<%=(url_for(@client.avatar))%>" class='client-image img-fluid mb-4'>
+                <img src=<%=(url_for(@client.avatar))%> class='client-image img-fluid mb-4'>
               <% end %>
               <div>
-                <button class='client-btn btn-secondary'>
-                  Client Menu
-                </button>
-                <div class='center-item'>
-                  <div class='client-dropdown'>
-                    <div class='client-link'>
-                      <%= link_to 'Nurse Logs', client_client_logs_path(@client, location: @location_param, log_type: 'nurse log', log_date: Date.today)%>
-                    </div>
-                    <div class='client-link mb-2'>
-                      <%= link_to 'New Nurse Log', new_client_client_log_path(@client, location: @location_param, log_type: 'nurse log', log_date: Date.today) %>
-                    </div>
-                    <div class='client-link'>
-                    <%= link_to 'Doctor Logs', client_client_logs_path(@client, location: @location_param, log_type: 'doctor log', log_date: Date.today)%>
-                  </div>
-                  <div class='client-link mb-2'>
-                    <%= link_to 'New Doctor Log', new_client_client_log_path(@client, location: @location_param, log_type: 'doctor log', log_date: Date.today) %>
-                  </div>
-                  </div>
+                <div class='client-link inline'>
+                  <%= link_to 'Nurse Logs', client_client_logs_path(@client, location: @location_param, log_type: 'nurse log', log_date: Date.today)%>
+                  <div class='divider'> </div>
+                  <%= link_to 'Doctor Logs', client_client_logs_path(@client, location: @location_param, log_type: 'doctor log', log_date: Date.today)%>
                 </div>
               </div>
             </div>

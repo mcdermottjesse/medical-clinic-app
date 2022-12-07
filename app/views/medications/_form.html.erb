@@ -9,21 +9,21 @@
     <%= hidden_field_tag(:location, @location_param) %>
   <% end %>
 </div>
-<h5><%= @no_results %></h5>
+<h5 class="mt-4"><%= @no_results %></h5>
 <%= form_with model: @medication do |f| %>
   <% if @med_options.present? %>
     <%= f.fields_for :medication_names do |ff| %>
       <%= ff.select :name, options_for_select(@med_options.map { |drug| drug["name"].titleize }), {prompt: 'Select...'}, {class: 'form-select' } %>
     <% end %>
-    <div class='center'>
       <div class='inline'>
-        <div class='add-med'>
-          <i class="bi bi-plus-circle-fill"></i>
-        </div>
         <div class='remove-med'>
           <i class="bi bi-dash-circle-fill"></i>
         </div>
+        <div class='add-med'>
+          <i class="bi bi-plus-circle-fill"></i>
+        </div>
       </div>
+      <div class='center'>
       <br>
       <%= f.submit 'Save and Add New Medication', class: 'btn-secondary new-med' %>
       <br>

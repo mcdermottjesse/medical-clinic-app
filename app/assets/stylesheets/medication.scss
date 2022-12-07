@@ -1,20 +1,8 @@
 @import "variables";
 
 .medications-page {
-  .add-med,
-  .remove-med {
-    cursor: pointer;
-    font-size: 30px;
-  }
   .btn-primary:not(.hover) {
     width: fit-content;
-  }
-  .add-med {
-    color: $purple;
-    margin-right: 2em;
-  }
-  .remove-med {
-    color: $warning;
   }
   .search-icon {
     display: flex;

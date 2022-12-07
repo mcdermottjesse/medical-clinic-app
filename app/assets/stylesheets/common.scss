@@ -205,6 +205,26 @@
   color: $warning;
 }
 
+.divider {
+  height: 1.5em;
+  border-left: 3px solid;
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+.add-med,
+.remove-med {
+  font-size: 30px;
+}
+
+.add-med {
+  color: $purple;
+}
+.remove-med {
+  color: $warning;
+  margin-right: 1em;
+}
+
 @include md-up {
   .drop-down-list {
     font-size: medium;

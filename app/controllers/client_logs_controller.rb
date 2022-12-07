@@ -11,7 +11,7 @@ class ClientLogsController < ApplicationController
     
     # conditional based on if other log type has already been created for client
     @nurse_log ? client_log_link = ClientLog.where.not(doctor_log: nil) : client_log_link = ClientLog.where.not(nurse_log: nil)
-    @log_present = client_log_link.where(log_date: @log_date_param).present?
+    @log_present = client_log_link.where(client_id: @client, log_date: @log_date_param).present?
   end
 
   def show
@@ -19,6 +19,7 @@ class ClientLogsController < ApplicationController
 
   def new
     @client_log = ClientLog.new
+    5.times { @client_log.client_medications.build }
   end
 
   def create
@@ -59,7 +60,8 @@ class ClientLogsController < ApplicationController
   def client_log_params
     params.require(:client_log).permit(
       :doctor_log,
-      :nurse_log
+      :nurse_log,
+      client_medications_attributes: [:id, :medication_name]
     )
   end
 
