@@ -8,7 +8,6 @@ const MedicationAutocomplete = () => {
 	const [ input, setInput ] = useState([ { medicationName: '' } ]);
 	const [ showInput, setShowInput ] = useState(false);
 	const [ showButton, setShowButton ] = useState(true);
-	// const [ text, setText] = useState("");
 	const [ suggestions, setSuggestions ] = useState([]);
 	const [ open, setOpen ] = useState(false);
 
@@ -58,8 +57,10 @@ const MedicationAutocomplete = () => {
 		};
 	}, []);
 
-	const onClickHandler = (text) => {
-		setInput([ text ]);
+	const onClickHandler = (text, index) => {
+		const medicationInput = [ ...input ];
+		medicationInput[index].medicationName = text;
+		setInput(medicationInput);
 		setSuggestions([]);
 	};
 
@@ -89,24 +90,39 @@ const MedicationAutocomplete = () => {
 				{showButton && 'Add Medication'}
 			</div>
 			{showInput &&
-				input.map((singleMedication, index) => (
-					<div key={index}>
+				input.map((singleMedication, inputIndex) => (
+					<div key={inputIndex}>
 						<input
 							className="form-control"
 							type="text"
 							placeholder="Search"
-							name={`client_log[client_medications_attributes]${index}[medication_name]`}
-							/* value={typeof input[0] === 'string' ? input : singleMedication.medicationName} */
-							onChange={(event) => onChangeHandler(event, index)}
+							name={`client_log[client_medications_attributes]${inputIndex}[medication_name]`}
+							value={singleMedication.medicationName}
+							onChange={(event) => onChangeHandler(event, inputIndex)}
 						/>
-            {/* if input.length === 5, index === 4 etc, therfore if input.length - 1 === index display add/remove btn */}
-						{input.length - 1 === index && (
+						{/* if input.length === 5, index === 4 etc, therfore if input.length - 1 === index display add/remove btn */}
+						{input.length - 1 === inputIndex && (
 							<div>
-                	{input.length < 6 && (
+								<div className={`drop-down-list ${open ? '' : 'hidden'}`} ref={inputRef}>
+									{suggestions.length === 0 ? (
+										<div className="drop-down-element"> No Medication Found</div>
+									) : (
+										suggestions.map((suggestion, dropdownIndex) => (
+											<div
+												className="drop-down-element"
+												key={dropdownIndex}
+												onClick={() => onClickHandler(`${suggestion.name}`, inputIndex)}
+											>
+												{`${suggestion.name}`}
+											</div>
+										))
+									)}
+								</div>
+								{input.length < 6 && (
 									<button
 										type="button"
 										className="remove-med bi bi-dash-circle-fill"
-										onClick={() => handleInputRemove(index)}
+										onClick={() => handleInputRemove(inputIndex)}
 									/>
 								)}
 								{input.length < 5 && (
@@ -120,28 +136,6 @@ const MedicationAutocomplete = () => {
 						)}
 					</div>
 				))}
-        {/* To match dropdown with inuput - compare medication input index with dropdown index */}
-
-
-			{/* {console.log(input)}
-          {singleMedication.medicationName ? (
-					<div className={`drop-down-list ${open ? '' : 'hidden'}`} ref={inputRef}>
-						{suggestions.length === 0 ? (
-							<div className="drop-down-element"> No Medication Found</div>
-						) : (
-							suggestions &&
-							suggestions.map((suggestion, i) => (
-								<div
-									className="drop-down-element"
-									key={i}
-									onClick={() => onClickHandler(`${suggestion.name}`)}
-								>
-									{`${suggestion.name}`}
-								</div>
-							))
-						)}
-					</div>
-          ) : (null) } */}
 		</div>
 	);
 };
