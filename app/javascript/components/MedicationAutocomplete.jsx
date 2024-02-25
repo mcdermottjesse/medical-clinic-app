@@ -1,38 +1,41 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
-
-const inputRef = React.createRef();
 
 const MedicationAutocomplete = () => {
 	const [ medications, setMedications ] = useState([]);
-	const [ input, setInput ] = useState([ { medicationName: '' } ]);
+	const [ inputs, setInputs ] = useState([ { medicationName: '' } ]);
+	const [ suggestions, setSuggestions ] = useState([]);
+  // Only allow another medication to be added, if each input is 
+  // populated with a medication.
+  const [selectedSuggestions, setSelectedSuggestions] = useState([]);
+	const [ open, setOpen ] = useState(false);
 	const [ showInput, setShowInput ] = useState(false);
 	const [ showButton, setShowButton ] = useState(true);
-	// const [ text, setText] = useState("");
-	const [ suggestions, setSuggestions ] = useState([]);
-	const [ open, setOpen ] = useState(false);
+
+	const inputRef = useRef(null);
 
 	const showHandler = () => {
-		// shows first input when add medication button is clicked
 		setShowInput(true);
-		setInput([ input ]); //allows add medication button to keep state if all inputs are removed
-		// hide add medication button when add medication button is clicked
 		setShowButton(false);
+		setInputs([{ medicationName: '' } ]);
 	};
 
 	const handleInputAdd = () => {
-		setInput([ ...input, { medicationName: '' } ]);
+		setInputs([ ...inputs, { medicationName: '' } ]);
 	};
 
 	const handleInputRemove = (index) => {
-		const medicationInput = [ ...input ];
-		medicationInput.splice(index); // removes item from array based on current index
-		setInput(medicationInput);
-		if (input.length === 1) setShowButton(true);
+		const updatedInputs = [ ...inputs ];
+		updatedInputs.splice(index, 1);
+		setInputs(updatedInputs);
+    
+    if (inputs.length === 1) {
+      setShowButton(true);
+    }
 	};
 
 	const handleOuterClick = (e) => {
-		if (!inputRef.current.contains(e.target)) {
+		if (inputRef.current && !inputRef.current.contains(e.target)) {
 			setOpen(false);
 		}
 	};
@@ -50,6 +53,7 @@ const MedicationAutocomplete = () => {
 			const response = await axios.get('/medications.json', request);
 			setMedications(response.data);
 		};
+
 		loadMedications();
 		document.addEventListener('click', handleOuterClick);
 
@@ -58,17 +62,19 @@ const MedicationAutocomplete = () => {
 		};
 	}, []);
 
-	const onClickHandler = (text) => {
-		setInput([ text ]);
+	const onClickHandler = (text, index) => {
+		const updatedInputs = [ ...inputs ];
+		updatedInputs[index].medicationName = text;
+		setInputs(updatedInputs);
 		setSuggestions([]);
+
+    const updatedSelectedSuggestions = [...selectedSuggestions];
+    updatedSelectedSuggestions[index] = text;
+    setSelectedSuggestions(updatedSelectedSuggestions);
 	};
 
 	const onChangeHandler = (event, index) => {
-		const { name, value } = event.target;
-
-		const medicationInput = [ ...input ];
-
-		medicationInput[index][name] = value;
+		const { value } = event.target;
 
 		let matches = [];
 		if (value.length > 0) {
@@ -78,7 +84,9 @@ const MedicationAutocomplete = () => {
 			});
 		}
 
-		setInput(medicationInput);
+		setInputs((prevInputs) =>
+			prevInputs.map((input, i) => (i === index ? { ...input, medicationName: value } : input))
+		);
 		setSuggestions(matches);
 		setOpen(true);
 	};
@@ -88,28 +96,43 @@ const MedicationAutocomplete = () => {
 			<div className="display-med" onClick={showHandler}>
 				{showButton && 'Add Medication'}
 			</div>
+
 			{showInput &&
-				input.map((singleMedication, index) => (
+				inputs.map((singleInput, index) => (
 					<div key={index}>
 						<input
 							className="form-control"
 							type="text"
 							placeholder="Search"
 							name={`client_log[client_medications_attributes]${index}[medication_name]`}
-							/* value={typeof input[0] === 'string' ? input : singleMedication.medicationName} */
+							value={singleInput.medicationName}
 							onChange={(event) => onChangeHandler(event, index)}
 						/>
-            {/* if input.length === 5, index === 4 etc, therfore if input.length - 1 === index display add/remove btn */}
-						{input.length - 1 === index && (
+						{inputs.length - 1 === index && (
 							<div>
-                	{input.length < 6 && (
+								<div className={`drop-down-list ${open ? '' : 'hidden'}`} ref={inputRef}>
+									{suggestions.length === 0 ? (
+										<div className="drop-down-element">No Medication Found</div>
+									) : (
+										suggestions.map((suggestion, dropdownIndex) => (
+											<div
+												className="drop-down-element"
+												key={dropdownIndex}
+												onClick={() => onClickHandler(suggestion.name, index)}
+											>
+												{suggestion.name}
+											</div>
+										))
+									)}
+								</div>
+								{inputs.length < 6 && (
 									<button
 										type="button"
 										className="remove-med bi bi-dash-circle-fill"
 										onClick={() => handleInputRemove(index)}
 									/>
 								)}
-								{input.length < 5 && (
+								{inputs.length < 5 && selectedSuggestions[index] &&  (
 									<button
 										type="button"
 										className="add-med bi bi-plus-circle-fill"
@@ -120,28 +143,6 @@ const MedicationAutocomplete = () => {
 						)}
 					</div>
 				))}
-        {/* To match dropdown with inuput - compare medication input index with dropdown index */}
-
-
-			{/* {console.log(input)}
-          {singleMedication.medicationName ? (
-					<div className={`drop-down-list ${open ? '' : 'hidden'}`} ref={inputRef}>
-						{suggestions.length === 0 ? (
-							<div className="drop-down-element"> No Medication Found</div>
-						) : (
-							suggestions &&
-							suggestions.map((suggestion, i) => (
-								<div
-									className="drop-down-element"
-									key={i}
-									onClick={() => onClickHandler(`${suggestion.name}`)}
-								>
-									{`${suggestion.name}`}
-								</div>
-							))
-						)}
-					</div>
-          ) : (null) } */}
 		</div>
 	);
 };
