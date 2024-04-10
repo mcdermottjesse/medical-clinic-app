@@ -2,6 +2,11 @@
   <div class="center">
     <h2>Medication Index</h2>
     <br>
+    <div>
+      Cannot find specific medication?
+    </div>
+    <%=link_to 'Add Medication Here', new_medication_path(location: @location_param) %>
+    <br>
     <%= form_tag(medications_path, method: :get) do %>
       <%= select_tag :location, options_for_select(Medication::LOCATIONS.drop(1), @location_param), onchange: 'this.form.submit();', class: 'filter btn-primary' if @authorized_users %>
     <% end %>
@@ -16,18 +21,17 @@
       </div>
     <% end %>
     <h5><%=@no_results%></h5>
-    <% if @search_param.present? %>
-      <% @medication_names.each do |medication| %>
-        <div>
+    <div class="medications-list">
+      <% @medications.each do |medication| %>
+        <div class='card card-body mb-3'>
           <%= medication.name.gsub("[", "(").gsub("]", ")") %>
+          <br>
         </div>
-        <br>
       <% end %>
-    <% end %>
-    <br>
-    <div>
-      Can't find specific medication?
     </div>
-    <%=link_to 'Add Medication Here', new_medication_path(location: @location_param) %>
+    <br>
+    <div class='pagination'>
+      <%= will_paginate @medications, previous_label: 'Prev', next_label: 'Next' %>
+    </div>
   </div>
 </div>

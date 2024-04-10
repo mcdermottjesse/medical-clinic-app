@@ -5,9 +5,11 @@ class MedicationsController < ApplicationController
   before_action :unauthorized_location
 
   def index
+    medications = MedicationName.where(location: @location_param).order("name ASC")
+    @medications = medications.paginate(page: params[:page], per_page: 50)
     if search_params
-      @medication_names = MedicationName.where(location: @location_param).search_medication(search_params)
-      @no_results = "No medication found" if @medication_names.blank?
+      @medications = medications.search_medication(search_params).paginate(page: params[:page], per_page: 50)
+      @no_results = "No medication found" if @medications.blank?
     end
 
     render json: MedicationName.where(location: client_medication_autocomplete_params) if client_medication_autocomplete_params
