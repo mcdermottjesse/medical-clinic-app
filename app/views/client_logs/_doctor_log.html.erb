@@ -19,6 +19,14 @@
       <div>
         <%= format_date(client_log.updated_at) %>
       </div>
+      <br>
+      <h5> Medications </h5>
+      <% client_log.client_medications.each do |client_medication| %>
+        <div>
+          <%= client_medication.medication_name %>
+        </div>
+      <% end %>
+      <br>
       <div>
         Created by <%= client_log.user.full_name %>
       </div>
