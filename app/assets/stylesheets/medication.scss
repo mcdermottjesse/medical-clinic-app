@@ -26,6 +26,17 @@
   .filter-med {
     margin-top: 1em;
   }
+  .medications-list {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1em;
+  }
+  .card-body {
+    line-height: 1;
+    justify-content: center;
+    width: 25em;
+    flex-direction: column;
+  }
 }
 
 @include xxs {
