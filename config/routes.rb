@@ -21,6 +21,8 @@ end
 
   resources :medications, only: [:index, :new, :create]
 
+  resources :client_medications, only: [:destroy]
+
   match "/404", :to => "errors#not_found", :via => :all
 
 end

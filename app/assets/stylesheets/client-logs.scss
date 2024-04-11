@@ -32,6 +32,10 @@
     color: $purple;
     cursor: pointer;
   }
+
+  .delete-med-btn {
+    color: $warning;
+  }
 }
 
 @include md-up {

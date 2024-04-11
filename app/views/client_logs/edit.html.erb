@@ -8,6 +8,34 @@
       Last updated <%= format_date(@client_log.updated_at) %>
     </h5>
     <br>
+
+    <% if @client_log.client_medications.any? %>
+      <h5> Medications </h5>
+      <br>
+    <% end %>
+
+    <% @client_log.client_medications.each do |client_medication| %>
+      <div class="inline px-5">
+        <%= client_medication.medication_name %>
+
+        <%= button_to 'Remove', 
+          client_medication_path(client_medication), 
+          { 
+            onclick: "return confirm('Are you sure?')",
+            method: :delete, 
+            class: 'delete-med-btn',
+            params: { 
+              client_id: @client.id, 
+              client_log_id: @client_log.id,
+              location: @location_param,
+              log_type: @client_log_param,
+              log_date: @log_date_param
+              }
+          }
+        %>
+      </div>
+      <br>
+    <% end %>
     <%= render 'form' %>
   </div>
 </div>
