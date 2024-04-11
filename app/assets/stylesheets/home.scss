@@ -1,0 +1,26 @@
+@import "variables";
+
+.home-page {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 1em;
+  .home-card {
+    font-size: x-large;
+    border-radius: 1em;
+    border: 5px solid $dark-grey;
+    padding: 2em;
+    width: 100%;
+    text-align: center;
+    background-color: $white;
+    margin-bottom: 10px;
+  }
+}
+
+@include xl-up {
+  .home-page {
+    .home-card {
+      width: 25%;
+    }
+  }
+}
