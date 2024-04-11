@@ -1,9 +1,19 @@
-<div class='home-page ms-4'>
-  <h1>Home#index</h1>
-  <p>Find me in app/views/home/index.html.erb</p>
-  <%= link_to 'Administration', admin_users_path(location: current_user.location) %>
-  <%= link_to 'Clients', clients_path(location: current_user.location) %>
-  <%= link_to 'Medications', medications_path(location: current_user.location) %>
+<div class='home-page'>
+  <%= link_to admin_users_path(location: current_user.location), class:'home-card' do %>
+    <%= image_tag 'admin-icon.png', class: 'icon' %>
+    <br>
+     Administration
+  <% end %>
+
+  <%= link_to clients_path(location: current_user.location), class: 'home-card' do %>
+    <%= image_tag 'patients-icon.png', class: 'icon' %>
+    <br>
+    Clients
+  <% end %>
+
+   <%= link_to medications_path(location: current_user.location), class: 'home-card' do %>
+    <%= image_tag 'medication-icon.png', class: 'icon' %>
+    <br>
+    Medications
+  <% end %>
 </div>
-
-
