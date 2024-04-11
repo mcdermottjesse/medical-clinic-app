@@ -10,4 +10,8 @@ class MedicationPolicy < ApplicationPolicy
   def create?
     mid_level_authorized_user?
   end
+
+  def destroy?
+    mid_level_authorized_user?
+  end
 end

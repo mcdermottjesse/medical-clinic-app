@@ -19,8 +19,12 @@
       <div>
         <%= format_date(client_log.updated_at) %>
       </div>
-      <br>
-      <h5> Medications </h5>
+
+      <% if client_log.client_medications.any? %>
+        <br>
+        <h5> Medications </h5>
+      <% end %>
+
       <% client_log.client_medications.each do |client_medication| %>
         <div>
           <%= client_medication.medication_name %>
