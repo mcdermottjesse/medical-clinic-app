@@ -2,7 +2,7 @@
   <%= link_to admin_users_path(location: current_user.location), class:'home-card' do %>
     <%= image_tag 'admin-icon.png', class: 'icon' %>
     <br>
-     Administration
+     Admin Users
   <% end %>
 
   <%= link_to clients_path(location: current_user.location), class: 'home-card' do %>
@@ -11,7 +11,7 @@
     Clients
   <% end %>
 
-   <%= link_to medications_path(location: current_user.location), class: 'home-card' do %>
+  <%= link_to medications_path(location: current_user.location), class: 'home-card' do %>
     <%= image_tag 'medication-icon.png', class: 'icon' %>
     <br>
     Medications
