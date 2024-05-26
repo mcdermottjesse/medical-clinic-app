@@ -10,6 +10,11 @@
     </div>
   </div>
 <% end %>
+<% if @client_logs.empty? %>
+  <div class="no-log-message">
+    No doctor logs to display for this date
+  </div>
+<% end %>
 <% @client_logs.each do |client_log|%>
   <div class='card mb-3' >
     <div class='card-body'>
@@ -19,12 +24,10 @@
       <div>
         <%= format_date(client_log.updated_at) %>
       </div>
-
       <% if client_log.client_medications.any? %>
         <br>
         <h5> Medications </h5>
       <% end %>
-
       <% client_log.client_medications.each do |client_medication| %>
         <div>
           <%= client_medication.medication_name %>

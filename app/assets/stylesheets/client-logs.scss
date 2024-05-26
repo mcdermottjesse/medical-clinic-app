@@ -28,11 +28,15 @@
   .log-warning {
     text-align: center;
   }
+  .no-log-message {
+    margin-top: 3em;
+    font-style: italic;
+    font-weight: bold;
+  }
   .display-med {
     color: $purple;
     cursor: pointer;
   }
-
   .delete-med-btn {
     color: $warning;
   }
@@ -56,6 +60,9 @@
 @include lg-up {
   .client-logs-page {
     .log-warning {
+      font-size: 20px;
+    }
+    .no-log-message {
       font-size: 20px;
     }
   }
