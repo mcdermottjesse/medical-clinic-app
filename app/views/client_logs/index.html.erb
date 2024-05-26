@@ -1,9 +1,9 @@
 <div class='client-logs-page'>
   <div class='container mb-3'>
-  <h4 class='center-item'>
-    <%= @client_log_param.titleize %>s:&nbsp 
-    <%= link_to @client.full_name, client_path(@client, location: @location_param, log_type: @client_log_param) %>
-  </h4>
+    <h4 class='center-item'>
+      <%= @client_log_param.titleize %>s:&nbsp 
+      <%= link_to @client.full_name, client_path(@client, location: @location_param, log_type: @client_log_param) %>
+    </h4>
     <div class="space-between">
       <%= link_to 'Back', client_path(@client, location: @location_param), class: 'btn-secondary' %>
       <%= link_to "New #{@client_log_param.titleize}", new_client_client_log_path(@client, location: @location_param, log_type: @client_log_param, log_date: @log_date_param), class: 'btn-secondary' %>
@@ -17,11 +17,9 @@
     <% end %>
     <br>
   </div>
-  <div class='details'>
-    <div class="center">
-      <%= render 'nurse_log' if @nurse_log %>
-      <%= render 'doctor_log' if @doctor_log %>
-    </div>
+  <div class="center">
+    <%= render 'nurse_log' if @nurse_log %>
+    <%= render 'doctor_log' if @doctor_log %>
   </div>
   <div class='center-item'>
     <div class='pagination mb-5'>
